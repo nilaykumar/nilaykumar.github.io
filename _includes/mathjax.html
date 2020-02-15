@@ -3,10 +3,12 @@
     MathJax = {
         tex: {
             inlineMath: [['$', '$']],
-            displayMath: [['\\[', '\\]']],
             macros: {
                 R: ['\\mathbb{R}']
             }
+        },
+        options: {
+            skipHtmlTags: {'[-]': ['code']}
         }
     };
 </script>
