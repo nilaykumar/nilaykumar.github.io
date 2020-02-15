@@ -1,0 +1,4 @@
+things that might be fun to write about:
+
+- fuzzy simplicial sets and their realization
+- GF cohomology of R^1
