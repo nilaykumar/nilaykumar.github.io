@@ -14,7 +14,7 @@ $
 </span>
 
 Recall that the Lie algebra cohmology of a real Lie algebra $\mathfrak{g}$ is the cochain complex
-$$% C^*(\mathfrak{g}) = \left(\Sym_\R^*(\mathfrak{g}^\vee[-1]), d\right) %$$
+\\[ C^*(\mathfrak{g}) = \left(\Sym_\R^*(\mathfrak{g}^\vee[-1]), d\right) \\]
 with differential given on elements $\alpha\in\Sym^1(\mathfrak{g}^\vee[-1])$ by $d\alpha(X,Y)=-\alpha([X,Y])$ for $X,Y\in\mathfrak{g}$.
 
 {% include def.html content="
