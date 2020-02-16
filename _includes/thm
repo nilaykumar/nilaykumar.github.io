@@ -1,0 +1,9 @@
+<p class='thm {{ include.type }}'>
+    <span class='thm-marker {{ include.type }}-marker'>
+        {{ include.type }}.
+    </span>
+    <span class='thm-content {{ include.type }}-content'>
+        {{ include.content }}
+    </span>
+</p>
+

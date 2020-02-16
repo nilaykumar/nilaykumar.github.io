@@ -6,7 +6,20 @@
 
 .definition-marker {
     font-variant: small-caps;
-    font-size: 120%;
+    font-size: 130%;
+}
+
+.theorem-marker {
+    font-variant: small-caps;
+    font-size: 130%;
+}
+
+.thm-content::after {
+    content: '//';
+}
+
+.thm-content.proof-content::after {
+    content: '\220E';
 }
 
 code {
