@@ -7,6 +7,7 @@
 - [X] fix latex macros (write partial)
 - [X] add date
 - [X] update link to source repo
+- [ ] figure out why the index.html doesn't render sometimes
 - [ ] add modified date
 - [ ] add tags
 - [ ] figure out whether babel jupyter is necessary
