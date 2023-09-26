@@ -1,0 +1,29 @@
+baseURL = 'https://nilay.ink/'
+languageCode = 'en-us'
+title = 'Odds & Ends'
+
+assetDir = 'static/'
+
+[params]
+  custom_css = ["css/stylesheet.css"]
+  math_js = ["js/tex-chtml-full.js", "js/xyjax/xypic.js"]
+  xypic_path = 'js/xyjax'
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    noHl = false
+    style = 'modus-operandi'
+    # tabWidth = 4

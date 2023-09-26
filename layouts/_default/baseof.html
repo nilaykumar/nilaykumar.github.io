@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{ partial "latex_macros.html" }}
+    {{ block "header" . }}
+    <div id='header'>
+      <div id="banner"><a href="{{.Site.Home.Permalink}}">odds &amp; ends</a></div>
+      <div id="nav"><a href="{{.Site.Home.Permalink}}blog">blog</a></div>
+    </div>
+    {{ end }}
+    {{ block "main" . }}
+    {{ end }}
+    {{ block "footer" . }}
+    <div id="footer">
+      <div id="license">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+          {{ $image := resources.Get "images/ccbysa.png" }}
+          {{ with $image }}
+            <img src="{{ $image.RelPermalink }}" alt="alt">
+          {{ end }}
+        </a>
+      </div>
+      <div id="footertext">
+        written in <a href="https://orgmode.org/index.html">org-mode</a>
+        for <a href='https://www.gnu.org/software/emacs/'>emacs</a>, powered
+        by <a href='https://ox-hugo.scripter.co/'>ox-hugo</a>.
+      </div>
+    </div>
+    {{ end }}
+  </body>
+</html>

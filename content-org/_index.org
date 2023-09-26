@@ -1,0 +1,22 @@
+#+hugo_base_dir: ../
+#+hugo_section: ./
+
+#+TITLE: Odds & Ends
+
+#+ATTR_HTML: :class pic :alt a picture of nilay
+[[../static/images/nkpic_small.jpg]]
+
+Hi! I'm Nilay.
+
+I'm a data scientist and former mathematician with pretty broad interests. I
+like learning about and creating new things. Sometimes I write things down and
+put them on my blog.
+
+Recently I've been thinking about natural language processing, Hochschild
+homology, political economy, and learning Japanese.
+
+You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]].
+
+@@html:<noscript><span style="color: red;">Please note that this website uses
+JavaScript to render mathematics using MathJax and XyJax. I apologize for the
+inconvenience.</span></noscript>@@

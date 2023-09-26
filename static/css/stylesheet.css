@@ -1,0 +1,456 @@
+*
+ * Taken in part from https://gist.github.com/killercup/5917178
+ */
+
+/* colors based roughly on modus-operandi from emacs */
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  color: #282828;
+  font-family: Charter, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 1em;
+  margin: auto;
+  max-width: 42em;
+  background: #f0f0f0;
+}
+
+div#header {
+    border-bottom: 1px solid #282828;
+    margin-bottom: 30px;
+    padding-bottom: 6px;
+    font-size: 24px;
+}
+
+div#banner a {
+    color: #282828;
+    float: left;
+    text-decoration: none
+}
+
+div#header #nav {
+    text-align: right;
+}
+
+div#header #nav a {
+    color: #0031a9;
+    font-size: 20px;
+    margin-left: 12px;
+    text-decoration: none;
+}
+
+div#bibliography {
+  margin-top: 40px;
+}
+
+div#footer {
+    border-top: solid 1px #282828;
+    color: #505050;
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 12px 0px 12px 0px;
+}
+
+div#footer a {
+  color: #505050;
+}
+
+div#license {
+  float: left;
+}
+
+div#footertext {
+  text-align: right;
+  line-height: 120%;
+}
+
+div#content {
+  display: flow-root;
+}
+
+ul#blog {
+  list-style: none;
+}
+
+div#content ul {
+  list-style: circle;
+}
+
+div.date {
+  color: #505050;
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+span.timestamp {
+  color: #505050;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+
+figure.pic>img {
+  border: 1px solid #3f6fef;
+ width: 25%;
+ height: 25%;
+ float: left;
+ margin-top: 10px;
+ margin-right: 20px;
+ margin-bottom: 20px;
+}
+
+
+a {
+  color: #0031a9;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0031a9;
+}
+
+a:hover {
+  color: #0031a9;
+}
+
+a:active {
+  color: #cf9f00;
+}
+
+a:focus {
+  outline: thin solid;
+}
+
+*::-moz-selection {
+  background: rgba(215, 215, 215, 0.6);
+  color: #282828;
+}
+
+*::selection {
+  background: rgba(215, 215, 215, 0.6);
+  color: #282828;
+}
+
+a::-moz-selection {
+  background: rgba(215, 215, 215, 0.6);
+  color: #0031a9;
+}
+
+a::selection {
+  background: rgba(215, 215, 215, 0.6);
+  color: #cf9f00;
+}
+
+p {
+  margin: 1em 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+  line-height: 125%;
+  font-weight: normal;
+}
+
+h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+div#content h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.3em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.9em;
+}
+
+h6 {
+  font-size: 0.8em;
+}
+
+blockquote {
+  color: #505050;
+  margin: 0;
+  padding-left: 2em;
+  border-left: 0.25em #505050 dotted;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #282828;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+pre {
+  /*background-color: #333842;
+  color: #bbc2cf;*/
+  color: #282828;
+  /* restrict code blocks to half viewport height at most */
+  max-height: 50vh;
+  overflow: auto;
+  font-size: 80%;
+  line-height: 1.2;
+  border: 1px solid #3f6fef;
+  // border-radius: 7px;
+  /*box-shadow: rgb(238, 238, 238) 4px 4px 6px 0px;*/
+  padding: 1em;
+}
+
+/* it looks like ox-html uses code for inline code */
+code {
+  font-size: 90%;
+  position: relative;
+}
+
+/* adapted from http://demo.thi.ng/org-spec/ */
+
+code:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0.5em;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #3f6fef;
+    font-size: 100%;
+    line-height: 1.6;
+}
+
+code[class^="language-"]:not([data-lang="text"]):before {
+    content: attr(data-lang);
+}
+
+
+/* adapting the styling for code above to mathematical environments */
+div.theorem, div.definition, div.lemma, div.proof {
+  overflow: auto;
+  border: 1px solid #3f6fef;
+  // border-radius: 7px;
+  /*box-shadow: rgb(238, 238, 238) 4px 4px 6px 0px;*/
+  padding: 1em;
+  position: relative;
+}
+
+/* if the proof immediately follows another div, don't double the borders */
+div+div.proof {
+  border-top: none
+}
+
+.theorem:before, .definition:before, .lemma:before, .proof:before, .proof-sketch:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0.5em;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #3f6fef;
+    font-size: 80%;
+    font-family: monospace;
+    line-height: 1.6;
+}
+
+.theorem:before {
+  content: 'theorem';
+}
+
+.definition:before {
+  content: 'definition';
+}
+
+.lemma:before {
+  content: 'lemma';
+}
+
+.proof:before {
+  content: 'proof';
+}
+
+
+/*
+pre, code, kbd, samp {
+  color: #000;
+  font-family: monospace, monospace;
+  _font-family: 'courier new', monospace;
+  font-size: 0.98em;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}*/
+
+b, strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+ul, ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+
+li p:last-child {
+  margin-bottom: 0;
+}
+
+ul ul, ol ol {
+  margin: .3em 0;
+}
+
+dl {
+  margin-bottom: 1em;
+}
+
+dt {
+  font-weight: bold;
+  margin-bottom: .8em;
+}
+
+dd {
+  margin: 0 0 .8em 2em;
+}
+
+dd:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+figure {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+figure img {
+  border: none;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0 0 .8em;
+}
+
+div#bibliography table, th, tr, td {
+  border: none;
+}
+
+/* style the tags for headings */
+span.tag span {
+  font-size: 60%;
+  color: #9f9f9f;
+}
+
+/* add slashes after each tag */
+span.tag span::after {
+  content: " /";
+}
+
+/* but don't add a slash after the last one */
+span.tag span:last-child::after {
+  content: "";
+}
+
+/* style todo states */
+.todo, .done {
+  /*color: #9f9f9f;*/
+  color:#fb4934;
+  text-transform: lowercase;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  font-size: 70%;
+}
+
+/* style section numbering */
+
+.section-number-2, .section-number-3, .section-number-4, .section-number-5, section-number-6 {
+  font-family: 'Courier New', monospace;
+  font-size: 80%;
+}
+
+/* manual fixes to make xyjax render in the correct color */
+mjx-xypic svg > g {
+  stroke: #282828 !important;
+}
+
+mjx-xypic-object {
+  color: #282828 !important;
+}
+
+.MJX-TEX{
+    color: #282828 !important;
+}
