@@ -6,14 +6,15 @@
 - [X] add bibliography using org-ref
 - [X] fix latex macros (write partial)
 - [X] add date
+- [X] update link to source repo
 - [ ] add modified date
 - [ ] add tags
 - [ ] figure out whether babel jupyter is necessary
 - [ ] fix weird bibliography spacing on mnist post
 - [ ] section anchors (c.f. https://scripter.co/sidenotes-using-ox-hugo/#code-snippet--sidenote-shortcode)
-- [ ] write up explanation
-- [ ] change licensing stuff maybe
+- [ ] write up explanation of how things work (for myself, mostly)
+- [ ] learn an epsilon of how licensing works
 - [ ] set up an RSS feed
-- [ ] update link to source repo
 - [ ] restrict math loading only to those pages that need it
 - [ ] look into adding back a pdfs page
+- [ ] export on save? automate deployment? c.f. https://ianhocking.com/prog/posts/githooks/

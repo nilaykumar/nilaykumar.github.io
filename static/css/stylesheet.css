@@ -57,6 +57,7 @@ div#footer {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 12px 0px 12px 0px;
+    line-height: 120%
 }
 
 div#footer a {
@@ -69,7 +70,6 @@ div#license {
 
 div#footertext {
   text-align: right;
-  line-height: 120%;
 }
 
 div#content {
