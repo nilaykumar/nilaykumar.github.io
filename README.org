@@ -19,3 +19,4 @@
 - [ ] restrict math loading only to those pages that need it
 - [ ] look into adding back a pdfs page
 - [ ] export on save? automate deployment? c.f. https://ianhocking.com/prog/posts/githooks/
+- [ ] align the code-lang::before a bit higher
