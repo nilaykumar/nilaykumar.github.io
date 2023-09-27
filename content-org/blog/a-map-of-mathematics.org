@@ -1,0 +1,20 @@
+#+title: a map of mathematics
+#+author: Nilay Kumar
+#+date: <2023-09-26 Tue>
+#+hugo_draft: true
+
+#+property: header-args:python :session py :exports both :eval never-export
+
+** introductory remarks
+* msc codes
+** reviewing msc codes
+* constructing a graph
+** data acquisition
+** graph construction
+* visualizing the graph
+** graph embeddings
+** scikit-learn's laplacian eigenmaps
+* laplacian eigenmaps
+** how the algorithm works
+* acknowledgements
+** thanks to fabian and moritz

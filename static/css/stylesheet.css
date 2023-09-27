@@ -183,7 +183,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 h4 {
@@ -196,6 +196,24 @@ h5 {
 
 h6 {
   font-size: 0.8em;
+}
+
+h1::before {
+  font-size: 80%;
+  content: '🞵 ';
+  color: #505050;
+}
+
+h2::before {
+  font-size: 80%;
+  content: '🞵🞵 ';
+  color: #505050;
+}
+
+h3::before {
+  font-size: 80%;
+  content: '🞵🞵🞵 ';
+  color: #505050;
 }
 
 blockquote {
