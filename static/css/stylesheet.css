@@ -101,17 +101,38 @@ span.timestamp {
 
 figure.pic>img {
   border: 1px solid #3f6fef;
- width: 25%;
- height: 25%;
- float: left;
- margin-top: 10px;
- margin-right: 20px;
- margin-bottom: 20px;
+  width: 25%;
+  height: 25%;
+  float: left;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 90%;
+  border: 1px solid #3f6fef;
 }
 
 
 a {
   color: #0031a9;
+  // text-decoration: none;
+}
+
+ul#blog a {
+  text-decoration: none;
+}
+
+a.footnote-ref{
+  text-decoration: none;
+}
+
+a.footnote-backref {
+  text-decoration: none;
+}
+
+a[href^="#citeproc"] {
   text-decoration: none;
 }
 
@@ -219,8 +240,8 @@ h3::before {
 blockquote {
   color: #505050;
   margin: 0;
-  padding-left: 2em;
-  border-left: 0.25em #505050 dotted;
+  padding-left: 1em;
+  border-left: 0.25em #505050 solid;
 }
 
 hr {
@@ -261,7 +282,6 @@ code:before {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0 0.5em;
     border: 0;
     background-color: rgba(0, 0, 0, 0);
     color: #3f6fef;
@@ -270,7 +290,7 @@ code:before {
 }
 
 code[class^="language-"]:not([data-lang="text"]):before {
-    content: attr(data-lang);
+    content: '(' attr(data-lang) ')';
 }
 
 
@@ -401,7 +421,7 @@ dd:last-child {
 }
 
 img {
-  border: 0;
+  // border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
 }
@@ -413,7 +433,7 @@ figure {
 }
 
 figure img {
-  border: none;
+  // border: none;
   margin: 0 auto;
 }
 

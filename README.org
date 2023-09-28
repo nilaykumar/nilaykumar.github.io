@@ -20,3 +20,6 @@
 - [ ] look into adding back a pdfs page
 - [ ] export on save? automate deployment? c.f. https://ianhocking.com/prog/posts/githooks/
 - [ ] align the code-lang::before a bit higher
+- [ ] detect dead links -- replace them automatically/manually with links to the
+  internet archive
+- [ ] move index pic into org dir and let ox-hugo move it

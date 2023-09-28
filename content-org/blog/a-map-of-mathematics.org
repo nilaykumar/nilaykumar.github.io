@@ -3,11 +3,295 @@
 #+date: <2023-09-26 Tue>
 #+hugo_draft: true
 
-#+property: header-args:python :session py :exports both :eval never-export
+#+csl-style:bib/institute-of-mathematical-statistics.csl
 
-** introductory remarks
-* msc codes
-** reviewing msc codes
+#+property: header-args:python :session py :async yes :results output verbatim :exports both :eval never-export
+#+property: header-args:sh :exports both :results output verbatim :eval never-export
+
+A few years ago, it must have been, I came across a fantasy-style illustrated
+map of physics by field and subfield that I thought was a great overview of the
+landscape of physics research. I can't quite remember where I saw it or who had
+made it, but here's a few that I've found that I quite like.
+
+The first is a beautiful 1939 map made by [[https://en.wikipedia.org/wiki/Bern_Porter][Bern Porter]], drawn only slightly
+stylized, with important concepts of physics labelled in large print and
+notable physicists' names written in as villages along a coast ("daring souls
+who venture there"):
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/bernard-porter-map-of-physics.jpeg]]
+
+To a certain extent, similar ideas (and physicists who worked on those ideas)
+are placed close together, with a river marked "energy" -- in its various forms
+-- flowing through the landscape and cutting out islands.
+
+Here's a more recent rendition by science educator and YouTuber [[https://dominicwalliman.com/][Dominic Walliman]]
+(who has a number of such maps for different subjects) which is much more
+stylized and conceptual:
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/walliman-physics-jpg.jpg]]
+
+In this rendition, the spatial proximity of subfields is not as closely linked
+to conceptual proximity (whatever that means), although the "chasm of ignorance"
+that separates general relativity from quantum field theory and the standard
+model seems to me pretty reasonable. I think this map is definitely more
+educational, though I do enjoy Porter's rather traditional cartographic
+yellow-on-blue style.
+
+* maps of mathematics
+
+So I got to thinking -- what would a map of mathematics look like? Can we
+organize various subfields of pure mathematics into a 2-dimensional cartographic
+representation in which the areas that interact with each other more frequently
+are closer? And how exactly would we quantify "conceptual proximity"? Before we
+get to answering these questions, let's take a look at some already-existing
+maps of mathematics.
+
+Here's Walliman's map on mathematics, which is styled very similarly to his map
+of physics:
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/walliman-mathematics-jpg.jpg]]
+
+There's also this map (and [[https://math.meta.stackexchange.com/questions/6479/a-graph-map-of-math-se][variations]]) by Piotr Migdal, which is more accurately
+a map of question tags on Mathematics Stack Exchange:
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/migdal-map.jpg]]
+
+This map is definitely heavily influenced by the nature of Math Stack Exchange
+being a question and answer site comprised of mostly non-research oriented
+questions. I'd expect linear algebra, for instance (as commenters on the Math SE
+post noted) to be much more central, but questions with the =linear-algebra= tag
+generally don't tend to be tagged with =abstract-algebra= or =functional-analysis=
+often enough for this algorithm to pick up those connections.
+
+The last example I've got on hand is that of [[https://paperscape.org/][Paperscape]], which comes closest
+among these to what I've got in mind. Paperscape is an interactive map that
+visualizes the arXiv  with papers "clustered together according to how they
+reference each other... as particles in a physical system, with references
+acting as attractive forces between papers".
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/paperscape-map.jpg]]
+
+I strongly recommend zooming in and panning around to see what famous papers you
+recognize, and where they're positioned relative to others. I especially enjoy
+the intricate coastlines and the sparse ocean of papers to the west of the main
+math islands. The [[https://github.com/paperscape/paperscape-mapclient][code and data]] for the Paperscape project is available online.
+While the map uses a large amount of data (papers between 1991 and 2017), the
+authors note that references to non-arXiv articles cannot be reliably captured
+in general -- indeed, on average only about 8% of references in math papers
+could be linked to other arXiv papers. This might explain the large set of
+sparsely distributed math papers. The ratio is much better in high energy
+physics, sitting at around 70-80%. I guess this is an inevitable limitation of
+any dataset focusing on online publications.
+
+Now, when it comes to a map of mathematics, I think Paperscape is a bit /too/
+granular. For such a map, we might want the finest resolution to be subfields
+(or maybe sub-subfields) of mathematics. There are a few different ways to
+classify papers/documents into mathematical subfields. If we were to restrict to
+arXiv preprints, we could use the =math.XX= tags that are used to categorize
+submissions, found [[https://arxiv.org/archive/math][here]], which I've scraped below:
+
+#+begin_src sh
+curl -s https://arxiv.org/archive/math | \
+    sed -En 's/.*<b>(math.[A-Z]{2}.*)<\/b>/\1/p'
+#+end_src
+
+#+RESULTS:
+#+begin_example
+math.AG - Algebraic Geometry
+math.AT - Algebraic Topology
+math.AP - Analysis of PDEs
+math.CT - Category Theory
+math.CA - Classical Analysis and ODEs
+math.CO - Combinatorics
+math.AC - Commutative Algebra
+math.CV - Complex Variables
+math.DG - Differential Geometry
+math.DS - Dynamical Systems
+math.FA - Functional Analysis
+math.GM - General Mathematics
+math.GN - General Topology
+math.GT - Geometric Topology
+math.GR - Group Theory
+math.HO - History and Overview
+math.IT - Information Theory
+math.KT - K-Theory and Homology
+math.LO - Logic
+math.MP - Mathematical Physics
+math.MG - Metric Geometry
+math.NT - Number Theory
+math.NA - Numerical Analysis
+math.OA - Operator Algebras
+math.OC - Optimization and Control
+math.PR - Probability
+math.QA - Quantum Algebra
+math.RT - Representation Theory
+math.RA - Rings and Algebras
+math.SP - Spectral Theory
+math.ST - Statistics Theory
+math.SG - Symplectic Geometry
+#+end_example
+
+* the mathematics subject classification
+There is a more granular classification than the arXiv's maintained by [[https://zbmath.org/about/][zbMATH
+Open]] and the American Mathematical Society's [[https://mathscinet.ams.org/mathscinet/publications-search][Mathematical Reviews]], called the
+*Mathematics Subject Classification (MSC)*. The most recent revision is called the
+[[https://msc2020.org/][MSC2020]], and can be [[https://zbmath.org/classification/][browsed]] at zbMATH Open. The classification scheme is fairly
+straightforward, consisting of 5-character MSC codes of the form =##X##=, where
+the =#='s are digits and =X= is either a letter =A-Z= or a hyphen =-=. The first two
+digits indicate the top-level mathematical subfield: documents classified as
+algebraic topology, for instance, fall under =55X##=, while those classified under
+partial differential equations are marked as =35X##=. The hyphen indicates a
+document that does not directly contain research mathematics, while letters
+indicate sub-subfield. The final two digits indicate with mathematical concepts
+are treated. So, for example:
+#+begin_quote
+=35= / partial differential equations
+ - =35-04= / software, source code, etc. for problems pertaining to partial differential equations
+=55= / algebraic topology
+ - =55-04= / software, source code, etc. for problems pertaining to algebraic topology
+ - =55Q= / homotopy groups
+   - =55Q10= / stable homotopy groups
+   - =55Q40= / homotopy groups of spheres
+#+end_quote
+
+Now most research mathematics does not fit neatly into one of these full
+five-digit boxes -- typically mathematicians use a wide variety of tools,
+techniques, and tricks from various subfields to attack difficult problems.
+Because of this, it's common to see quite a few codes attached to any given
+paper. Take for instance, [[https://zbmath.org/1328.14027][this paper]], which sits roughly in the region
+where algebraic geometry meets symplectic geometry and mathematical physics
+(with a sprinkling of higher categories). It's tagged with:
+#+begin_quote
+=53D05= / symplectic manifolds (general theory)
+
+=53D12= / lagrangian submanifolds; maslov index
+
+=14A15= / schemes and morphisms
+
+=18F20= / presheaves and sheaves, stacks, descent conditions (category-theoretic aspects)
+#+end_quote
+along with some older, outdated MSC2010 codes. Returning to the idea of building
+a map of mathematics, we can think of this paper as a witness to the conceptual
+proximity between these fields or ideas of mathematics. In the rest of this
+article, we'll use the MSC and the data available from zbMATH Open to build a
+map of mathematics based on MSC codes, with distances between two codes
+determined by the presence of literature jointly tagged with those codes.
+
+One benefit of using zbMATH Open is that their index is the most comprehensive
+and long-running index available (as well as freely available to the public via
+well-designed APIs and dataset releases). This does not, however, guarantee that
+every reference is captured and/or classified. Take, for instance, the [[https://zbmath.org/0050.39304][series]] of
+[[https://zbmath.org/0055.41704][landmark]] [[https://zbmath.org/0057.15302][papers]] by Eilenberg and Mac Lane that defined and studied what are now
+known as [[https://en.wikipedia.org/wiki/Eilenberg%E2%80%93MacLane_space][Eilenberg-MacLane spaces]] $K(G, n)$. There are no MSC codes assigned to
+these papers,[fn:1] perhaps due to how old they are, having been published in the
+1950's. In many fields of research, concern about the lack of much older
+references might be justifiably brushed aside as newer papers often replace
+older ones. Mathematics is a bit different, however, due in part to the
+sociological nature of definitions and theorems as relatively immutable. We
+might therefore expect research papers to hold more lasting influence when
+measured in terms of citations. Indeed, analysis of citation datasets shows
+evidence to support this hypothesis. In fact, mathematicians since the end of
+World War 2 have been citing papers from relatively further and further back
+in time [[cite:&zbMATH06853068]].
+
+#+ATTR_HTML: :alt alt-text here
+#+caption: caption here
+[[file:a-map-of-mathematics/bannister-teschke.jpg]]
+
+This is apparently /opposite/ the trend seen in most other research areas, which
+marks mathematics as a bit of an oddball (and also indicates the irrelevance of
+"impact factors" for mathematics, as they tend to focus only on recent
+time-scales).
+
+All that is to say: while the MSC data from zbMATH Open may be more
+comprehensive than data from arXiv, there are still significant gaps and caveats
+to keep in mind as we proceed.
+
+* zbmath open data
+zbMATH Open has a long and interesting [[https://zbmath.org/about/][history]], but only very recently -- as of
+early 2021 -- has it become open access (it was formerly known as Zentralblatt
+MATH), with the support of the German government [[cite:&zbMATH07278369]]. It is an
+incredible source for tracking down mathematical research documents and even
+includes links to the [[https://oeis.org/][OEIS]] and backrefs from [[https://mathoverflow.net/][MathOverflow]], among other things.
+There is an [[https://oai.zbmath.org/][API]] for programmatic access[fn:2], but for our purposes it will be
+easier to just use a bulk dataset provided on [[https://zenodo.org/record/6448360][Zenodo]]. The data is provided as a
+=csv= that weighs in at around =1.6G=. I've repackaged the the data for myself as a
+=parquet= which roughly halves the size (this is easy to do using =pandas=). The
+columns in this dataset are labeled as follows:
+#+begin_quote
+=de= / eight digits internal zbMATH identifier
+
+=doi= / digital object identifier
+
+=msc= / MSC of the article
+
+=keyword= / keywords of the article
+
+=title= / title of the article
+
+=refs= / MSCs occurring in the references
+#+end_quote
+There's actually an extra column called =text= that seems to contain the abstract,
+but it's typically empty, and we won't be using it anyway.
+
+Before we get to working with the data, let's make sure we've got a virtual
+environment with all our packages ready to go.
+
+#+begin_src emacs-lisp :session py
+(pyvenv-activate "../../.venv")
+#+end_src
+
+#+RESULTS:
+
+We can now load the data into memory, only keeping columns we'll use.
+
+#+begin_src python :session py
+import numpy as np
+import pandas as pd
+data_file = '~/data/zb.parquet.gzip'
+cols = ['doi', 'msc', 'keyword', 'refs']
+df = pd.read_parquet(data_file)[cols]
+print(f"{df['msc'].isna().mean() * 100:0.1f}% of records missing MSC code, dropping...")
+df = df[df['msc'].notna()]
+print(f"{len(df)} records remaining.")
+print(f"{df['refs'].isna().mean() * 100:0.1f}% of remaining records missing reference MSC codes, dropping...")
+df = df[df['refs'].notna()]
+print(f"{len(df)} records remaining.")
+#+end_src
+
+#+RESULTS:
+: 11.2% of records missing MSC code, dropping...
+: 3883360 records remaining.
+: 72.5% of remaining records missing reference MSC codes, dropping...
+: 1066151 records remaining.
+
+As you can see, there's a large amount of missing data. We've restricted to only
+those records that have non-trivial MSC data as well as non-trivial MSC data for
+the documents they reference. This leaves us still with about a million rows. If
+you look through the data, you'll find that the =msc= column needs to be cleaned a
+bit, as there are some entries stored as lists (="['20M99', '20M18', '08A30']"=)
+while others are stored as single-codes not in lists (="70F10"=).[fn:3] This is easy
+to fix:
+
+#+begin_src python
+mask_not_lists = ~df['msc'].str.startswith('[')
+df.loc[mask_not_lists, 'msc'] = '[\'' + df[mask_not_lists]['msc'] + '\']'
+#+end_src
+
+#+RESULTS:
+
+
+
 * constructing a graph
 ** data acquisition
 ** graph construction
@@ -18,3 +302,54 @@
 ** how the algorithm works
 * acknowledgements
 ** thanks to fabian and moritz
+* TODO
+- downsize images
+- image attribution + permissions
+- alt text
+- clicking on image links to full size image
+- check whether eilenberg-maclane spaces paper appear in the dataset
+- convert some of these links to references, appropriately
+
+#+html: <hr>
+
+bibliography:bib/ref-map.bib
+
+* Footnotes
+
+[fn:3] While =pandas= is convenient for quickly exploring data if you're working in a
+python environment (especially with varied file formats such as =parquet=), I've
+recently started using =xsv= (see [[https://github.com/BurntSushi/xsv][here]]), which is a speedy little command line
+utililty for working with =csv= files. To explore what some of the values in the
+=msc= column look like, for instance, you could run:
+#+begin_src sh
+xsv select msc ~/Downloads/out.csv | xsv sample 10
+#+end_src
+
+#+RESULTS:
+#+begin_example
+msc
+"['44A10', '30D55']"
+94A15
+"['68Q60', '68Q42', '68M10', '68N99', '68N25']"
+"['82B41', '82B27', '60G50']"
+"['62F12', '91G70']"
+"['05C42', '05C85', '05C15']"
+"['81P15', '81V70', '81U99']"
+"['70M20', '85-08']"
+"['49J40', '49J53']"
+""
+#+end_example
+This runs in a couple of seconds on my Macbook Air.
+
+[fn:2] As zbMATH Open compiles data from various sources that may enforce a number
+of different licenses, the API provides less data than is available on the web
+interface, with data often replaced by the string =zbMATH Open Web Interface
+contents unavailable due to conflicting licenses.= This is described in the API
+[[https://oai.zbmath.org/][documentation]]. Examples of API queries can be found on zbMATH Open's Github [[https://github.com/zbMATHOpen/mscHarvester][here]].
+
+[fn:1] It might be interesting to carry out an analysis of the distribution of MSC
+codes in the literature. Not only in terms of the proportion of tagged documents
+over time, but also to understand the subfield-by-subfield development and
+evolution of research mathematics. This is, of course, a bit tricky because
+while the MSC is quite old, it has changed substantially since the 1940s (see
+[[https://web.archive.org/web/20230305101919/https://mathscinet.ams.org/mathscinet/help/field_help.html][here]], for instance).
