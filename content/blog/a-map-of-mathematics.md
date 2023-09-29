@@ -5,6 +5,17 @@ date = 2023-09-26T00:00:00-04:00
 draft = true
 +++
 
+> Something has disappeared: the sovereign difference, between one and the other,
+> that constituted the charm of abstraction. Because it is difference that
+> constitutes the poetry of the map and the charm of the territory, the magic of
+> the concept and the charm of the real.
+>
+> <div class="attribution">
+>
+> Baudrillard, _Simulacra and Simulation_
+>
+> </div>
+
 A few years ago, it must have been, I came across a fantasy-style illustrated
 map of physics by field and subfield that I thought was a great overview of the
 landscape of physics research. I can't quite remember where I saw it or who had
@@ -131,13 +142,13 @@ math.SG - Symplectic Geometry
 
 ## the mathematics subject classification {#the-mathematics-subject-classification}
 
-There is a more granular classification than the arXiv's maintained by [zbMATH
-Open](https://zbmath.org/about/) and the American Mathematical Society's [Mathematical Reviews](https://mathscinet.ams.org/mathscinet/publications-search), called the
-**Mathematics Subject Classification (MSC)**. The most recent revision is called the
-[MSC2020](https://msc2020.org/), and can be [browsed](https://zbmath.org/classification/) at zbMATH Open. The classification scheme is fairly
-straightforward, consisting of 5-character MSC codes of the form `##X##`, where
-the `#`'s are digits and `X` is either a letter `A-Z` or a hyphen `-`. The first two
-digits indicate the top-level mathematical subfield: documents classified as
+There is a more sophisticate classification than the arXiv's maintained by
+[zbMATH Open](https://zbmath.org/about/) and the American Mathematical Society's [Mathematical Reviews](https://mathscinet.ams.org/mathscinet/publications-search), called
+the **Mathematics Subject Classification (MSC)**. The most recent revision is called
+the [MSC2020](https://msc2020.org/), and can be [browsed](https://zbmath.org/classification/) at zbMATH Open. The classification scheme is
+fairly straightforward, consisting of 5-character MSC codes of the form `##X##`,
+where the `#`'s are digits and `X` is either a letter `A-Z` or a hyphen `-`. The first
+two digits indicate the top-level mathematical subfield: documents classified as
 algebraic topology, for instance, fall under `55X##`, while those classified under
 partial differential equations are marked as `35X##`. The hyphen indicates a
 document that does not directly contain research mathematics, while letters
@@ -258,34 +269,142 @@ df = df[df['refs'].notna()]
 print(f"{len(df)} records remaining.")
 ```
 
-```text
-11.2% of records missing MSC code, dropping...
-3883360 records remaining.
-72.5% of remaining records missing reference MSC codes, dropping...
-1066151 records remaining.
-```
-
 As you can see, there's a large amount of missing data. We've restricted to only
 those records that have non-trivial MSC data as well as non-trivial MSC data for
 the documents they reference. This leaves us still with about a million rows. If
 you look through the data, you'll find that the `msc` column needs to be cleaned a
 bit, as there are some entries stored as lists (`"['20M99', '20M18', '08A30']"`)
 while others are stored as single-codes not in lists (`"70F10"`).[^fn:3] This is easy
-to fix:
+to fix if we list-ify everything (similarly for the `refs` column):
 
 ```python
-mask_not_lists = ~df['msc'].str.startswith('[')
-df.loc[mask_not_lists, 'msc'] = '[\'' + df[mask_not_lists]['msc'] + '\']'
+mask_msc_not_lists = ~df['msc'].str.startswith('[')
+df.loc[mask_msc_not_lists, 'msc'] = '[\'' + df[mask_msc_not_lists]['msc'] + '\']'
+df['msc'] = df['msc'].str.replace('\[|\]|\'|,', '', regex=True).str.split()
+mask_refs_not_lists = ~df['refs'].str.startswith('[')
+df.loc[mask_refs_not_lists, 'refs'] = '[\'' + df[mask_refs_not_lists]['refs'] + '\']'
+df['refs'] = df['refs'].str.replace('\[|\]|\'|,', '', regex=True).str.split()
 ```
 
-
-## constructing a graph {#constructing-a-graph}
-
-
-### data acquisition {#data-acquisition}
+We've also done a bit of cleanup to make the `msc` and `refs` columns consist of
+lists of codes (as opposed to strings representing lists of codes).
 
 
-### graph construction {#graph-construction}
+## a weighted graph {#a-weighted-graph}
+
+At it's simplest, a map gives us a sense of important locations and how they are
+arranged relative to each other. The data that we have so far is readily
+assembled into an undirected graph, with vertices \\(v\_i\\) consisting of MSC codes,
+and an edge \\(e\_{ij}=e\_{ji}\\) between codes \\(v\_i\\) and \\(v\_j\\) if there exists a paper in
+the dataset tagged as \\(v\_i\\) referencing a paper tagged as \\(v\_j\\). We will assume
+that codes appearing together more often indicates closer conceptual proximity
+between the concepts classified by those codes. This suggests that we work with
+a weighted graph: let \\(n\_{ij}\\) denote the number of papers witnessing an edge
+between codes \\(v\_i\\) and \\(v\_j\\). The edge \\(e\_{ij}\\) should be weighted by \\(n\_{ij}\\) in
+some way, probably by some monotonically increasing function \\(f\\). Since we're
+more interested in visualization than getting all the numbers right, we'll play
+with the choice of \\(f\\) later.
+
+To summarize, we define our graph \\(G\\) by:
+
+\begin{align\*}
+V\_{G\_3} &= \\{v\_i \mid v\_i \in \text{MSC}\_3\\} \\\\
+E\_{G\_3} &= \\{e\_{ij} \text{ with weight } f(n\_{ij})\\}
+\end{align\*}
+
+where \\(\text{MSC}\_3\\) is the set of MSC codes truncated to the first 3
+characters. We'll truncate to 3 characters for two main reasons. The first is
+that there are documents in the dataset tagged with codes like `57Rxx`, which
+carry no more information than `57R` does. The second, more important reason, is
+that I don't really want to get as granular as the full, five-character
+classification codes. This does mean, unfortunately, that we'll be putting
+all codes of the form `##-##` into one group, thus treating general reference
+works, historical expositions, conference proceedings, source code, etc. as one
+big category.
+
+```python
+msc_codes = []
+for row in df.itertuples():
+    msc_codes += row.msc + row.refs
+msc_codes = pd.Series(np.unique(msc_codes))
+# we need to get rid of any remaining 2-character codes
+# and restrict to the 3-character level
+msc3 = msc_codes[msc_codes.str.len() > 2].str[0:3].unique()
+print(f"Found {len(msc3)} unique 3-character MSC codes")
+```
+
+```text
+Found 641 unique 3-character MSC codes
+```
+
+At the 3-character level, then, there aren't too many codes. We can feasibly
+work with our graph \\(G\_3\\) in code via its adjacency matrix \\(M\\), defined by
+
+\begin{align\*}
+M\_{ij} = \begin{cases} n\_{ij} & e\_{ij} \in E\_{G\_3} \\\ 0 & e\_{ij} \notin E\_{G\_3} \end{cases}
+\end{align\*}
+
+for any \\(v\_i,v\_j\in\text{MSC}\_3\\). We can apply our function \\(f\\) element-wise
+afterwards. The code to construct this adjacency matrix is pretty
+straightforward, though it took a minute or two to run on my machine.
+
+```python
+N = len(msc3)
+# the matrix indexing is associated to the MSC codes using the indexing in msc3
+idx_dict = {code: i for i, code in enumerate(msc3)}
+M = np.zeros((N, N), dtype='i')
+for row in df.itertuples():
+    for document_code in row.msc:
+        v1 = document_code[0:3]
+        if len(v1) != 3:
+            continue
+        for ref_code in row.refs:
+            v2 = ref_code[0:3]
+            if len(v2) != 3:
+                continue
+            # the adjacency matrix of an undirected graph is symmetric
+            M[idx_dict[v1], idx_dict[v2]] += 1
+            M[idx_dict[v2], idx_dict[v1]] += 1
+print(M)
+```
+
+```text
+[[   14   573    23 ...     0     1     0]
+ [  573 12402   782 ...     1    43     0]
+ [   23   782   722 ...     0     4     0]
+ ...
+ [    0     1     0 ...     0     0     0]
+ [    1    43     4 ...     0    28     0]
+ [    0     0     0 ...     0     0     0]]
+```
+
+We can visualize this adjacency matrix using a heatmap:
+
+```python
+import matplotlib.pyplot as plt
+plt.imshow(np.log1p(M))
+labels = [code if i % 40 == 0 else '' for i, code in enumerate(msc3)]
+plt.tick_params(left=False, bottom=False)
+plt.xticks(range(len(labels)), labels, rotation=90, fontsize=8)
+plt.yticks(range(len(labels)), labels, rotation=0, fontsize=8)
+plt.title('MSC code citation heatmap')
+plt.savefig('a-map-of-mathematics/heatmap.jpg');
+```
+
+{{< figure src="/ox-hugo/heatmap.jpg" >}}
+
+Note that for this heatmap we've applied \\(f(x)=\log(1+x)\\) element-wise to `M`, as
+the matrix elements vary too widely in magnitude to be easily visualized. As
+expected, the diagonal is heavily populated -- papers in a subfield tend to
+primarily cite other papers from that subfield. There are a couple of other
+interesting patterns that emerge as an artifact of the lexicographical ordering
+we've taken here. There's an overall block diagonal structure clearly visible
+with a smaller block in the top left and a larger block in the bottom right. The
+smaller block seems to consist of more algebraic codes while the larger block,
+which starts to kicks off around the differential equations codes, consists of
+more analytic codes. We can also see a sizable interaction between these two
+rough groupings when we get to the geometric tags, which is not surprising.
+Amusingly, this heatmap looks a bit like the zbMATH Open [logo](https://zbmath.org/static/zbMATH@2x.gif).
 
 
 ## visualizing the graph {#visualizing-the-graph}
@@ -317,6 +436,7 @@ df.loc[mask_not_lists, 'msc'] = '[\'' + df[mask_not_lists]['msc'] + '\']'
 -   clicking on image links to full size image
 -   check whether eilenberg-maclane spaces paper appear in the dataset
 -   convert some of these links to references, appropriately
+-   consider vectorizing the slow construction of M
 
 <hr>
 
@@ -353,16 +473,16 @@ df.loc[mask_not_lists, 'msc'] = '[\'' + df[mask_not_lists]['msc'] + '\']'
 
     ```text
     msc
-    "['44A10', '30D55']"
-    94A15
-    "['68Q60', '68Q42', '68M10', '68N99', '68N25']"
-    "['82B41', '82B27', '60G50']"
-    "['62F12', '91G70']"
-    "['05C42', '05C85', '05C15']"
-    "['81P15', '81V70', '81U99']"
-    "['70M20', '85-08']"
-    "['49J40', '49J53']"
-    ""
+    34C10
+    "['76M10', '76D05', '65M60', '76M20']"
+    "['81Pxx', '94Axx', '68Mxx']"
+    "['26A33', '34K37', '34K45']"
+    74K99
+    "['82-02', '82D25', '82C26']"
+    "['46L05', '46J10']"
+    "['92B05', '62P10', '62F15']"
+    "['11R33', '11R04', '11R29', '11R37']"
+    "['82B43', '60K35', '82B20', '05C40']"
     ```
 
     This runs in a couple of seconds on my Macbook Air.

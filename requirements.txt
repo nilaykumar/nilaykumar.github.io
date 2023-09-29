@@ -4,24 +4,44 @@
 #
 #    pip-compile
 #
+contourpy==1.1.1
+    # via matplotlib
 cramjam==2.7.0
     # via fastparquet
+cycler==0.12.0
+    # via matplotlib
 fastparquet==2023.8.0
     # via nk-blog-code (pyproject.toml)
+fonttools==4.43.0
+    # via matplotlib
 fsspec==2023.9.2
     # via fastparquet
+kiwisolver==1.4.5
+    # via matplotlib
+matplotlib==3.8.0
+    # via nk-blog-code (pyproject.toml)
 numpy==1.26.0
     # via
+    #   contourpy
     #   fastparquet
+    #   matplotlib
     #   pandas
 packaging==23.1
-    # via fastparquet
+    # via
+    #   fastparquet
+    #   matplotlib
 pandas==2.1.1
     # via
     #   fastparquet
     #   nk-blog-code (pyproject.toml)
+pillow==10.0.1
+    # via matplotlib
+pyparsing==3.1.1
+    # via matplotlib
 python-dateutil==2.8.2
-    # via pandas
+    # via
+    #   matplotlib
+    #   pandas
 pytz==2023.3.post1
     # via pandas
 six==1.16.0

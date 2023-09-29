@@ -244,6 +244,14 @@ blockquote {
   border-left: 0.25em #505050 solid;
 }
 
+blockquote .attribution {
+  margin-top: -0.5em;
+}
+
+blockquote .attribution p {
+  text-align: right;
+}
+
 hr {
   display: block;
   height: 1px;
