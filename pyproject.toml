@@ -15,6 +15,7 @@ maintainers = [
 dependencies = [
   "pandas",
   "matplotlib",
+  "scikit-learn",
   "fastparquet",
 ]
 

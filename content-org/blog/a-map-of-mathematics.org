@@ -387,12 +387,14 @@ print(M)
 We can visualize this adjacency matrix using a heatmap:
 #+begin_src python :results file :file a-map-of-mathematics/heatmap.jpg
 import matplotlib.pyplot as plt
+plt.figure()
 plt.imshow(np.log1p(M))
 labels = [code if i % 40 == 0 else '' for i, code in enumerate(msc3)]
 plt.tick_params(left=False, bottom=False)
 plt.xticks(range(len(labels)), labels, rotation=90, fontsize=8)
 plt.yticks(range(len(labels)), labels, rotation=0, fontsize=8)
 plt.title('MSC code citation heatmap')
+plt.tight_layout()
 plt.savefig('a-map-of-mathematics/heatmap.jpg');
 #+end_src
 
@@ -412,6 +414,41 @@ more analytic codes. We can also see a sizable interaction between these two
 rough groupings when we get to the geometric tags, which is not surprising.
 Amusingly, this heatmap looks a bit like the zbMATH Open [[https://zbmath.org/static/zbMATH@2x.gif][logo]].
 
+Our graph $G=G_3$ is an abstract mathematical object consisting of a couple
+hundred vertices and a lot of weighted edges. There is no canonical way in which
+$G$ lives inside of $\R^2$ or $\R^3$, which is where we're used to seeing maps.
+To get a graph embedding $\iota:G\hookrightarrow\R^2$ like the one in the Math Stack Exchange
+example above, we'll want to choose an embedding that respects the weights
+$f(n_{ij})$ on the edges of $G$: the heavier the weight, the closer the $\iota(v_i)$
+and $\iota(v_j)$ should be.
+
+** TODO is the graph connected?
+
+* spectral embedding
+#+begin_src python :results file :file a-map-of-mathematics/spectral-2d-map.jpg
+from sklearn.manifold import spectral_embedding
+emb_2d = spectral_embedding(M, n_components=2, random_state=42)
+df_emb2d = pd.DataFrame(emb_2d, columns=['x', 'y'])
+df_emb2d['msc'] = pd.Series(msc3)
+msc2 = np.unique(pd.Series(msc3).str[0:2])
+idx_msc2 = {code: i for i, code in enumerate(msc2)}
+df_emb2d['msc2'] = df_emb2d['msc'].str[0:2]
+df_emb2d['msc2_num'] = df_emb2d['msc2'].map(idx_msc2)
+plt.figure(figsize=(30, 30))
+plt.scatter(x=df_emb2d['x'], y=df_emb2d['y'], c=df_emb2d['msc2_num'], s=1000, alpha=0.7)
+offset = 1.5 * 10**(-6)
+for i, code in enumerate(df_emb2d['msc'].values):
+    plt.annotate(code, (df_emb2d['x'].iloc[i] - offset, df_emb2d['y'].iloc[i] - 0.5 * offset))
+plt.tick_params(bottom=False, left=False, labelleft=False, labelbottom=False)
+tick_list = range(0, len(msc2), 3)
+plt.title('Spectral embedding of MSC 3-character codes')
+plt.tight_layout()
+plt.savefig('a-map-of-mathematics/spectral-2d-map.jpg');
+#+end_src
+
+#+RESULTS:
+[[file:a-map-of-mathematics/spectral-2d-map.jpg]]
+
 * visualizing the graph
 ** graph embeddings
 ** scikit-learn's laplacian eigenmaps
@@ -427,6 +464,14 @@ Amusingly, this heatmap looks a bit like the zbMATH Open [[https://zbmath.org/st
 - check whether eilenberg-maclane spaces paper appear in the dataset
 - convert some of these links to references, appropriately
 - consider vectorizing the slow construction of M
+- comment the code
+- double check that these codes are valid, e.g. what is 60M?
+- plot where my knowledge/comfort is (a linear combination of vectors)
+- size of plot points indicate size of corpus (log scale?)
+- plot distribution of corpus sizes... maybe drop really small categories?
+- see how the plot looks for msc2 (refactor code into functions)
+- think about interactivity: https://observablehq.com/@d3/zoomable-scatterplot
+  
 
 #+html: <hr>
 
