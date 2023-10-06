@@ -110,7 +110,7 @@ arXiv preprints, we could use the =math.XX= tags that are used to categorize
 submissions, found [[https://arxiv.org/archive/math][here]], which I've scraped below:
 
 #+begin_src sh
-curl -s https://arxiv.org/archive/math | \
+curl -s https://arxiv.org/archive/math |
     sed -En 's/.*<b>(math.[A-Z]{2}.*)<\/b>/\1/p'
 #+end_src
 
@@ -268,7 +268,7 @@ We can now load the data into memory, only keeping columns we'll use.
 import numpy as np
 import pandas as pd
 data_file = '~/data/zb.parquet.gzip'
-cols = ['doi', 'msc', 'keyword', 'refs']
+cols = ['msc', 'refs']
 df = pd.read_parquet(data_file)[cols]
 print(f"{df['msc'].isna().mean() * 100:0.1f}% of records missing MSC code, dropping...")
 df = df[df['msc'].notna()]
@@ -279,6 +279,10 @@ print(f"{len(df)} records remaining.")
 #+end_src
 
 #+RESULTS:
+: 11.2% of records missing MSC code, dropping...
+: 3883360 records remaining.
+: 72.5% of remaining records missing reference MSC codes, dropping...
+: 1066151 records remaining.
 
 As you can see, there's a large amount of missing data. We've restricted to only
 those records that have non-trivial MSC data as well as non-trivial MSC data for
@@ -300,7 +304,41 @@ df['refs'] = df['refs'].str.replace('\[|\]|\'|,', '', regex=True).str.split()
 #+RESULTS:
 
 We've also done a bit of cleanup to make the =msc= and =refs= columns consist of
-lists of codes (as opposed to strings representing lists of codes).
+lists of codes (as opposed to strings representing lists of codes). Finally,
+we'll construct a list of valid MSC2020 codes, as the dataset contains a number
+of older codes that are no longer used. To do this, we'll extract the valid
+codes from the [[https://zbmath.org/static/msc2020.pdf][PDF]] provided by zbMATH Open as follows (apologies for my
+amateurish shell scripting):
+#+begin_src sh
+# download the PDF
+curl https://zbmath.org/static/msc2020.pdf --output ~/data/msc2020.pdf
+# convert it to text
+pdftotext ~/data/msc2020.pdf ~/data/msc2020.txt
+# remove form feeds (page breaks)
+tr -d '\f' < ~/data/msc2020.txt |
+    # find 3-character MSC codes
+    sed -En 's/^([0-9]{2}-|^[0-9]{2}[A-Z]).*/\1/p' |
+    # keep only unique codes
+    sort -u > ~/data/msc3.txt
+# cleanup
+rm ~/data/msc2020.pdf ~/data/msc2020.txt
+# display the first 10 lines
+head -n 10 ~/data/msc3.txt
+#+end_src
+
+#+RESULTS:
+#+begin_example
+00-
+00A
+00B
+01-
+01A
+03-
+03A
+03B
+03C
+03D
+#+end_example
 
 * a weighted graph
 
@@ -373,6 +411,8 @@ for row in df.itertuples():
             M[idx_dict[v1], idx_dict[v2]] += 1
             M[idx_dict[v2], idx_dict[v1]] += 1
 print(M)
+# give my poor laptop a break
+del df
 #+end_src 
 
 #+RESULTS:
@@ -420,11 +460,22 @@ $G$ lives inside of $\R^2$ or $\R^3$, which is where we're used to seeing maps.
 To get a graph embedding $\iota:G\hookrightarrow\R^2$ like the one in the Math Stack Exchange
 example above, we'll want to choose an embedding that respects the weights
 $f(n_{ij})$ on the edges of $G$: the heavier the weight, the closer the $\iota(v_i)$
-and $\iota(v_j)$ should be.
+and $\iota(v_j)$ should be. To put it more precisely, we'd like $\iota$ to be an
+embedding such that the quantity
+\begin{align*}
+C = \sum_{ij} f(n_{ij})\left|\iota(v_i) - \iota(v_j)\right|^2
+\end{align*}
+is as small as possible. We'll come back to making this optimization problem
+more formal in a moment. For now let's use =scikit-learn= to find such an
+embedding for us, and take a look at the results.
 
 ** TODO is the graph connected?
 
 * spectral embedding
+We'll invoke =scikit-learn='s [[https://scikit-learn.org/stable/modules/generated/sklearn.manifold.spectral_embedding.html][spectral embedding]], which uses a technique known as
+/Laplacian eigenmaps/ to construct the graph embedding. The technique is easy to
+derive, as we'll see below.
+
 #+begin_src python :results file :file a-map-of-mathematics/spectral-2d-map.jpg
 from sklearn.manifold import spectral_embedding
 emb_2d = spectral_embedding(M, n_components=2, random_state=42)
@@ -449,11 +500,7 @@ plt.savefig('a-map-of-mathematics/spectral-2d-map.jpg');
 #+RESULTS:
 [[file:a-map-of-mathematics/spectral-2d-map.jpg]]
 
-* visualizing the graph
-** graph embeddings
-** scikit-learn's laplacian eigenmaps
 * laplacian eigenmaps
-** how the algorithm works
 * acknowledgements
 ** thanks to fabian and moritz
 * TODO
@@ -471,6 +518,7 @@ plt.savefig('a-map-of-mathematics/spectral-2d-map.jpg');
 - plot distribution of corpus sizes... maybe drop really small categories?
 - see how the plot looks for msc2 (refactor code into functions)
 - think about interactivity: https://observablehq.com/@d3/zoomable-scatterplot
+- could we use the most cited authors in each code as a name like Bern's map?
   
 
 #+html: <hr>
@@ -489,19 +537,6 @@ xsv select msc ~/Downloads/out.csv | xsv sample 10
 #+end_src
 
 #+RESULTS:
-#+begin_example
-msc
-34C10
-"['76M10', '76D05', '65M60', '76M20']"
-"['81Pxx', '94Axx', '68Mxx']"
-"['26A33', '34K37', '34K45']"
-74K99
-"['82-02', '82D25', '82C26']"
-"['46L05', '46J10']"
-"['92B05', '62P10', '62F15']"
-"['11R33', '11R04', '11R29', '11R37']"
-"['82B43', '60K35', '82B20', '05C40']"
-#+end_example
 This runs in a couple of seconds on my Macbook Air.
 
 [fn:2] As zbMATH Open compiles data from various sources that may enforce a number
