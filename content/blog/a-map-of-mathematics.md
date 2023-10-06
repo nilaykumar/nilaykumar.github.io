@@ -330,6 +330,8 @@ head -n 10 ~/data/msc3.txt
 03D
 ```
 
+This list will be useful later.
+
 
 ## a weighted graph {#a-weighted-graph}
 
@@ -387,38 +389,43 @@ M\_{ij} = \begin{cases} n\_{ij} & e\_{ij} \in E\_{G\_3} \\\ 0 & e\_{ij} \notin E
 
 for any \\(v\_i,v\_j\in\text{MSC}\_3\\). We can apply our function \\(f\\) element-wise
 afterwards. The code to construct this adjacency matrix is pretty
-straightforward, though it took a minute or two to run on my machine.
+straightforward, though it took two or three minutes to run on my machine.
 
 ```python
+# load up the list of valid 3-character MSC codes that we created earlier
+valid_codes = pd.read_csv('~/data/msc3.txt', header=None)[0]
 N = len(msc3)
-# the matrix indexing is associated to the MSC codes using the indexing in msc3
-idx_dict = {code: i for i, code in enumerate(msc3)}
-M = np.zeros((N, N), dtype='i')
+print(f'{N} codes in dataset / {len(valid_codes)} valid codes')
+
+# the matrix indexing is associated to the MSC codes using the indexing in valid_codes
+idx_dict = valid_codes.reset_index().set_index(0).to_dict()['index']
+
+M = np.zeros((len(valid_codes), len(valid_codes)), dtype='i')
 for row in df.itertuples():
     for document_code in row.msc:
         v1 = document_code[0:3]
-        if len(v1) != 3:
+        if v1 not in idx_dict:
             continue
         for ref_code in row.refs:
             v2 = ref_code[0:3]
-            if len(v2) != 3:
+            # make sure the code is valid
+            if v2 not in idx_dict:
                 continue
             # the adjacency matrix of an undirected graph is symmetric
             M[idx_dict[v1], idx_dict[v2]] += 1
             M[idx_dict[v2], idx_dict[v1]] += 1
 print(M)
-# give my poor laptop a break
-del df
 ```
 
 ```text
-[[   14   573    23 ...     0     1     0]
- [  573 12402   782 ...     1    43     0]
- [   23   782   722 ...     0     4     0]
+641 codes in dataset / 597 valid codes
+[[   14   573    23 ...     0     0     1]
+ [  573 12402   782 ...    11     4    43]
+ [   23   782   722 ...     7     4     4]
  ...
- [    0     1     0 ...     0     0     0]
- [    1    43     4 ...     0    28     0]
- [    0     0     0 ...     0     0     0]]
+ [    0    11     7 ...     0     0     1]
+ [    0     4     4 ...     0     0     0]
+ [    1    43     4 ...     1     0    28]]
 ```
 
 We can visualize this adjacency matrix using a heatmap:
@@ -427,7 +434,7 @@ We can visualize this adjacency matrix using a heatmap:
 import matplotlib.pyplot as plt
 plt.figure()
 plt.imshow(np.log1p(M))
-labels = [code if i % 40 == 0 else '' for i, code in enumerate(msc3)]
+labels = [code if i % 40 == 0 else '' for i, code in valid_codes.items()]
 plt.tick_params(left=False, bottom=False)
 plt.xticks(range(len(labels)), labels, rotation=90, fontsize=8)
 plt.yticks(range(len(labels)), labels, rotation=0, fontsize=8)
@@ -457,19 +464,18 @@ hundred vertices and a lot of weighted edges. There is no canonical way in which
 To get a graph embedding \\(\iota:G\hookrightarrow\R^2\\) like the one in the Math Stack Exchange
 example above, we'll want to choose an embedding that respects the weights
 \\(f(n\_{ij})\\) on the edges of \\(G\\): the heavier the weight, the closer the \\(\iota(v\_i)\\)
-and \\(\iota(v\_j)\\) should be. To put it more precisely, we'd like \\(\iota\\) to be an
+and \\(\iota(v\_j)\\) should be. To put it more precisely, we'd like \\(\iota:G\to\R^2\\) to be an
 embedding such that the quantity
 
 \begin{align\*}
 C = \sum\_{ij} f(n\_{ij})\left|\iota(v\_i) - \iota(v\_j)\right|^2
 \end{align\*}
 
-is as small as possible. We'll come back to making this optimization problem
-more formal in a moment. For now let's use `scikit-learn` to find such an
-embedding for us, and take a look at the results.
-
-
-### <span class="org-todo todo TODO">TODO</span> is the graph connected? {#is-the-graph-connected}
+is as small as possible. You can check that this expression penalizes heavier
+connected vertices for being far from each other, just as we want. We'll come
+back to making this optimization problem more formal in a moment. For now let's
+use `scikit-learn` to find such an embedding for us, and take a look at the
+results.
 
 
 ## spectral embedding {#spectral-embedding}
@@ -482,8 +488,8 @@ derive, as we'll see below.
 from sklearn.manifold import spectral_embedding
 emb_2d = spectral_embedding(M, n_components=2, random_state=42)
 df_emb2d = pd.DataFrame(emb_2d, columns=['x', 'y'])
-df_emb2d['msc'] = pd.Series(msc3)
-msc2 = np.unique(pd.Series(msc3).str[0:2])
+df_emb2d['msc'] = valid_codes
+msc2 = np.unique(df_emb2d['msc'].str[0:2])
 idx_msc2 = {code: i for i, code in enumerate(msc2)}
 df_emb2d['msc2'] = df_emb2d['msc'].str[0:2]
 df_emb2d['msc2_num'] = df_emb2d['msc2'].map(idx_msc2)
@@ -500,6 +506,9 @@ plt.savefig('a-map-of-mathematics/spectral-2d-map.jpg');
 ```
 
 {{< figure src="/ox-hugo/spectral-2d-map.jpg" >}}
+
+
+### <span class="org-todo todo TODO">TODO</span> is the graph connected? {#is-the-graph-connected}
 
 
 ## laplacian eigenmaps {#laplacian-eigenmaps}
