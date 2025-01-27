@@ -21,45 +21,28 @@ material thing, simultaneously both representation and presence.
 Weizman, /Forensic architecture: violence at the threshold of detectability/
 #+end_quote
 
-#+begin_comment
-- replace all mentions of Israel with Zionist entity, etc.
-- mention the point of the article early on, but spend time in the introduction
-talking about the situation
-- at the end of the intro (and at the end of the article link to sameer project
-& alaa's fundraiser)
-- make sure to quote alareer
-#+end_comment
-
 * introduction
 
 I started writing this note in April of 2024, with the purpose of illustrating
 the basics of how to use open access satellite data to estimate structural
-damage in Gaza, but had trouble finding the focus to finish it.(FOOTNOTE: add
-note about west bank and lebanon as well) Obtaining accurate damage assessments
-has been, in the last 15 months of genocide, obviously impossible, with the
-Zionist occupiers having closed Gaza off completely to foreign journalists. With
-some Palestinians now able to return to what remains of their homes, we are
-starting to obtain pictures of the complete and utter destruction of entire
-neighborhoods --- pictures reminiscent of the total annihilation caused by
-American atomic bombs dropped on Japan. (CITE: pictures of devastation,
-statistics about total tonnage of bombs dropped, finding dead buried in the
-rubble) The human cost is, of course, unspeakable (FOOTNOTE + CITE AirWars
-report https://gaza-patterns-harm.airwars.org/ and Lancet study).
+damage in Gaza, but had trouble finding the focus to finish it. Obtaining
+accurate damage assessments has, in the last 15 months of genocide,
+obviously been impossible, with the occupation having closed Gaza off
+completely to foreign journalists. With some Palestinians now able to return to
+what remains of their homes, we are starting to obtain pictures of the complete
+and utter destruction of entire neighborhoods --- pictures reminiscent of the
+total annihilation caused by American atomic bombs dropped on Japan. The human
+cost is, of course, unspeakable [[cite:&lancet]], [[cite:&airwars]].
 
 At the time of writing, however, most analyses still rely largely on satellite
 data, which is what we will look at below. High resolution visible-spectrum
 satellite imagery (like that used in Google Maps) is common, though typically
 not open access. Here we will focus on a less well-known, more technical remote
-sensing technique known as SAR interferometry, or InSAR, for short. (CITE:
-https://www.npr.org/2023/11/16/1212889717/satellite-images-us-israel-gaza
-https://www.space.commerce.gov/new-limits-on-satellite-imaging-of-israel/
-https://www.bbc.com/news/57102499) Appropriately enough, InSAR is often used to
-track large scale environmental changes (land subsidence, volcanic uplift,
-deforestation and flood monitoring, etc. CITE:
-https://sentiwiki.copernicus.eu/web/s1-applications) in addition to structural
-damage. As Andreas Malm reminds us: the destruction of Palestine is the
-destruction of the Earth (CITE:
-https://www.versobooks.com/blogs/news/the-destruction-of-palestine-is-the-destruction-of-the-earth).
+sensing technique known as SAR interferometry, or InSAR, for short.
+Appropriately enough, InSAR is often [[https://sentiwiki.copernicus.eu/web/s1-applications][used]] to track large scale environmental
+changes (land subsidence, volcanic uplift, deforestation and flood monitoring,
+etc.) in addition to structural damage. As Andreas Malm reminds us: the
+destruction of Palestine is the destruction of the Earth [[cite:&malm]].
 
 InSAR, when combined with building footprint data, can be used to create damage
 proxy maps like this one by Van Den Hoek and Scher:
@@ -67,8 +50,8 @@ proxy maps like this one by Van Den Hoek and Scher:
 #+caption: caption here
 [[file:insar-gaza/.jpg]]
 The methodology behind these maps is described, for
-example, in the paper [CITE paper]. Maps constructed using InSAR are used in the
-media [CITE conflict damage citations] and, to my surprise, surprisingly
+example, in the paper [[cite:&asi]]. Maps constructed using InSAR are used in the
+media and, to my surprise, surprisingly
 straightforward to construct using open-access data and free-to-use InSAR
 processing pipelines made available by NASA. In these notes, we'll learn a bit
 about the technique underpinning these damage estimates, known as /coherent
@@ -429,27 +412,7 @@ plt.show()
 #+RESULTS:
 :results:
 
-
-[[file:plots/insar-gaza/plot_20250125_012726_4802112.png]]
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+[[file:plots/insar-gaza/plot_20250126_123853_4974318.png]]
 :end:
 
 We see immediately that over the longer time interval, coherence is generally
@@ -497,7 +460,7 @@ change = (post - pre) / pre
 change = change.where((pre >= 0.9) & (change <= 0))
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 6), sharey=True)
-im = change.band_data.plot(ax=ax, vmin=-0.15, vmax=0, levels=5, cmap="RdBu")
+im = change.band_data.plot(ax=ax, vmin=-0.15, vmax=0, levels=5, cmap="Reds_r")
 ax.get_xaxis().set_visible(False)
 ax.get_yaxis().set_visible(False)
 ax.set_title("Change in coherence: Gaza strip\nOctober 17, 2023")
@@ -509,50 +472,47 @@ plt.show()
 
 #+RESULTS:
 :results:
-[[file:plots/insar-gaza/plot_20250125_013308_7008304.png]]
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+[[file:plots/insar-gaza/plot_20250126_123936_2976807.png]]
 :end:
 
-- this is one approach to tracking damage. can cross-check against local
-  reporting and other satellite imagery
-- can use this in the future as well. things likely become more and more
-  complicated, though. can accumulate the results of multiple ccds? look for
-  more papers over time by the same authors
-- one benefit of a programmatic approach like this is that it is then quite
-  straightforward to compile statistics. like the paper used spatial correlation
-  against known humanitarian data to show that the zionist attacks tended to
-  overlap with schools, etc.
-- why do this exercise? who can be an intellectual (gramsci)? usage of
-  technology that is used by those in power to surveil us (loewenstein, weizman,
-  ...). an opportunity to learn the tools but to use it against them
+The darker areas here correspond to high-coherence areas that, between October
+5th and October 17th experienced a significant decrease in coherence. That is,
+they correspond to the areas that likely suffered significant damage under
+Zionist bombardment. We could now cross-reference these hotspots with images
+from local reporters on the ground and any visible-spectrum satellite imagery
+that we might have access to. If we're interested in smaller structures,
+however, InSAR data may not be able to tell us much: at =10X2= looks, each pixel
+in the image above corresponds to a 40m square, and the resolution at which
+close scatterers can be distinguish is 80m CITE product guide
+https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#processing-options.
+InSAR techniques are therefore useful as one tool in a larger investigative
+arsenal. CITE PAPER, for instance, combines InSAR images with data from the UN
+and other sources to strongly correlate high-damage areas with "health,
+educational, and water infrastructure in addition to designated evacuation
+corridors and civilian protection zones".
 
+* closing thoughts
+
+Obviously computing spatial correlations using open-access satellite imagery
+will not miraculously animate the farcical corpse that is international
+humanitarian law. So why do this exercise? Well I hope this note at least serves
+as a small reminder that science and technology can be applied -- in however
+small and minor ways -- in the service of humanity instead of against it. As
+mainstream science continues to unabashedly devote itself to mass surveillance
+(CITE where's daddy ai), killer drones (CITE drones that make sounds like
+children crying), and the destruction of the earth (FOOTNOTE on Molavi's
+environmental warfare in gaza), it can be difficult to conceptualize the
+technical as liberatory.
+
+For those of us scientists or technical workers in the imperial core, we must
+devote ourselves to understanding the technologies that our fields use to
+sustain and exacerbate modern conditions of oppression (CITE Science magazine
+https://scienceforthepeople.org/2024/03/27/science-magazines-editorial-bias-against-palestinians/
+and https://archive.scienceforthepeople.org/vol-2/v2n4/history-aaas/), and,
+wherever possible, co-opt the master's tools.
+
+If you found this note interesting or learned something useful, please consider
+donating to [[https://linktr.ee/thesameerproject][The Sameer Project]] to aid affected Palestinians in Gaza.
 
 #+html: <hr>
 
