@@ -45,10 +45,10 @@ etc.) in addition to structural damage. As Andreas Malm reminds us: the
 destruction of Palestine is the destruction of the Earth [[cite:&malm]].
 
 InSAR, when combined with building footprint data, can be used to create damage
-proxy maps like this one by Van Den Hoek and Scher:
-#+ATTR_HTML: :alt alt text here
+proxy maps like this one by [[https://www.conflict-damage.org/][Van Den Hoek and Scher]]:
+#+ATTR_HTML: :width 400px :alt alt text here
 #+caption: caption here
-[[file:insar-gaza/.jpg]]
+[[file:insar-gaza/building_ftprint_damage_3Jul2024.png]]
 The methodology behind these maps is described, for
 example, in the paper [[cite:&asi]]. Maps constructed using InSAR are used in the
 media and, to my surprise, surprisingly
@@ -78,7 +78,11 @@ synthetic aperture radar (SAR) is an active remote sensing technique. Satellites
 equipped with SAR transmit short bursts of microwave-frequency electromagnetic
 radiation (radar) focused by an antenna into a beam. The beam hits the surface
 of the earth and reflects off, /backscatters/, in various ways, as the image below
-shows. INSERT HYP3 SAR IMAGE HERE The precise way in which the radar scatters is
+shows.
+#+attr_html: :width 400px :alt alt text here
+#+caption: caption here
+[[file:insar-gaza/scattering-types.png]]
+The precise way in which the radar scatters is
 highly dependent on a large number of variables: the incidence angle of the
 beam, the difference between the radar wavelength and the size of the objects
 being imaged, moisture content of the soil, etc. Intuitively the satellite can
@@ -87,42 +91,56 @@ smooth relative to the radar wavelength, for example, will appear very dark in
 the resulting image because the beam will bounce almost entirely away from the
 satellite. An area with smooth surfaces perpendicular to the smooth ground (e.g.
 buildings in an urban environment) on the other hand are often very bright due
-to the phenomenon of "double bounce" pictured above. EXAMPLE OF NYC SAR Clearly,
-then, SAR imaging produces results quite different than usual photography and
-requires some expertise to interpret. Radar does have its benefits though. For
-one thing, it's useful even at night. Moreover, weather is no obstacle, which is
-quite significant given that about 55% of land tends to be covered by clouds
-depending on the season [[cite:&cloud]]. And in fact the way radar interacts with
-different materials, water, and vegetation means that it can exploited to
-capture information that would otherwise be obscured in photographs. This
-explains its utility in many ecological applications.
+to the phenomenon of "double bounce" pictured above.
+#+attr_html: :width 400px :alt alt text here
+#+caption: caption here
+[[file:insar-gaza/nyc_sar.jpg]]
+Clearly, then, SAR imaging produces results quite different than usual
+photography and requires some expertise to interpret. Radar does have its
+benefits though. For one thing, it's useful even at night. Moreover, weather is
+no obstacle, which is quite significant given that about 55% of land tends to be
+covered by clouds depending on the season [[cite:&cloud]]. And in fact the way radar
+interacts with different materials, water, and vegetation means that it can
+exploited to capture information that would otherwise be obscured in
+photographs. This explains its utility in many ecological applications.
 
 So much for the R in SAR, but what does the descriptor "synthetic aperture"
 mean? Actually, before we tackle this question, let's take a look at the
-geometry of SAR imaging: INSERT FIGURE 2.1 OF THE HANDBOOK There's a lot going
+geometry of SAR imaging:
+#+attr_html: :width 400px :alt alt text here
+#+caption: figure 2.1 of the handbook [[cite:&sar-handbook]]
+[[file:insar-gaza/sar_geometry.jpg]]
+There's a lot going
 on here, but I just want to focus on a few points. The first is the acronym
 SLAR, Side-Looking Airborne Radar, which is pretty self-explanatory: the radar
 beam is sent out of the aircraft or satellite perpendicular to the direction of
 travel (the /ground range direction/ is perpendicular to the /along-track
 direction/). Side-looking is necessary for imaging because radar measures
-distance to a target based on the time of arrival. As the image below
-demonstrates, INSERT IMAGE FROM
-http://www.csr.utexas.edu/rs/sensors/whatissar/rar.html down-looking radar would
+distance to a target based on the time of arrival.
+As the image below demonstrates,
+#+attr_html: :width 400px :alt alt text here
+#+caption: https://www.youtube.com/watch?v=Xemo2ZpduHA
+[[file:insar-gaza/down-side-looking.png]]
+down-looking radar would
 not be able to distinguish between the equidistant points /a/ and /b/ because the
 backscattered radar would reach the antenna simultaneously.[fn:1]
 
 Another thing to notice is that the geometry of SAR imaging has its own
 idiosyncracies. Similar to how we lose some depth perception when taking a photo
 from directly from above, side-looking can introduce its own geometric
-distortions: INSERT IMAGE 2.4 The first two distortions depicted above are
-typically corrected for (sometimes multiple vantage points of the same can help
-determine the necessary topographical considerations) while the last is often
-just treated as missing data (or imputed via interpolation). In addition to
-geometric distortion, SAR images are characterized by a "salt-and-pepper" noise
-grain called /speckle/, WHICH CAN BE CLEARLY SEEN IN FIG ABOVE?. Speckle is an
+distortions:
+#+attr_html: :width 400px :alt alt text here
+#+caption: 2.4 of the handbook [[cite:&sar-handbook]]
+[[file:insar-gaza/sar-distortion.png]]
+The first two distortions depicted above are typically corrected for (sometimes
+multiple vantage points of the same can help determine the necessary
+topographical considerations) while the last is often just treated as missing
+data (or imputed via interpolation). In addition to geometric distortion, SAR
+images are characterized by a "salt-and-pepper" noise grain called /speckle/,
+which can be seen in the image of New York City, above. Speckle is an
 unavoidable part of SAR imaging, arising from the chaotic backscatter due to
-subpixel details (say, individual blades of grass), that can be smoothed out at
-the cost of resolution loss.[fn:2]
+subpixel details (say, individual blades of grass). Speckle can be smoothed out,
+but smoothing comes at the cost of resolution loss.[fn:2]
 
 Interestingly, unlike in standard photography, the imaging resolution in the
 ground range direction /increases/ with distance from the aircraft (see equation
@@ -139,8 +157,7 @@ the aircraft altitude (see equation 1.5-7 of [[cite:&sarp]])![fn:4]
 
 * sentinel-1
 
-The satellite whose data that we will be working with here is the Sentinel-1,
-(CITE https://sentiwiki.copernicus.eu/web/s1-mission#S1-Mission-Observation-and-Production-Scenarios)
+The satellite whose data that we will be working with here is the Sentinel-1 [[cite:&sentiwiki]],
 #+begin_quote
 Sentinel-1 works in a pre-programmed operation mode to avoid conflicts and to
 produce a consistent long-term data archive built for applications based on long
@@ -154,13 +171,13 @@ edge and thickness, snow cover, edge and depth, soil moisture and vegetation.
 #+end_quote
 The Sentinel-1 mission actually consisted of two satellites, Sentinel-1A and
 Sentinel-1B, but the latter ceased to function correctly in December of 2021.
-Sentinel-1C is planned to be launched by the end of 2024, and there is also a
+Sentinel-1C was just recently launched in December of 2024, and there is also a
 Sentinel-1D in the works. Sentinel-1's orbit is cyclic, as seen in the image
 below, with a repeat period of 12 days (it would have been 6 were Sentinel-1B
 still functioning). This means that the satellite returns to approximately the
-exact same spot (relative to the Earth) every 12 days.[fn:5] IMAGE HERE OF ORBIT
-Returning close to the same point repeatedly is crucial to be able to do SAR
-interferometry, as we'll see below.
+exact same spot (relative to the Earth) every 12 days.[fn:5] Returning close to
+the same point repeatedly is crucial to be able to do SAR interferometry, as
+we'll see below.
 
 The Sentinel-1 satellite uses a C-band radar, which corresponds to a wavelength
 of about 5.55cm. The SAR images taken over land, according to documentation, are
@@ -194,7 +211,11 @@ be the key piece below in detecting damage done to the built environment in
 Gaza, so it's worth understanding the basic underlying ideas.
 
 Consider a sinusoid (in 1-dimension for simplicity) together with its shift by
-$\theta$: INSERT WIKI IMAGE PHASE DIFF HERE This offset between the waves is known as
+$\theta$:
+#+attr_html: :width 400px :alt alt text here
+#+caption: By Peppergrower - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6007495
+[[file:insar-gaza/phase-shift.svg]]
+This offset between the waves is known as
 a phase shift. We can imagine the red wave as outbound from the satellite, with
 the positive x-axis pointed towards the earth, and the blue wave the incoming
 backscatter. Realistically we would expect the blue sinusoid's amplitude
@@ -213,11 +234,13 @@ about the microwave field backscattered by all the scatterers (rocks,
 vegetation, buildings etc.) within the corresponding resolution cell projected
 on the ground.
 #+end_quote
-INSERT IMAGE OF BACKSCATTERERS
 
 To understand the role of the phase difference more concretely, consider the
-following example, from the Sentinel-1 InSAR product guide (INSERT IMAGE
-https://hyp3-docs.asf.alaska.edu/images/phase_diff.png AND CITE) Here, on the
+following example, from the Sentinel-1 InSAR product guide
+#+attr_html: :width 400px :alt alt text here
+#+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar
+[[file:insar-gaza/phase_diff.png]]
+Here, on the
 satellite's second pass, the scatterer under study has subsided into the ground
 (due to an earthquake, say) and the distance the radar waves travel changes
 slightly, $R_2\neq R_1$. The resulting backscatter measured by the sensor will be
