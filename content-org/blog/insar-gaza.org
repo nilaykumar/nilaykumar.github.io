@@ -282,7 +282,8 @@ In more detail:
    \Delta=(\gamma_2-\gamma_1)/\gamma_1\bar_R
    \end{equation*}
    We expect decreases in coherence in the previously high-coherence zones to
-   correspond, proportionally, to building damage. CITE PAPER OR WHATEVER
+   correspond, proportionally, to building damage (see the methods sections of
+   [[cite:&asi]]).
 
 Let's take a look at how this works in practice by working with
 freely-available, preprocessed data from the Sentinel-1 satellite (via NASA's
@@ -314,7 +315,7 @@ post-event. Click on the =Filters= button and change the start and end date to
 September 1, 2023 and December 1, 2023. Then, restrict the file type to =L1
 Single Look Complex (SLC)=, as that's the type of SAR image we're going to use.
 Hitting the [[https://search.asf.alaska.edu/#/?zoom=7.803&center=34.853,30.006&polygon=POLYGON((34.2173%2031.2165,34.595%2031.2165,34.595%2031.5962,34.2173%2031.5962,34.2173%2031.2165))&resultsLoaded=true&granule=S1A_IW_SLC__1SDV_20231130T034434_20231130T034501_051441_063546_033A-SLC&end=2023-12-02T04:59:59Z&maxResults=250&productTypes=SLC&start=2023-09-01T04:00:00Z][search button]] should now yield a number of rectangles overlaid the
-map, each of which interseccts non-trivially with our polygon containing Gaza.
+map, each of which intersects non-trivially with our polygon containing Gaza.
 The list of scene files on the bottom left corresponds to these rectangles. We
 mentioned earlier that Sentinel-1 takes snapshots of the same swath every 12
 days -- we can see this by noting that the scene =...DF80= taken on October 5,
@@ -329,16 +330,19 @@ button that appears at the bottom of =...DF80='s =Scene Detail= window. This
 modifies our search to a baseline-type search, which displays a number of other
 images as points on a scatterplot. This plot is showing us that these images
 were taken not only at a different time than our baseline image, but also at a
-different position ("perpendicular baseline"). Ideally the images would be taken
-at a perpendicular baseline of 0 CITE ASF S1 PRODUCT GUIDE WITH PICTURE OF
-BASELINES , but we can see =...62AB= (September 11, 2023) and =...D1ED=
-(September 23, 2023) before our October 5th image at perpendicular baselines of
--67 m and -157 m, respectively, and =...6EBF= (October 17, 2023) at a tiny
-perpendicular baseline of 6 m. We'll take =...6EBF= as our post-event image, but
-we have two options for our first pre-event image. Now I'm not an InSAR expert,
-so I'm not sure how much worse a -157 m baseline is (for purposes of coherent
-change detection) than a -67 m baseline. We may as well run the analysis with
-both and see if there's any significant differences.
+different position ("perpendicular baseline").
+#+attr_html: :width 400px :alt alt text here
+#+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#perpendicular-baseline
+[[file:insar-gaza/baseline_asf.png]]
+Ideally the images would be taken at a
+perpendicular baseline of 0, but we can see =...62AB= (September 11, 2023) and
+=...D1ED= (September 23, 2023) before our October 5th image at perpendicular
+baselines of -67 m and -157 m, respectively, and =...6EBF= (October 17, 2023) at
+a tiny perpendicular baseline of 6 m. We'll take =...6EBF= as our post-event
+image, but we have two options for our first pre-event image. Now I'm not an
+InSAR expert, so I'm not sure how much worse a -157 m baseline is (for purposes
+of coherent change detection) than a -67 m baseline. We may as well run the
+analysis with both and see if there's any significant differences.
 
 We can now use Vertex to request ASF to generate the SAR interferometry data
 from the pairs of SAR images that we've chosen. Making sure that the list of
@@ -362,10 +366,12 @@ over 1GB in total.
 
 * raster processing
 
+In the following section, I mostly follow Corey Scher's code for the relevant
+NASA ARSET training, which can be found [[https://github.com/porefluid/arset/blob/master/code/01_detect_coh_change.ipynb][here]].
+
 Now that we have our coherence data on disk, we can apply some do some simple
 computations to generate coherence change plots. First let's get paths to our
-data sorted out and load the images into memory. ATTRIBUTE THIS SECTION TO COREY
-SCHER.
+data sorted out and load the images into memory.
 #+begin_src python :results nil
 from pathlib import Path
 import re
@@ -506,10 +512,9 @@ from local reporters on the ground and any visible-spectrum satellite imagery
 that we might have access to. If we're interested in smaller structures,
 however, InSAR data may not be able to tell us much: at =10X2= looks, each pixel
 in the image above corresponds to a 40m square, and the resolution at which
-close scatterers can be distinguish is 80m CITE product guide
-https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#processing-options.
-InSAR techniques are therefore useful as one tool in a larger investigative
-arsenal. CITE PAPER, for instance, combines InSAR images with data from the UN
+close scatterers can be distinguish is 80m (see [[https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#processing-options][here]] for more details). InSAR
+techniques are therefore useful as one tool in a larger investigative arsenal.
+The paper [[cite:&asi]], for instance, combines InSAR images with data from the UN
 and other sources to strongly correlate high-damage areas with "health,
 educational, and water infrastructure in addition to designated evacuation
 corridors and civilian protection zones".
@@ -521,21 +526,18 @@ will not miraculously animate the farcical corpse that is international
 humanitarian law. So why do this exercise? Well I hope this note at least serves
 as a small reminder that science and technology can be applied -- in however
 small and minor ways -- in the service of humanity instead of against it. As
-mainstream science continues to unabashedly devote itself to mass surveillance
-(CITE where's daddy ai), killer drones (CITE drones that make sounds like
-children crying), and the destruction of the earth (FOOTNOTE on Molavi's
-environmental warfare in gaza), it can be difficult to conceptualize the
-technical as liberatory.
+mainstream science continues to unabashedly devote itself to [[https://www.972mag.com/lavender-ai-israeli-army-gaza/][mass surveillance]],
+[[https://www.npr.org/2024/11/26/g-s1-35437/israel-sniper-drones-gaza-eyewitnesses][killer drones]], and the destruction of the earth [[cite:&molavi]], it can be
+difficult to conceptualize the technical as liberatory.
 
 For those of us scientists or technical workers in the imperial core, we must
-devote ourselves to understanding the technologies that our fields use to
-sustain and exacerbate modern conditions of oppression (CITE Science magazine
-https://scienceforthepeople.org/2024/03/27/science-magazines-editorial-bias-against-palestinians/
-and https://archive.scienceforthepeople.org/vol-2/v2n4/history-aaas/), and,
-wherever possible, co-opt the master's tools.
+devote ourselves to understanding the technologies that [[https://scienceforthepeople.org/2024/03/27/science-magazines-editorial-bias-against-palestinians/][our]] [[https://archive.scienceforthepeople.org/vol-2/v2n4/history-aaas/][fields]] use to
+sustain and exacerbate modern conditions of oppression, wherever possible,
+co-opt the master's tools.
 
 If you found this note interesting or learned something useful, please consider
-donating to [[https://linktr.ee/thesameerproject][The Sameer Project]] to aid affected Palestinians in Gaza.
+donating to [[https://linktr.ee/thesameerproject][The Sameer Project]] to aid affected Palestinians in Gaza. They're
+doing amazing, vital, on-the-ground diaspora-based aid work in Gaza.
 
 #+html: <hr>
 
