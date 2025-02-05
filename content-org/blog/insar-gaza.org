@@ -49,8 +49,8 @@ destruction of Palestine is the destruction of the Earth [[cite:&malm]].
 
 InSAR, when combined with building footprint data, can be used to create damage
 proxy maps like this one by [[https://www.conflict-damage.org/][Van Den Hoek and Scher]]:
-#+ATTR_HTML: :width 400px :alt alt text here
-#+caption: caption here
+#+ATTR_HTML: :alt a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024
+#+caption: This damage map was constructed by the [[https://www.conflict-damage.org/][Decentralized Damage Mapping Group]] using Sentinel-1 radar imagery, together with various sources of building footprint data.
 [[file:insar-gaza/building_ftprint_damage_3Jul2024.png]]
 
 The methodology behind these maps is described, for
@@ -83,8 +83,8 @@ equipped with SAR transmit short bursts of microwave-frequency electromagnetic
 radiation (radar) focused by an antenna into a beam. The beam hits the surface
 of the earth and reflects off, /backscatters/, in various ways, as the image below
 shows.
-#+attr_html: :alt alt text here
-#+caption: caption here
+#+attr_html: :alt Diagram depicting how radar scatters off rough surfaces incoherently, while backscatter from building tends to return more backscatter back towards the antenna
+#+caption: Radar backscatter is sensitively dependent on a number of different variables, but for urban landscapes, these patterns are good to keep in mind.
 [[file:insar-gaza/scattering_types.png]]
 
 The precise way in which the radar scatters is
@@ -97,8 +97,8 @@ the resulting image because the beam will bounce almost entirely away from the
 satellite. An area with smooth surfaces perpendicular to the smooth ground (e.g.
 buildings in an urban environment) on the other hand are often very bright due
 to the phenomenon of "double bounce" pictured above.
-#+attr_html: :width 400px :alt alt text here
-#+caption: caption here
+#+attr_html: :alt A true color satellite image of New York City, juxtaposed against a SAR image of the exact same region
+#+caption: Even though the SAR image is not capturing visible light, the result is still recognizable due to the consistent backscatter patterns.
 [[file:insar-gaza/nyc_sar.jpg]]
 
 Clearly, then, SAR imaging produces results quite different than usual
@@ -113,8 +113,8 @@ photographs. This explains its utility in many ecological applications.
 So much for the R in SAR, but what does the descriptor "synthetic aperture"
 mean? Actually, before we tackle this question, let's take a look at the
 geometry of SAR imaging:
-#+attr_html: :width 400px :alt alt text here
-#+caption: figure 2.1 of the handbook [[cite:&sar-handbook]]
+#+attr_html: :alt A diagram of a plane flying over a flat surface, with the geometric angles and lengths relevant for radar image processing labeled
+#+caption: Taken from Chapter 2 of the [[https://ntrs.nasa.gov/citations/20190002563][SAR handbook]].
 [[file:insar-gaza/sar_geometry.jpg]]
 
 There's a lot going
@@ -125,8 +125,8 @@ travel (the /ground range direction/ is perpendicular to the /along-track
 direction/). Side-looking is necessary for imaging because radar measures
 distance to a target based on the time of arrival.
 As the image below demonstrates,
-#+attr_html: :width 400px :alt alt text here
-#+caption: https://www.youtube.com/watch?v=Xemo2ZpduHA
+#+attr_html: :alt Diagram demonstrating that a plane equipped with a radar cannot distinguish backscatter from objects to its left from backscatter from objects equidistant on the right. The plane only looking to its right, however, does not suffer this problem.
+#+caption: From a NASA ARSET [[https://www.youtube.com/watch?v=Xemo2ZpduHA][training]]
 [[file:insar-gaza/down-side-looking.png]]
 
 down-looking radar would
@@ -137,8 +137,8 @@ Another thing to notice is that the geometry of SAR imaging has its own
 idiosyncracies. Similar to how we lose some depth perception when taking a photo
 from directly from above, side-looking can introduce its own geometric
 distortions:
-#+attr_html: :width 400px :alt alt text here
-#+caption: 2.4 of the handbook [[cite:&sar-handbook]]
+#+attr_html: :alt Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow
+#+caption: Taken from Chapter 2 of the [[https://ntrs.nasa.gov/citations/20190002563][SAR handbook]].
 [[file:insar-gaza/sar-distortion.png]]
 
 The first two distortions depicted above are typically corrected for (sometimes
@@ -221,8 +221,8 @@ Gaza, so it's worth understanding the basic underlying ideas.
 
 Consider a sinusoid (in 1-dimension for simplicity) together with its shift by
 $\theta$:
-#+attr_html: :width 400px :alt alt text here
-#+caption: By Peppergrower - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6007495
+#+attr_html: :alt Diagram depicting two sinusoids, one a phase shift of the other
+#+caption: From [[https://commons.wikimedia.org/w/index.php?curid=6007495][Wikipedia]]
 [[file:insar-gaza/phase-shift.svg]]
 
 This offset between the waves is known as
@@ -237,7 +237,7 @@ sensor reads the amplitude of the backscattered wave and the phase difference
 between the outgoing wave and the backscattered wave. The most convenient way to
 represent this data is using complex notation for the sinusoidal signals,
 $Ae^{i\theta}$, where $A$ is the amplitude and $\theta$ the phase. To quote the ESA's
-guidelines: CITE
+guidelines:
 #+begin_quote
 Each pixel gives a complex number that carries amplitude and phase information
 about the microwave field backscattered by all the scatterers (rocks,
@@ -247,8 +247,8 @@ on the ground.
 
 To understand the role of the phase difference more concretely, consider the
 following example, from the Sentinel-1 InSAR product guide
-#+attr_html: :width 400px :alt alt text here
-#+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar
+#+attr_html: :alt Diagram demonstrating how the distance (and thus radar phase) between the satellite and ground target (here, a house) changes as the ground under the house subsides
+#+caption: From the [[https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar][InSAR product guide]]
 [[file:insar-gaza/phase_diff.png]]
 
 Here, on the satellite's second pass, the scatterer under study has subsided
@@ -350,8 +350,8 @@ modifies our search to a baseline-type search, which displays a number of other
 images as points on a scatterplot. This plot is showing us that these images
 were taken not only at a different time than our baseline image, but also at a
 different position ("perpendicular baseline").
-#+attr_html: :width 400px :alt alt text here
-#+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#perpendicular-baseline
+#+attr_html: :alt Diagram demonstrating how a slightly different satellite position can lead to different distances and thus phases in the resulting SAR images
+#+caption: From the [[https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar][InSAR product guide]]
 [[file:insar-gaza/baseline_asf.png]]
 
 Ideally the images would be taken at a
@@ -622,7 +622,9 @@ plt.savefig("insar-gaza/jenin-coherence-change.png", dpi=300)
 This image suggests significant and widespread damage across Jenin, which is
 consistent with reporting coming out of the area. At the time of writing,
 however, I don't have access to any resources for the purpose of
-cross-referencing so I'll leave it at that.
+cross-referencing so I'll leave it at that. I may look into playing around with
+any openly available building footprint data if I find the time, and update this
+note accordingly.
 
 
 #+html: <hr>
