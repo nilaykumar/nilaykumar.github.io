@@ -1,12 +1,15 @@
 :PROPERTIES:
 :header-args:python: :session py :async :results output drawer :exports both :eval never-export :timer-show no
-:header-args:s: :exports both :results output verbatim :eval never-export
+:header-args:sh: :exports both :results output verbatim :eval never-export
 :END:
 
 #+title: tracking damage in Gaza using open-access SAR data
 #+author: Nilay Kumar
 #+date: <2024-04-11 Thu>
-#+hugo_draft: true
+#+hugo_publishdate: <2025-02-02 Sun>
+#+hugo_draft: false
+#+hugo_base_dir: ../..
+#+hugo_section: blog
 
 #+csl-style:bib/institute-of-mathematical-statistics.csl
 
@@ -26,13 +29,13 @@ Weizman, /Forensic architecture: violence at the threshold of detectability/
 I started writing this note in April of 2024, with the purpose of illustrating
 the basics of how to use open access satellite data to estimate structural
 damage in Gaza, but had trouble finding the focus to finish it. Obtaining
-accurate damage assessments has, in the last 15 months of genocide,
-obviously been impossible, with the occupation having closed Gaza off
-completely to foreign journalists. With some Palestinians now able to return to
-what remains of their homes, we are starting to obtain pictures of the complete
-and utter destruction of entire neighborhoods --- pictures reminiscent of the
-total annihilation caused by American atomic bombs dropped on Japan. The human
-cost is, of course, unspeakable [[cite:&lancet]], [[cite:&airwars]].
+comprehensive damage assessments has been quite difficult, with the occupation
+having closed Gaza off completely to foreign journalists in the last 15 months
+of intensified genocide. With some Palestinians now able to return to what
+remains of their homes, we are starting to obtain pictures of the complete and
+utter destruction of entire neighborhoods --- pictures reminiscent of the total
+annihilation caused by American atomic bombs dropped on Japan. The human cost
+is, of course, unspeakable [[cite:&lancet]], [[cite:&airwars]].
 
 At the time of writing, however, most analyses still rely largely on satellite
 data, which is what we will look at below. High resolution visible-spectrum
@@ -49,6 +52,7 @@ proxy maps like this one by [[https://www.conflict-damage.org/][Van Den Hoek and
 #+ATTR_HTML: :width 400px :alt alt text here
 #+caption: caption here
 [[file:insar-gaza/building_ftprint_damage_3Jul2024.png]]
+
 The methodology behind these maps is described, for
 example, in the paper [[cite:&asi]]. Maps constructed using InSAR are used in the
 media and, to my surprise, surprisingly
@@ -79,9 +83,10 @@ equipped with SAR transmit short bursts of microwave-frequency electromagnetic
 radiation (radar) focused by an antenna into a beam. The beam hits the surface
 of the earth and reflects off, /backscatters/, in various ways, as the image below
 shows.
-#+attr_html: :width 400px :alt alt text here
+#+attr_html: :alt alt text here
 #+caption: caption here
-[[file:insar-gaza/scattering-types.png]]
+[[file:insar-gaza/scattering_types.png]]
+
 The precise way in which the radar scatters is
 highly dependent on a large number of variables: the incidence angle of the
 beam, the difference between the radar wavelength and the size of the objects
@@ -95,6 +100,7 @@ to the phenomenon of "double bounce" pictured above.
 #+attr_html: :width 400px :alt alt text here
 #+caption: caption here
 [[file:insar-gaza/nyc_sar.jpg]]
+
 Clearly, then, SAR imaging produces results quite different than usual
 photography and requires some expertise to interpret. Radar does have its
 benefits though. For one thing, it's useful even at night. Moreover, weather is
@@ -110,6 +116,7 @@ geometry of SAR imaging:
 #+attr_html: :width 400px :alt alt text here
 #+caption: figure 2.1 of the handbook [[cite:&sar-handbook]]
 [[file:insar-gaza/sar_geometry.jpg]]
+
 There's a lot going
 on here, but I just want to focus on a few points. The first is the acronym
 SLAR, Side-Looking Airborne Radar, which is pretty self-explanatory: the radar
@@ -121,6 +128,7 @@ As the image below demonstrates,
 #+attr_html: :width 400px :alt alt text here
 #+caption: https://www.youtube.com/watch?v=Xemo2ZpduHA
 [[file:insar-gaza/down-side-looking.png]]
+
 down-looking radar would
 not be able to distinguish between the equidistant points /a/ and /b/ because the
 backscattered radar would reach the antenna simultaneously.[fn:1]
@@ -132,6 +140,7 @@ distortions:
 #+attr_html: :width 400px :alt alt text here
 #+caption: 2.4 of the handbook [[cite:&sar-handbook]]
 [[file:insar-gaza/sar-distortion.png]]
+
 The first two distortions depicted above are typically corrected for (sometimes
 multiple vantage points of the same can help determine the necessary
 topographical considerations) while the last is often just treated as missing
@@ -215,6 +224,7 @@ $\theta$:
 #+attr_html: :width 400px :alt alt text here
 #+caption: By Peppergrower - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6007495
 [[file:insar-gaza/phase-shift.svg]]
+
 This offset between the waves is known as
 a phase shift. We can imagine the red wave as outbound from the satellite, with
 the positive x-axis pointed towards the earth, and the blue wave the incoming
@@ -240,19 +250,20 @@ following example, from the Sentinel-1 InSAR product guide
 #+attr_html: :width 400px :alt alt text here
 #+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar
 [[file:insar-gaza/phase_diff.png]]
-Here, on the
-satellite's second pass, the scatterer under study has subsided into the ground
-(due to an earthquake, say) and the distance the radar waves travel changes
-slightly, $R_2\neq R_1$. The resulting backscatter measured by the sensor will be
-slightly different in the two cases: the number of total oscillations
-experienced by the radar will be different: $2R_2/\lambda$ instead of $2R_1/\lambda$, for
-$\lambda$ the radar wavelength (the factor of 2 comes from the round-trip transit).
-The corresponding phases will therefore be different: $2R_2/\lambda\mod 2\pi$ versus
-$2R_1/lambda\mod 2\pi$. Comparing these repeat-pass SAR images therefore allows us
-to detect changes in the scatterers, both via changes in amplitude and phase.[fn:9]
-/SAR interferometry/ refers to this general technique of comparing (interfering)
-two or more SAR images taken of the same swath, from the same vantage point, in
-order to extract information.
+
+Here, on the satellite's second pass, the scatterer under study has subsided
+into the ground (due to an earthquake, say) and the distance the radar waves
+travel changes slightly, $R_2\neq R_1$. The resulting backscatter measured by
+the sensor will be slightly different in the two cases: the number of total
+oscillations experienced by the radar will be different: $2R_2/\lambda$ instead
+of $2R_1/\lambda$, for $\lambda$ the radar wavelength (the factor of 2 comes
+from the round-trip transit). The corresponding phases will therefore be
+different: $2R_2/\lambda\mod 2\pi$ versus $2R_1/\lambda\mod 2\pi$. Comparing
+these repeat-pass SAR images therefore allows us to detect changes in the
+scatterers, both via changes in amplitude and phase.[fn:9] /SAR interferometry/
+refers to this general technique of comparing (interfering) two or more SAR
+images taken of the same swath, from the same vantage point, in order to extract
+information.
 
 It follows that the complex number (again: amplitude and phase) associated to a
 given pixel of an InSAR (interferometric SAR) image is sensitively dependent on
@@ -279,7 +290,7 @@ In more detail:
 4. Denote by $R$ the the high-coherence region in the first coherence image
    $\gamma_1$. Compute the percent change in coherence, restricted to $R$:
    \begin{equation*}
-   \Delta=(\gamma_2-\gamma_1)/\gamma_1\bar_R
+   \Delta=\left.(\gamma_2-\gamma_1)/\gamma_1\right|_{R}
    \end{equation*}
    We expect decreases in coherence in the previously high-coherence zones to
    correspond, proportionally, to building damage (see the methods sections of
@@ -305,7 +316,15 @@ under investigation being the Zionist bombardment immediately after October
 restrict our attention to. I free-handed a rectangle around Gaza on Vertex,
 specified in the well-known text (WKT) format by
 #+begin_src python :results none
-wkt_gaza = "POLYGON((34.2173 31.2165,34.595 31.2165,34.595 31.5962,34.2173 31.5962,34.2173 31.2165))"
+wkt_gaza = (
+    "POLYGON(("
+    "34.2173 31.2165,"
+    "34.595 31.2165,"
+    "34.595 31.5962,"
+    "34.2173 31.5962,"
+    "34.2173 31.2165"
+    "))"
+)
 #+end_src
 We'll need this later when we're analyzing the data in Python.
 As outlined above, coherent change detection requires 3 SAR images taken from
@@ -334,6 +353,7 @@ different position ("perpendicular baseline").
 #+attr_html: :width 400px :alt alt text here
 #+caption: https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#perpendicular-baseline
 [[file:insar-gaza/baseline_asf.png]]
+
 Ideally the images would be taken at a
 perpendicular baseline of 0, but we can see =...62AB= (September 11, 2023) and
 =...D1ED= (September 23, 2023) before our October 5th image at perpendicular
@@ -372,7 +392,7 @@ NASA ARSET training, which can be found [[https://github.com/porefluid/arset/blo
 Now that we have our coherence data on disk, we can apply some do some simple
 computations to generate coherence change plots. First let's get paths to our
 data sorted out and load the images into memory.
-#+begin_src python :results nil
+#+begin_src python :results none
 from pathlib import Path
 import re
 
@@ -391,6 +411,8 @@ pattern = re.compile(r"(2023\d{4})T.*(2023\d{4})T")
 for dir in DATA_PATH.iterdir():
     for p in dir.glob("*corr.tif"):
         matches = pattern.search(p.name)
+        if matches is None:
+            continue
         gps = matches.groups()
         data.append({"start_date": min(gps), "end_date": max(gps), "path": p})
 data = pd.DataFrame(data).sort_values(by="start_date").reset_index(drop=True)
@@ -398,10 +420,6 @@ data["start_date"] = pd.to_datetime(data.start_date).dt.date
 data["end_date"] = pd.to_datetime(data.end_date).dt.date
 data["image"] = data["path"].map(lambda p: xr.open_dataset(p, engine="rasterio"))
 #+end_src
-
-#+RESULTS:
-:results:
-:end:
 
 We've singled out the files ending in =...corr.tif=, as these are the
 correlation/coherence raster images (that is, data arranged as a matrix of
@@ -413,7 +431,7 @@ To cut away the rest, we'll grab a shapefile for the Gaza strip (I found one
 shapefile I have is for Palestine more generally, and thus includes the West
 Bank. To restrict to the Gaza strip we can just intersect with the polygon we
 drew in Vertex.
-#+begin_src python
+#+begin_src python :results graphics file output :file insar-gaza/coherence-gaza.png
 vtx_rect = shapely.wkt.loads(wkt_gaza)
 with open(
     DATA_PATH / "palestine-boundaries-data/geoBoundaries-PSE-ADM0_simplified.geojson"
@@ -435,37 +453,11 @@ for i in range(2):
 plt.suptitle("Coherence: Gaza strip")
 im.colorbar.set_label("Coherence")
 plt.tight_layout()
-plt.show()
+plt.savefig("insar-gaza/coherence-gaza.png", dpi=300)
 #+end_src
 
 #+RESULTS:
-:results:
-
-[[file:plots/insar-gaza/plot_20250126_123853_4974318.png]]
-:end:
-
-We see immediately that over the longer time interval, coherence is generally
-lower. This is not surprising: on longer timescales we expect to lose
-correlations with more time for the scene to change. In the interest of
-detecting changes to the built environment, we'll want to only study areas that
-had high coherence pre-event. Let's say we take our lower bound for high
-coherence to be 0.9. How many more pixels are high coherence in the image on the
-right? 
-
-#+begin_src python :results raw drawer
-threshold = 0.9
-print(f"Using high-coherence threshold: {threshold}.")
-for i in range(2):
-    pixels = data.image[i].to_dataframe().band_data.dropna()
-    print(f"Image {i} has {100 * (pixels > threshold).mean():0.2f}% above threshold.")
-#+end_src
-
-#+RESULTS:
-:results:
-Using high-coherence threshold: 0.9.
-Image 0 has 13.84% above threshold.
-Image 1 has 19.83% above threshold.
-:end:
+[[file:insar-gaza/coherence-gaza.png]]
 
 With these numbers in mind, we expect any analysis done with the first image
 will effectively be assuming a smaller built environment than an analysis using
@@ -481,7 +473,7 @@ pre-event coherence for both images. The important point to remember is that
 we're only interested in areas of high coherence pre-event. We also exclude
 areas whose coherence increased: we're operating under the assumption that
 damage decreases coherence.
-#+begin_src python
+#+begin_src python :results graphics file output :file insar-gaza/gaza-coherence-change.png
 aligned = xr.align(data.image[1], data.image[2])
 pre = aligned[0]
 post = aligned[1]
@@ -496,13 +488,11 @@ ax.set_title("Change in coherence: Gaza strip\nOctober 17, 2023")
 im.colorbar.set_label("Coherence change (%)")
 plt.tight_layout()
 plt.savefig("insar-gaza/gaza-coherence-change.png", dpi=300)
-plt.show()
 #+end_src
 
 #+RESULTS:
-:results:
-[[file:plots/insar-gaza/plot_20250126_123936_2976807.png]]
-:end:
+[[file:insar-gaza/gaza-coherence-change.png]]
+
 
 The darker areas here correspond to high-coherence areas that, between October
 5th and October 17th experienced a significant decrease in coherence. That is,
@@ -539,9 +529,105 @@ If you found this note interesting or learned something useful, please consider
 donating to [[https://linktr.ee/thesameerproject][The Sameer Project]] to aid affected Palestinians in Gaza. They're
 doing amazing, vital, on-the-ground diaspora-based aid work in Gaza.
 
+
+* appendix
+
+With the battle in Gaza lost, the Zionist eye now turns back in earnest towards
+the occupied West Bank. Let us take a look at Sentinel-1's images of the Jenin,
+which has recently become the site of heavy Zionist destruction. We'll take the
+dates of January 10th, 2025 to January 22nd, 2025 for our baseline, and February
+3rd, 2025 as our post-event date (I'll be using path 87, frame 104 in what
+follows). We can largely repeat what we did above, so I won't go into the
+details again.
+
+First we load the downloaded processed images.
+#+begin_src python :results none
+# a rough rectangle made in Vertex around Jenin
+wkt_jenin = (
+    "POLYGON(("
+    "35.272 32.4462,"
+    "35.3201 32.4462,"
+    "35.3201 32.4741,"
+    "35.272 32.4741,"
+    "35.272 32.4462"
+    "))"
+)
+# load in the images
+data = []
+pattern = re.compile(r"(2025\d{4})T.*(2025\d{4})T")
+for dir in DATA_PATH.iterdir():
+    for p in dir.glob("*corr.tif"):
+        matches = pattern.search(p.name)
+        if matches is None:
+            continue
+        gps = matches.groups()
+        data.append({"start_date": min(gps), "end_date": max(gps), "path": p})
+data = pd.DataFrame(data).sort_values(by="start_date").reset_index(drop=True)
+data["start_date"] = pd.to_datetime(data.start_date).dt.date
+data["end_date"] = pd.to_datetime(data.end_date).dt.date
+data["image"] = data["path"].map(lambda p: xr.open_dataset(p, engine="rasterio"))
+#+end_src
+
+Next we restrict to Jenin, and make sure we're seeing an image that is
+consistent with a dense urban environment.
+#+begin_src python :results graphics file output :file insar-gaza/coherence-jenin.png
+vtx_rect = shapely.wkt.loads(wkt_jenin)
+with open(
+    DATA_PATH / "palestine-boundaries-data/geoBoundaries-PSE-ADM0_simplified.geojson"
+) as f:
+    wb_geom = shapely.from_geojson(f.read()).intersection(vtx_rect)
+west_bank = gpd.GeoSeries(wb_geom, crs="EPSG:4326").to_crs(data.image[0].rio.crs)
+
+# clip each of our rasters to restrict to Gaza
+data["image"] = data.image.map(lambda r: r.rio.clip(west_bank))
+
+fig, axs = plt.subplots(1, 2, figsize=(8, 4), sharey=True)
+for i in range(2):
+    im = data.image[i].band_data.plot(ax=axs[i], cmap="Greys_r", vmin=0, vmax=1)
+    if i == 0:
+        im.colorbar.remove()
+    axs[i].set_title(f"{data.start_date[i]} to {data.end_date[i]}")
+    axs[i].get_xaxis().set_visible(False)
+    axs[i].get_yaxis().set_visible(False)
+plt.suptitle("Coherence: Jenin, West Bank")
+im.colorbar.set_label("Coherence")
+plt.tight_layout()
+plt.savefig("insar-gaza/coherence-jenin.png", dpi=300)
+#+end_src
+
+#+RESULTS:
+[[file:insar-gaza/coherence-jenin.png]]
+
+As before, we consider the percentage change in coherence of the image on the
+right specifically in the regions of high coherence on the left.
+#+begin_src python :results graphics file output :file insar-gaza/jenin-coherence-change.png
+aligned = xr.align(data.image[0], data.image[1])
+pre = aligned[0]
+post = aligned[1]
+change = (post - pre) / pre
+change = change.where((pre >= 0.9) & (change <= 0))
+fig, ax = plt.subplots(1, 1, figsize=(8, 6), sharey=True)
+im = change.band_data.plot(ax=ax, vmin=-0.15, vmax=0, levels=5, cmap="Reds_r")
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+ax.set_title("Change in coherence: Jenin, West Bank\n February 3, 2025")
+im.colorbar.set_label("Coherence change (%)")
+plt.tight_layout()
+plt.savefig("insar-gaza/jenin-coherence-change.png", dpi=300)
+#+end_src
+
+#+RESULTS:
+[[file:insar-gaza/jenin-coherence-change.png]]
+
+This image suggests significant and widespread damage across Jenin, which is
+consistent with reporting coming out of the area. At the time of writing,
+however, I don't have access to any resources for the purpose of
+cross-referencing so I'll leave it at that.
+
+
 #+html: <hr>
 
-bibliography:/bib/insar-gaza.bib
+bibliography:bib/insar-gaza.bib
 
 * Footnotes
 [fn:11] The Vertex UI is a convenient way to riffle through the SAR images,
@@ -600,7 +686,7 @@ cosmic microwave background radiation [[cite:&ager]].
 subsidiary of the Goodyear tire company that changed hands multiple times and,
 since 1993, has been owned by Lockheed Martin. Lockheed Martin is the world's
 largest weapons manufacturer and is one of the many that is profiting from
-Israel's genocide in Gaza.
+the Zionist genocide in Gaza.
 
 [fn:4] Note: technically speaking, images are called SLAR images until they've been
 processed appropriately, after which they're called SAR images.
