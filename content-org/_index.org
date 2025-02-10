@@ -13,8 +13,8 @@ like learning about and creating new things. Sometimes I write things down and
 put them on my blog.
 
 Recently I've been interested in [[https://scienceforthepeople.org/][political economy]], the climate, and the
-Japanese language. I'm also starting to learn a bit about permacomputing,
-intentionality, and emacs.
+[[https://nilay.ink/kanji-stroke-order/][Japanese]] language. I'm also starting to learn a bit about permacomputing, emacs,
+and lisp.
 
 You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]]. You can find the code for this site
 [[https://github.com/nilaykumar/nilaykumar.github.io][here]].
