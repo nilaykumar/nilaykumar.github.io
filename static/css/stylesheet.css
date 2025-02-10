@@ -284,7 +284,9 @@ code {
 }
 
 /* adapted from http://demo.thi.ng/org-spec/ */
+/* though it seems to be kinda broken? not sure what I did... */
 
+/*
 code:before {
     display: block;
     position: absolute;
@@ -299,7 +301,7 @@ code:before {
 
 code[class^="language-"]:not([data-lang="text"]):before {
     content: '(' attr(data-lang) ')';
-}
+}*/
 
 
 /* adapting the styling for code above to mathematical environments */

@@ -1,23 +1,32 @@
 #+title: README
 #+author: Nilay Kumar
 
+This repository contains the code for my personal website.
+Currently it can be found [[https://nilaykumar.github.io/][here]].
+
 * todo
+
+The website's content is written in org-mode, and exported to markdown via
+=ox-hugo= and then generated as a static site using =hugo=.
+
 - [X] fix styling
 - [X] add bibliography using org-ref
 - [X] fix latex macros (write partial)
 - [X] add date
 - [X] update link to source repo
+- [ ] add updated date or something
+- [ ] formulate a standard for images, keeping them as small as possible
+- [ ] learn the basics of accessibility
 - [ ] figure out why the index.html doesn't render sometimes
-- [ ] add modified date
 - [ ] add tags
-- [ ] figure out whether babel jupyter is necessary
 - [ ] fix weird bibliography spacing on mnist post
 - [ ] section anchors (c.f. https://scripter.co/sidenotes-using-ox-hugo/#code-snippet--sidenote-shortcode)
 - [ ] write up explanation of how things work (for myself, mostly)
 - [ ] learn an epsilon of how licensing works
 - [ ] set up an RSS feed
 - [ ] restrict math loading only to those pages that need it
-- [ ] look into adding back a pdfs page
+- [ ] look into adding back a pdfs page (links to various notes, etc. that
+  people found useful)
 - [ ] export on save? automate deployment? c.f. https://ianhocking.com/prog/posts/githooks/
 - [ ] align the code-lang::before a bit higher
 - [ ] detect dead links -- replace them automatically/manually with links to the

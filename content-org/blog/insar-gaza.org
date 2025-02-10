@@ -6,7 +6,7 @@
 #+title: tracking damage in Gaza using open-access SAR data
 #+author: Nilay Kumar
 #+date: <2024-04-11 Thu>
-#+hugo_publishdate: <2025-02-02 Sun>
+#+hugo_publishdate: <2025-02-10 Mon>
 #+hugo_draft: false
 #+hugo_base_dir: ../..
 #+hugo_section: blog
@@ -21,21 +21,19 @@ representations. In other words, this condition forces us to remember that the
 negative is not only an image representing reality, but that it is itself a
 material thing, simultaneously both representation and presence.
 #+ATTR_HTML: :class attribution
-Weizman, /Forensic architecture: violence at the threshold of detectability/
+Weizman, /Forensic architecture: violence at the threshold of detectability/ [[cite:&weiz]]
 #+end_quote
 
 * introduction
 
-I started writing this note in April of 2024, with the purpose of illustrating
-the basics of how to use open access satellite data to estimate structural
-damage in Gaza, but had trouble finding the focus to finish it. Obtaining
-comprehensive damage assessments has been quite difficult, with the occupation
-having closed Gaza off completely to foreign journalists in the last 15 months
-of intensified genocide. With some Palestinians now able to return to what
-remains of their homes, we are starting to obtain pictures of the complete and
-utter destruction of entire neighborhoods --- pictures reminiscent of the total
-annihilation caused by American atomic bombs dropped on Japan. The human cost
-is, of course, unspeakable [[cite:&lancet]], [[cite:&airwars]].
+Obtaining comprehensive assessments of the damage in Gaza has been quite
+difficult, with the occupation having closed Gaza off completely to foreign
+journalists in the last 15 months of intensified genocide. With some
+Palestinians now able to return to what remains of their homes, we are starting
+to obtain pictures of the complete and utter destruction of entire neighborhoods
+--- pictures reminiscent of the total annihilation caused by American atomic
+bombs dropped on Japan. The human cost is, of course, unspeakable [[cite:&lancet]]
+[[cite:&airwars]].
 
 At the time of writing, however, most analyses still rely largely on satellite
 data, which is what we will look at below. High resolution visible-spectrum
@@ -474,10 +472,12 @@ we're only interested in areas of high coherence pre-event. We also exclude
 areas whose coherence increased: we're operating under the assumption that
 damage decreases coherence.
 #+begin_src python :results graphics file output :file insar-gaza/gaza-coherence-change.png
+# compute percentage change in coherence
 aligned = xr.align(data.image[1], data.image[2])
 pre = aligned[0]
 post = aligned[1]
 change = (post - pre) / pre
+# in areas of high-coherence, where it decreased
 change = change.where((pre >= 0.9) & (change <= 0))
 
 fig, ax = plt.subplots(1, 1, figsize=(8, 6), sharey=True)
@@ -527,7 +527,7 @@ co-opt the master's tools.
 
 If you found this note interesting or learned something useful, please consider
 donating to [[https://linktr.ee/thesameerproject][The Sameer Project]] to aid affected Palestinians in Gaza. They're
-doing amazing, vital, on-the-ground diaspora-based aid work in Gaza.
+doing crucial on-the-ground, diaspora-based aid work in Gaza.
 
 
 * appendix
