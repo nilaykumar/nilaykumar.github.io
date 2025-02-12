@@ -507,7 +507,29 @@ plt.savefig('a-map-of-mathematics/spectral-2d-map.jpg');
 #+RESULTS:
 [[file:a-map-of-mathematics/spectral-2d-map.jpg]]
 
-** TODO is the graph connected?
+There's our first map! Open it up, zoom in, and take a look. It's surprising how
+distinctively triangular the image of the embedding is. The corners of the
+triangle are weighted down by heavily clustered groups of codes: to the north is
+statistics, very much segregated off from everything but probability; to the
+east is algebra, closely intertwined with algebraic geometry, algebraic
+topology, and K-theory; to the west is mechanics of solids and fluids, closely
+bordering partial differential equations and numerical analysis.
+
+The west-to-east axis, then, could reasonably be reasonably interpreted as an
+analysis-to-algebra axis. Appropriately, codes representing differential
+geometry and number theory -- fields that often use both analytic and algebraic
+methods --  lie somewhere in between. The north-to-south axis is more difficult
+to interpret: I am tempted to view it as a combinatorial-structural axis, but
+that doesn't quite fit exactly.
+
+** TODO graph connectivity
+
+#+begin_src python
+print(M[1].astype(bool).all())
+#+end_src
+
+#+RESULTS:
+: True
 
 * laplacian eigenmaps
 * acknowledgements

@@ -3,6 +3,11 @@
 
 #+TITLE: Odds & Ends
 
+@@html:<noscript><span style="color: red;">Please note that this website uses
+JavaScript to render mathematics using MathJax and XyJax. I apologize for the
+inconvenience.</span></noscript>@@
+
+** about
 #+ATTR_HTML: :class pic :alt a picture of nilay, the author of this website
 [[../static/images/nkpic_small.jpg]]
 
@@ -14,11 +19,35 @@ put them on my blog.
 
 Recently I've been interested in [[https://scienceforthepeople.org/][political economy]], the climate, and the
 [[https://nilay.ink/kanji-stroke-order/][Japanese]] language. I'm also starting to learn a bit about permacomputing, emacs,
-and lisp.
+and C.
 
-You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]]. You can find the code for this site
-[[https://github.com/nilaykumar/nilaykumar.github.io][here]].
+You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]].
 
-@@html:<noscript><span style="color: red;">Please note that this website uses
-JavaScript to render mathematics using MathJax and XyJax. I apologize for the
-inconvenience.</span></noscript>@@
+The code for this site can be found on GitHub [[https://github.com/nilaykumar/nilaykumar.github.io][here]].
+
+** mathematical exposition
+- My Ph.D. [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/nilay_kumar_thesis.pdf][thesis]], written under the guidance of Ezra Getzler, concerns a
+  construction of the Batalin-Vilkovisky (BV) Laplacian using the methods of
+  homological perturbation theory. (August 3, 2021)
+- Rough notes on [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/sms.pdf][lectures]] given by various speakers on derived geometry at the Fields
+  Institute. (Summer 2018)
+- Rough notes on Mihnea Popa's [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/complex_geometry.pdf][course]] on complex geometry. (Winter/Spring 2018)
+- Lightning [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/gss_talk.pdf][talk]] on the Atiyah-Singer index theorem. (September 22, 2017)
+- Rough notes from John Francis' course on [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/factorization_homology.pdf][factorization homology]]. (Fall 2017)
+- Notes for a [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/chernweiltheory.pdf][talk]] on Chern-Weil theory in John Francis' Milnor seminar. (April
+  10, 2017)
+- An informal reading group on WKB methods led to this [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/fukayaConjecture.pdf][talk]] on Witten's de Rham
+  approach to Morse theory, and Fukaya's reinterpretation in terms of
+  A-infinity categories. (March 22, 2017)
+- I gave a talk on the symplectic geometry behind [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/symplectic_background.pdf][classical mechanics]] (with an
+  eye towards moment maps and Noether's theorem) for a seminar on the BV
+  formalism, run by Sean Pohorence. (January 10, 2017)
+- In one of the many Kan seminars run by John Francis, I gave a talk sketching
+  [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/bousfield_localization.pdf][Bousfield's construction]] of the localization of spaces with respect to
+  homology equivalences. I seem to have avoided discussing all the hard parts of
+  the construction. I'm not the sharpest tool in the shed. (November 30, 2016)
+- For a seminar on Reshetikin-Turaev invariants, led by Theo Johnson-Freyd, I
+  gave a talk on the [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/gq_cs.pdf][geometric quantization]] of Chern-Simons theory (according to
+  Axelrod, della Pietra, and Witten). (January 13, 2016)
+- I spent a bit of time learning about the basics of symplectic geometry as a
+  first-year graduate student under Eric Zaslow's patient eye and I took some [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/notes_symp.pdf][notes]] in the process. (December 11, 2015)
