@@ -19,3 +19,23 @@ breakdown, perhaps? Or maybe just the need to separate from the thoughtless
 doomscrolling and actually engage critically with the ideas in my head?
 
 This note explores digital gardening in the hopes of developing my own approach.
+
+* what is a digital garden?
+
+** garden vs. stream
+*** bi-directional links
+*** non-hierarchical? tags
+** continuous growth
+** learning in public
+** playful and personal
+** content diversity
+** independent ownership
+
+* my gardening tools
+
+use org-roam because it has backlinks? what else?
+
+i love the idea of planted/last tended
+
+i'm not sold on epistemic status. definitely would like a stage tag though... or
+perhaps a category? draft/inprogress/finished
