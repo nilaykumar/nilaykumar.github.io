@@ -465,7 +465,7 @@ span.tag span {
 
 /* add slashes after each tag */
 span.tag span::after {
-  content: " /";
+  content: " ";
 }
 
 /* but don't add a slash after the last one */

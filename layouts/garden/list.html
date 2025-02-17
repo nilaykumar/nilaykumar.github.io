@@ -1,0 +1,12 @@
+{{ define "main" }}
+  this is the garden page
+  <ul id="garden">
+  {{ range .Pages }}
+      <li>
+        <span class="timestamp">[{{ .Date.Format "2006-01-02 Mon" }}]</span>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ partial "page_tags" . }}
+      </li>
+  {{ end }}
+  </ul>
+{{ end }}

@@ -1,0 +1,21 @@
+#+title: digital gardens
+#+date: <2025-02-17 Mon>
+#+hugo_base_dir: ../..
+#+hugo_section: garden
+#+hugo_tags: meta web
+
+I don't remember exactly when it was that I stumbled upon [[https://gwern.net/][gwern.net]], perhaps
+high school or early college. It's tempting to make the comparison to Alice
+tumbling down a rabbit hole, but my hazy recollection is that I found the
+content less interesting than the shape and form of the website itself. Less of
+a rabbit hole and more of a garden, albeit one somewhat mysterious in its
+monochromatic darkness. To find a hypertext garden in the age of Facebook's
+explosive popularity felt like a breath of fresh air.
+
+Now, many years later, I find myself drawn again to the concept, with an urge to
+start tending to a garden of my own. It's hard to say why... an interest in
+small-scale digital spaces in a time of big tech monopolization and climate
+breakdown, perhaps? Or maybe just the need to separate from the thoughtless
+doomscrolling and actually engage critically with the ideas in my head?
+
+This note explores digital gardening in the hopes of developing my own approach.

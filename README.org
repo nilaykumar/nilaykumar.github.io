@@ -14,6 +14,8 @@ The website's content is written in org-mode, and exported to markdown via
 - [X] fix latex macros (write partial)
 - [X] add date
 - [X] update link to source repo
+- [ ] change page titles
+- [ ] link to raw org mode file
 - [ ] add updated date or something
 - [ ] formulate a standard for images, keeping them as small as possible
 - [ ] learn the basics of accessibility

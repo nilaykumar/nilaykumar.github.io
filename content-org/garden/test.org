@@ -1,0 +1,9 @@
+#+TITLE: test
+#+author: Nilay Kumar
+#+date: <2025-02-16 Sun>
+#+hugo_draft: false
+#+hugo_base_dir: ../..
+#+hugo_section: garden
+#+hugo_tags: test
+
+This is a test file in the garden.

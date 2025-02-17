@@ -10,7 +10,10 @@
     {{ block "header" . }}
     <div id='header'>
       <div id="banner"><a href="{{.Site.Home.Permalink}}">odds &amp; ends</a></div>
-      <div id="nav"><a href="{{.Site.Home.Permalink}}blog">blog</a></div>
+      <div id="nav">
+        <a href="{{.Site.Home.Permalink}}garden">garden</a>
+        <a href="{{.Site.Home.Permalink}}blog">blog</a>
+      </div>
     </div>
     {{ end }}
     {{ block "main" . }}
