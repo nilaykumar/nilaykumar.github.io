@@ -17,7 +17,8 @@ Now, many years later, I find myself drawn again to the concept, with an urge to
 start tending to a garden of my own. It's hard to say why... an interest in
 small-scale digital spaces in a time of big tech monopolization and climate
 breakdown, perhaps? Or maybe just the need to separate from the thoughtless
-doomscrolling and actually engage critically with the ideas in my head?
+doomscrolling and actually engage critically with the ideas in my head? A less
+[[file:alienation.org][alienating]] way to sustain a digital presence?
 
 This note explores digital gardening in the hopes of developing my own approach.
 
@@ -69,7 +70,6 @@ appears to me. Perhaps I'd even prefer an analogy with the weather: foggy (🌫)
 taking shape (🌤) / clear (☼). Understanding changes -- it may clear up for a
 moment, only to be hit by unexpected stormy weather.
 
-
 ** playful and personal
 
 ** ownership and freedom
@@ -86,8 +86,6 @@ Content and history should be accessible to visitors through version control
 software. Care about accessibility (carefully written alt-text, simple
 navigation, good contrast...). Oppose oppression in all forms, e.g. free as in
 Palestine. Garden towards a better future: another world is possible.
-
-
 
 
 * my gardening tools

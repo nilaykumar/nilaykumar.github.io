@@ -2,7 +2,7 @@
 title = "digital gardens"
 author = ["Nilay Kumar"]
 date = 2025-02-17T00:00:00-05:00
-lastmod = 2025-02-18T02:15:24-05:00
+lastmod = 2025-02-18T10:37:00-05:00
 tags = ["meta", "web"]
 draft = false
 progress = "in-progress"
@@ -20,7 +20,8 @@ Now, many years later, I find myself drawn again to the concept, with an urge to
 start tending to a garden of my own. It's hard to say why... an interest in
 small-scale digital spaces in a time of big tech monopolization and climate
 breakdown, perhaps? Or maybe just the need to separate from the thoughtless
-doomscrolling and actually engage critically with the ideas in my head?
+doomscrolling and actually engage critically with the ideas in my head? A less
+[alienating]({{< relref "alienation" >}}) way to sustain a digital presence?
 
 This note explores digital gardening in the hopes of developing my own approach.
 

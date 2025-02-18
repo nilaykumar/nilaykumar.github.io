@@ -509,3 +509,20 @@ div#alltags {
 div#tags a, div#alltags a, div#taglist a {
   text-decoration: none;
 }
+
+div#content.garden a[href]:not(:where(
+  /* exclude hash only links */
+  [href^="#"],
+  /* exclude javascript only links */
+  [href^="javascript:" i],
+  /* exclude relative but not double slash only links */
+  [href^="/"]:not([href^="//"]),
+  /* domains to exclude */
+  [href*="//nilaykumar.github.com"],
+  [href*="//localhost"],
+  /* subdomains to exclude */
+  [href*="//nilaykumar.github.com"],
+  [href*="localhost"],
+))/*:after*/ {
+  text-decoration: underline dotted;
+}

@@ -1,19 +1,15 @@
-#+title: alienation
+#+title: commodity fetishism
 #+date: <2025-02-18 Tue>
 #+hugo_base_dir: ../..
 #+hugo_section: garden
 #+hugo_tags: philosophy marxism
 #+hugo_custom_front_matter: :progress new
 
-* alienation
-** from the product of one's labor
-** in the labor process
-** from species-being
-** from others
+* marx's definition
+
+Marx introduces the notion of commodity fetishism quite early in [[https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S4][Capital]].
 
 * technology
-
-There's a lot to say about alienation due to, with, and from technology.
 
 The material objects underlying the technologies with which we interact present
 themselves as commodities, products of social labor:
@@ -27,3 +23,17 @@ from its being made.
 #+ATTR_HTML: :class attribution
 Sadowski, /The Mechanic and the Luddite/, page 4
 #+end_quote
+
+Sadowski asks here a series of basic questions about the processes that hide
+behind the physical device (for instance, an iPhone), which I think are worth
+thinking about.
+
+** what gets made
+
+** why it's made
+
+** where it's made
+
+** who it's made for
+
+** the consequences

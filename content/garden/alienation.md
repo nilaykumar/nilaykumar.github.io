@@ -7,4 +7,16 @@ draft = false
 progress = "new"
 +++
 
-Here are some notes about Marx's theory of alienation.
+## marx's definitions {#marx-s-definitions}
+
+
+### from the product of one's labor {#from-the-product-of-one-s-labor}
+
+
+### in the labor process {#in-the-labor-process}
+
+
+### from species-being {#from-species-being}
+
+
+### from others {#from-others}
