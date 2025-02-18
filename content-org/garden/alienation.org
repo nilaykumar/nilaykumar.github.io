@@ -1,0 +1,8 @@
+#+title: alienation
+#+date: <2025-02-18 Tue>
+#+hugo_base_dir: ../..
+#+hugo_section: garden
+#+hugo_tags: philosophy marxism
+#+hugo_custom_front_matter: :progress new
+
+Here are some notes about Marx's theory of alienation.

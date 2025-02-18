@@ -124,37 +124,9 @@ img {
 }
 
 
-a {
+a, a:visited, a:hover {
   color: #0031a9;
   // text-decoration: none;
-}
-
-ul#blog a {
-  text-decoration: none;
-}
-
-ul#garden a {
-  text-decoration: none;
-}
-
-a.footnote-ref{
-  text-decoration: none;
-}
-
-a.footnote-backref {
-  text-decoration: none;
-}
-
-a[href^="#citeproc"] {
-  text-decoration: none;
-}
-
-a:visited {
-  color: #0031a9;
-}
-
-a:hover {
-  color: #0031a9;
 }
 
 a:active {
@@ -163,6 +135,10 @@ a:active {
 
 a:focus {
   outline: thin solid;
+}
+
+ul#blog a, ul#garden a, a.footnote-ref, a.footnote-backref, a[href^="#citeproc"] {
+  text-decoration: none;
 }
 
 *::-moz-selection {
@@ -199,37 +175,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
-h4, h5, h6 {
-  font-weight: bold;
-}
-
-h1 {
-  font-size: 1.5em;
-}
+h1 { font-size: 200%; }
+h2 { font-size: 160%; }
+h3 { font-size: 140%; }
+h4 { font-size: 120%; }
+h5 { font-size: 100%; }
+h6 { font-size: 100%; }
 
 div#content h1 {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-h2 {
-  font-size: 1.3em;
-}
-
-h3 {
-  font-size: 1.1em;
-}
-
-h4 {
-  font-size: 1em;
-}
-
-h5 {
-  font-size: 0.9em;
-}
-
-h6 {
-  font-size: 0.8em;
 }
 
 h1::before {
@@ -249,6 +204,16 @@ h3::before {
 
 h4::before {
   content: '**** ';
+  color: #505050;
+}
+
+h5::before {
+  content: '&rarr; ';
+  color: #505050;
+}
+
+h6::before {
+  content: '&rarr; ';
   color: #505050;
 }
 
@@ -518,7 +483,7 @@ mjx-xypic-object {
     color: #282828 !important;
 }
 
-ul#garden div#tags {
+div#tags {
   display: inline;
   /*float: right;*/
   font-size: 12px;
@@ -541,10 +506,6 @@ div#alltags {
   color: #505050;
 }
 
-div#alltags a {
-  text-decoration: none;
-}
-
-div#taglist a {
+div#tags a, div#alltags a, div#taglist a {
   text-decoration: none;
 }

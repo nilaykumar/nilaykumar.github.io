@@ -2,9 +2,10 @@
 title = "digital gardens"
 author = ["Nilay Kumar"]
 date = 2025-02-17T00:00:00-05:00
-lastmod = 2025-02-18T00:16:14-05:00
+lastmod = 2025-02-18T02:15:24-05:00
 tags = ["meta", "web"]
 draft = false
+progress = "in-progress"
 +++
 
 I don't remember exactly when it was that I stumbled upon [gwern.net](https://gwern.net/), perhaps
@@ -98,12 +99,12 @@ Prefer plaintext tools whenever possible. Use Javascript and CSS sparingly. Keep
 images small. Consider principles of [low-tech web design](https://solar.lowtechmagazine.com/about/the-solar-website/).
 
 
-#### freedom (free as in palestine) {#freedom--free-as-in-palestine}
+#### freedom {#freedom}
 
 Content and history should be accessible to visitors through version control
 software. Care about accessibility (carefully written alt-text, simple
-navigation, good contrast...). Garden towards a better future: another world is
-possible.
+navigation, good contrast...). Oppose oppression in all forms, e.g. free as in
+Palestine. Garden towards a better future: another world is possible.
 
 
 ## my gardening tools {#my-gardening-tools}

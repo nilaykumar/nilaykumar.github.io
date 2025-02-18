@@ -3,6 +3,7 @@
     tended {{ .Lastmod.Format "2006-01-02" }}
     /
     planted {{ .Date.Format "2006-01-02" }}
+    /
+    {{ partial "progress" . }}
   </span>
 </div>
-{{ partial "page_tags" . }}

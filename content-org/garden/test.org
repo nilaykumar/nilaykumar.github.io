@@ -4,6 +4,7 @@
 #+hugo_draft: false
 #+hugo_base_dir: ../..
 #+hugo_section: garden
-#+hugo_tags: test meta
+#+hugo_tags: meta
+#+hugo_custom_front_matter: :progress finished
 
 This is a test file in the garden.

@@ -3,6 +3,7 @@
 #+hugo_base_dir: ../..
 #+hugo_section: garden
 #+hugo_tags: meta web
+#+hugo_custom_front_matter: :progress in-progress
 
 I don't remember exactly when it was that I stumbled upon [[https://gwern.net/][gwern.net]], perhaps
 high school or early college. It's tempting to make the comparison to Alice
@@ -80,11 +81,13 @@ Gardening should be possible entirely offline.
 *** past-proofing
 Prefer plaintext tools whenever possible. Use Javascript and CSS sparingly. Keep
 images small. Consider principles of [[https://solar.lowtechmagazine.com/about/the-solar-website/][low-tech web design]].
-*** freedom (free as in palestine)
+*** freedom
 Content and history should be accessible to visitors through version control
 software. Care about accessibility (carefully written alt-text, simple
-navigation, good contrast...). Garden towards a better future: another world is
-possible.
+navigation, good contrast...). Oppose oppression in all forms, e.g. free as in
+Palestine. Garden towards a better future: another world is possible.
+
+
 
 
 * my gardening tools

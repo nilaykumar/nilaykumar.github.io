@@ -1,6 +1,6 @@
 baseURL = 'https://nilaykumar.github.io/'
 languageCode = 'en-us'
-title = 'Odds & Ends'
+title = 'odds & ends'
 
 assetDir = 'static/'
 
@@ -29,6 +29,4 @@ assetDir = 'static/'
     # tabWidth = 4
 
 [taxonomies]
-  category = 'categories'
   tag = 'tags'
-

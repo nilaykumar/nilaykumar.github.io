@@ -2,10 +2,11 @@
   Unstructured thoughts, writings, and notes: a digital garden.
   {{ partial "alltags" . }}
   <ul id="garden">
-  {{ range .Pages }}
+  {{ range .Pages.ByLastmod }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{ partial "dates_and_tags" . }}
+        {{ partial "page_tags" . }}
       </li>
   {{ end }}
   </ul>

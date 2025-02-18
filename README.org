@@ -14,21 +14,23 @@ The website's content is written in org-mode, and exported to markdown via
 - [X] fix latex macros (write partial)
 - [X] add date
 - [X] update link to source repo
-- [ ] add progress/status to garden notes
+- [ ] come up with a real website name
+- [ ] side-note table of contents (see the ox-hugo website for css, etc.)
+- [X] add progress/status to garden notes
 - [ ] fix h4 and beyond (i don't really like the bold)
+- [ ] note summaries?
 - [ ] get rid of custom fonts, stick with defaults
-- [ ] change page titles
+- [X] change page titles
 - [ ] link to raw org mode file
-- [ ] add updated date or something
+- [X] add updated date or something
 - [ ] formulate a standard for images, keeping them as small as possible
 - [ ] learn the basics of accessibility
-- [ ] figure out why the index.html doesn't render sometimes
-- [ ] add tags
+- [X] add tags
 - [ ] fix weird bibliography spacing on mnist post
 - [ ] section anchors (c.f. https://scripter.co/sidenotes-using-ox-hugo/#code-snippet--sidenote-shortcode)
 - [ ] write up explanation of how things work (for myself, mostly)
 - [ ] learn an epsilon of how licensing works
-- [ ] set up an RSS feed
+- [ ] set up an RSS feed (only for the blog)
 - [ ] restrict math loading only to those pages that need it
 - [ ] look into adding back a pdfs page (links to various notes, etc. that
   people found useful)

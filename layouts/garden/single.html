@@ -1,10 +1,15 @@
+{{ define "title" }}
+{{ .Title }} |
+{{ end }}
 {{ define "main" }}
-  <div id="content">
-    <h1>{{ .Title }}</h1>
+  <div id="content" class="garden">
+    <h1>{{ .Title }}</h1> {{ partial "page_tags" . }}
     <div class="date">
       tended {{ .Lastmod.Format "January 02 2006" }}
       /
       planted {{ .Date.Format "January 02 2006" }}
+      /
+      {{ partial "progress" . }} ({{ .Param "progress" }})
     </div>
     {{ .Content }}
   </div>

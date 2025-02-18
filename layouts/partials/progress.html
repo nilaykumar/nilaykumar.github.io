@@ -1,0 +1,7 @@
+{{ if eq (.Param "progress") "new" }}
+上
+{{ else if eq (.Param "progress") "in-progress" }}
+中
+{{ else if eq (.Param "progress") "finished" }}
+下
+{{ end }}
