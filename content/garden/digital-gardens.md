@@ -79,10 +79,30 @@ moment, only to be hit by unexpected stormy weather.
 ### playful and personal {#playful-and-personal}
 
 
-### independent ownership {#independent-ownership}
+### ownership and freedom {#ownership-and-freedom}
 
-100 Rabbits build software along a few simple [rules](https://100r.co/site/philosophy.html), that I find useful for
-myself as well.
+100 Rabbits build software along a few simple [rules](https://100r.co/site/philosophy.html) that I find useful to keep
+in mind for my projects, and are especially relevant to choosing the tooling for
+a digital garden.
+
+
+#### offline first {#offline-first}
+
+Gardening should be possible entirely offline.
+
+
+#### past-proofing {#past-proofing}
+
+Prefer plaintext tools whenever possible. Use Javascript and CSS sparingly. Keep
+images small. Consider principles of [low-tech web design](https://solar.lowtechmagazine.com/about/the-solar-website/).
+
+
+#### freedom (free as in palestine) {#freedom--free-as-in-palestine}
+
+Content and history should be accessible to visitors through version control
+software. Care about accessibility (carefully written alt-text, simple
+navigation, good contrast...). Garden towards a better future: another world is
+possible.
 
 
 ## my gardening tools {#my-gardening-tools}

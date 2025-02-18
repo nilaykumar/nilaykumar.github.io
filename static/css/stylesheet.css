@@ -80,6 +80,10 @@ ul#blog {
   list-style: none;
 }
 
+ul#garden {
+  list-style: none;
+}
+
 div#content ul {
   list-style: circle;
 }
@@ -121,6 +125,10 @@ a {
 }
 
 ul#blog a {
+  text-decoration: none;
+}
+
+ul#garden a {
   text-decoration: none;
 }
 
@@ -501,4 +509,14 @@ mjx-xypic-object {
 
 .MJX-TEX{
     color: #282828 !important;
+}
+
+ul#garden div#tags {
+  display: inline;
+  float: right;
+}
+
+ul#garden div a {
+  color: #282828;
+  text-decoration: none;
 }

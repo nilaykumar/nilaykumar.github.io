@@ -1,8 +1,10 @@
 <!-- taken from https://mertbakir.gitlab.io/hugo/tag-cloud-in-hugo/ -->
 {{ with .Param "tags" }}
+  <div id="tags">
   {{ range $index, $tag := (. | sort) }}
   {{ with $.Site.GetPage (printf "/%s/%s" "tags" $tag) }}
     <a href="{{ .Permalink }}">#{{ $tag | urlize }}</a>
   {{ end }}
   {{ end }}
+  </div>
 {{ end }}
