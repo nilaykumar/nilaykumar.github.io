@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <div id="content">
+    <h1>{{ .Title }}</h1>
+    <div class="date">
+      tended {{ .Lastmod.Format "January 02 2006" }}
+      /
+      planted {{ .Date.Format "January 02 2006" }}
+    </div>
+    {{ .Content }}
+  </div>
+{{ end }}

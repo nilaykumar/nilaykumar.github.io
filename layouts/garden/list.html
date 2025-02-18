@@ -1,13 +1,11 @@
 {{ define "main" }}
   Unstructured thoughts, writings, and notes: a digital garden.
+  {{ partial "alltags" . }}
   <ul id="garden">
   {{ range .Pages }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ partial "page_tags" . }}
-        <div>
-          <span class="timestamp">[{{ .Date.Format "2006-01-02 Mon" }}]</span>
-        </div>
+        {{ partial "dates_and_tags" . }}
       </li>
   {{ end }}
   </ul>

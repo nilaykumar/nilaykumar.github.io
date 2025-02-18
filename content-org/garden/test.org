@@ -4,6 +4,6 @@
 #+hugo_draft: false
 #+hugo_base_dir: ../..
 #+hugo_section: garden
-#+hugo_tags: test
+#+hugo_tags: test meta
 
 This is a test file in the garden.

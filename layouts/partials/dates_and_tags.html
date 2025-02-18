@@ -1,0 +1,8 @@
+<div id="dates">
+  <span class="timestamp">
+    tended {{ .Lastmod.Format "2006-01-02" }}
+    /
+    planted {{ .Date.Format "2006-01-02" }}
+  </span>
+</div>
+{{ partial "page_tags" . }}

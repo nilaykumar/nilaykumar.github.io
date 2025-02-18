@@ -1,0 +1,13 @@
+{{ define "main" }}
+  &rarr; #{{ lower .Title }}
+  {{ partial "alltags" . }}
+  {{ .Content }}
+  <ul id="garden">
+  {{ range .Pages }}
+  <li>
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    {{ partial "dates_and_tags" . }}
+  </li>
+  {{ end }}
+  </ul>
+{{ end }}

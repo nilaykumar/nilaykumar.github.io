@@ -2,6 +2,7 @@
 title = "digital gardens"
 author = ["Nilay Kumar"]
 date = 2025-02-17T00:00:00-05:00
+lastmod = 2025-02-18T00:16:14-05:00
 tags = ["meta", "web"]
 draft = false
 +++
@@ -107,16 +108,10 @@ possible.
 
 ## my gardening tools {#my-gardening-tools}
 
-use org-roam because it has backlinks? what else?
 
-i love the idea of planted/last tended
-
-i'm not sold on epistemic status. definitely would like a stage tag though... or
-perhaps a category? draft/inprogress/finished
-
-
-## backlinks {#backlinks}
+### backlinks {#backlinks}
 
 Here is a resource on using hugo to export org-roam backlinks
 <https://seds.nl/notes/export_org_roam_backlinks_with_gohugo/>
-Actually this might be independent of org-roam?
+Actually this might be independent of org-roam, so we might be able to manually
+add a backlinks section to each note manually, via hugo

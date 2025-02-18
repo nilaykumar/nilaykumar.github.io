@@ -32,13 +32,3 @@ assetDir = 'static/'
   category = 'categories'
   tag = 'tags'
 
-[permalinks]
-  [permalinks.section]
-    blog = '/blog/'
-    garden = '/garden/'
-  #[permalinks.taxonomy]
-    #tags = '/garden/tags/:slug/'
-    #categories = '/garden/categories/:slug/'
-  #[permalinks.term]
-    #tags = '/garden/tags/:slug/'
-    #categories = '/garden/categories/:slug/'

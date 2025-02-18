@@ -1,0 +1,8 @@
+{{ define "main" }}
+  &rarr; all tags
+  <div id="taglist">
+  {{ range .Data.Terms.ByCount }}
+    <a href="{{ .Page.RelPermalink }}">#{{ lower .Page.LinkTitle }}</a><sup>{{ .Count }}</sup>
+  {{ end }}
+  </div>
+{{ end }}

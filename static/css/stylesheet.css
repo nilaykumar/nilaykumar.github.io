@@ -102,6 +102,11 @@ span.timestamp {
   margin-right: 5px;
 }
 
+ul#garden span.timestamp {
+  color: #505050;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
 
 figure.pic>img {
   border: 1px solid #3f6fef;
@@ -228,20 +233,22 @@ h6 {
 }
 
 h1::before {
-  font-size: 80%;
   content: '* ';
   color: #505050;
 }
 
 h2::before {
-  font-size: 80%;
   content: '** ';
   color: #505050;
 }
 
 h3::before {
-  font-size: 80%;
   content: '*** ';
+  color: #505050;
+}
+
+h4::before {
+  content: '**** ';
   color: #505050;
 }
 
@@ -513,10 +520,31 @@ mjx-xypic-object {
 
 ul#garden div#tags {
   display: inline;
+  /*float: right;*/
+  font-size: 12px;
+  color: #505050;
+}
+
+ul#garden div#dates {
+  display: inline;
   float: right;
 }
 
 ul#garden div a {
   color: #282828;
+}
+
+div#alltags {
+  display: inline;
+  float: right;
+  font-size: 12px;
+  color: #505050;
+}
+
+div#alltags a {
+  text-decoration: none;
+}
+
+div#taglist a {
   text-decoration: none;
 }

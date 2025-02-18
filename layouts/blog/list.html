@@ -1,9 +1,9 @@
 {{ define "main" }}
-  Structured thoughts and writings:
+  Structured thoughts and writings: a blog.
   <ul id="blog">
   {{ range .Pages }}
       <li>
-        <span class="timestamp">[{{ .Date.Format "2006-01-02 Mon" }}]</span>
+        <span class="timestamp">[{{ .Date.Format "2006-01-02" }}]</span>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
       </li>
   {{ end }}
