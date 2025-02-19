@@ -1,5 +1,5 @@
 +++
-title = "Odds & Ends"
+title = "odds & ends"
 author = ["Nilay Kumar"]
 draft = false
 +++
@@ -8,27 +8,23 @@ draft = false
 JavaScript to render mathematics using MathJax and XyJax. I apologize for the
 inconvenience.</span></noscript>
 
-
-## about {#about}
-
-{{< figure src="/images/nkpic_small.jpg" alt="a picture of nilay, the author of this website" class="pic" >}}
+{{< figure src="/images/nkpic_small.jpg" alt="a picture of Nilay, the author of this website" class="pic" >}}
 
 Hi! I'm Nilay.
 
 I'm a data scientist and former mathematician with pretty broad interests. I
-like learning about and creating new things. Sometimes I write things down and
-put them on my blog.
+like learning about and creating new things. Sometimes I even write things down.
 
 Recently I've been interested in [political economy](https://scienceforthepeople.org/), the climate, and the
 [Japanese](https://nilay.ink/kanji-stroke-order/) language. I'm also starting to learn a bit about permacomputing, emacs,
 and C.
 
-You can get in touch with me via email [here](mailto:nilaykumar@tutanota.com).
+You can get in touch with me via email [here](mailto:nilaykumar@tutanota.com), and you can find the code for this
+site [GitHub](https://github.com/nilaykumar/nilaykumar.github.io) (though I am looking to move).
 
-The code for this site can be found on GitHub [here](https://github.com/nilaykumar/nilaykumar.github.io).
+<hr/>
 
-
-## mathematical exposition {#mathematical-exposition}
+Below are some math notes and the like that might be of interest:
 
 -   My Ph.D. [thesis](/pdf/nilay_kumar_thesis.pdf), written under the guidance of Ezra Getzler, concerns a
     construction of the Batalin-Vilkovisky (BV) Laplacian using the methods of
@@ -54,4 +50,5 @@ The code for this site can be found on GitHub [here](https://github.com/nilaykum
     gave a talk on the [geometric quantization](/pdf/gq_cs.pdf) of Chern-Simons theory (according to
     Axelrod, della Pietra, and Witten). (January 13, 2016)
 -   I spent a bit of time learning about the basics of symplectic geometry as a
-    first-year graduate student under Eric Zaslow's patient eye and I took some [notes](/pdf/notes_symp.pdf) in the process. (December 11, 2015)
+    first-year graduate student under Eric Zaslow's patient eye and I took some
+    [notes](/pdf/notes_symp.pdf) in the process. (December 11, 2015)

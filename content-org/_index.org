@@ -1,31 +1,29 @@
+#+TITLE: odds & ends
 #+hugo_base_dir: ../
 #+hugo_section: ./
-
-#+TITLE: Odds & Ends
 
 @@html:<noscript><span style="color: red;">Please note that this website uses
 JavaScript to render mathematics using MathJax and XyJax. I apologize for the
 inconvenience.</span></noscript>@@
 
-** about
-#+ATTR_HTML: :class pic :alt a picture of nilay, the author of this website
+#+ATTR_HTML: :class pic :alt a picture of Nilay, the author of this website
 [[../static/images/nkpic_small.jpg]]
 
 Hi! I'm Nilay.
 
 I'm a data scientist and former mathematician with pretty broad interests. I
-like learning about and creating new things. Sometimes I write things down and
-put them on my blog.
+like learning about and creating new things. Sometimes I even write things down.
 
 Recently I've been interested in [[https://scienceforthepeople.org/][political economy]], the climate, and the
 [[https://nilay.ink/kanji-stroke-order/][Japanese]] language. I'm also starting to learn a bit about permacomputing, emacs,
 and C.
 
-You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]].
+You can get in touch with me via email [[mailto:nilaykumar@tutanota.com][here]], and you can find the code for this
+site [[https://github.com/nilaykumar/nilaykumar.github.io][GitHub]] (though I am looking to move).
 
-The code for this site can be found on GitHub [[https://github.com/nilaykumar/nilaykumar.github.io][here]].
+@@html:<hr/>@@
 
-** mathematical exposition
+Below are some math notes and the like that might be of interest:
 - My Ph.D. [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/nilay_kumar_thesis.pdf][thesis]], written under the guidance of Ezra Getzler, concerns a
   construction of the Batalin-Vilkovisky (BV) Laplacian using the methods of
   homological perturbation theory. (August 3, 2021)
@@ -50,4 +48,5 @@ The code for this site can be found on GitHub [[https://github.com/nilaykumar/ni
   gave a talk on the [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/gq_cs.pdf][geometric quantization]] of Chern-Simons theory (according to
   Axelrod, della Pietra, and Witten). (January 13, 2016)
 - I spent a bit of time learning about the basics of symplectic geometry as a
-  first-year graduate student under Eric Zaslow's patient eye and I took some [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/notes_symp.pdf][notes]] in the process. (December 11, 2015)
+  first-year graduate student under Eric Zaslow's patient eye and I took some
+  [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/notes_symp.pdf][notes]] in the process. (December 11, 2015)

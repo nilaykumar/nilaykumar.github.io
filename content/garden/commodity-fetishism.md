@@ -2,6 +2,7 @@
 title = "commodity fetishism"
 author = ["Nilay Kumar"]
 date = 2025-02-18T00:00:00-05:00
+lastmod = 2025-02-19T01:22:31-05:00
 tags = ["philosophy", "marxism"]
 draft = false
 progress = "new"
@@ -48,3 +49,8 @@ thinking about.
 
 
 ### the consequences {#the-consequences}
+
+
+#### alienation {#alienation}
+
+This is here to test out [backlinks]({{< relref "alienation" >}}).

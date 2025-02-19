@@ -4,6 +4,9 @@ title = 'odds & ends'
 
 assetDir = 'static/'
 
+refLinksErrorLevel = 'warning'
+refLinksNotFoundURL = '/404.html'
+
 [params]
   custom_css = ["css/stylesheet.css"]
   math_js = ["js/tex-chtml-full.js", "js/xyjax/xypic.js"]

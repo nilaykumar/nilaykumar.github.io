@@ -523,6 +523,8 @@ div#content.garden a[href]:not(:where(
   /* subdomains to exclude */
   [href*="//nilaykumar.github.com"],
   [href*="localhost"],
-))/*:after*/ {
+)) {
   text-decoration: underline dotted;
 }
+
+div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }

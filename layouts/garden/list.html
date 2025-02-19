@@ -2,7 +2,7 @@
   Unstructured thoughts, writings, and notes: a digital garden.
   {{ partial "alltags" . }}
   <ul id="garden">
-  {{ range .Pages.ByLastmod }}
+  {{ range sort .Pages "Lastmod" "desc" }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{ partial "dates_and_tags" . }}
