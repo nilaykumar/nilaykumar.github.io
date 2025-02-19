@@ -528,3 +528,5 @@ div#content.garden a[href]:not(:where(
 }
 
 div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }
+
+div#tags:before { content: ' '; }

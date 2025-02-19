@@ -15,7 +15,7 @@ The website's content is written in org-mode, and exported to markdown via
 - [X] add date
 - [X] update link to source repo
 - [ ] come up with a real website name
-- [ ] render links to non-existent garden pages (wavy styling?) see the bottom
+- [X] render links to non-existent garden pages (wavy styling?) see the bottom
   of this page: https://gohugo.io/content-management/cross-references/
 - [ ] side-note table of contents (see the ox-hugo website for css, etc.)
 - [X] add progress/status to garden notes
