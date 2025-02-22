@@ -14,6 +14,8 @@ The website's content is written in org-mode, and exported to markdown via
 - [X] fix latex macros (write partial)
 - [X] add date
 - [X] update link to source repo
+- [ ] work on making website responsive
+  - [ ] fix garden list page styling to work on mobile
 - [ ] update images in insar-gaza to match with the new styling
 - [ ] come up with a real website name
 - [X] why is test showing backlinks?

@@ -5,8 +5,8 @@
   {{ range sort .Pages "Lastmod" "desc" }}
       <li>
         <a href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ partial "dates_and_tags" . }}
         {{ partial "page_tags" . }}
+        {{ partial "dates_and_tags" . }}
       </li>
   {{ end }}
   </ul>

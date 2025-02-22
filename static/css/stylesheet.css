@@ -400,8 +400,9 @@ div#tags {
 }
 
 ul#garden div#dates {
-  display: inline;
-  float: right;
+  /* display: inline; */
+  /* float: right; */
+  margin-left: 5%;
 }
 
 ul#garden div a { color: var(--text-color); }
