@@ -1,6 +1,9 @@
 #+TITLE: mnist and the idx file format
 #+author: Nilay Kumar
 #+date: <2022-03-05 Sat>
+#+hugo_base_dir: ../..
+#+hugo_section: blog
+#+hugo_custom_front_matter: :mathjax true
 
 #+csl-style:bib/institute-of-mathematical-statistics.csl
 

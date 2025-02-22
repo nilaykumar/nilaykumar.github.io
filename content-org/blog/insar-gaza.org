@@ -10,6 +10,7 @@
 #+hugo_draft: false
 #+hugo_base_dir: ../..
 #+hugo_section: blog
+#+hugo_custom_front_matter: :mathjax true
 
 #+csl-style:bib/institute-of-mathematical-statistics.csl
 

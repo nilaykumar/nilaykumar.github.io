@@ -2,6 +2,7 @@
 #+hugo_base_dir: ../
 #+hugo_section: ./
 
+
 @@html:<noscript><span style="color: red;">Please note that this website uses
 JavaScript to render mathematics using MathJax and XyJax. I apologize for the
 inconvenience.</span></noscript>@@
@@ -9,7 +10,7 @@ inconvenience.</span></noscript>@@
 #+ATTR_HTML: :class pic :alt a picture of Nilay, the author of this website
 [[../static/images/nkpic_small.jpg]]
 
-Hi! I'm Nilay.
+Hey, I'm Nilay.
 
 I'm a data scientist and former mathematician with pretty broad interests. I
 like learning about and creating new things. Sometimes I even write things down.
@@ -23,10 +24,10 @@ site [[https://github.com/nilaykumar/nilaykumar.github.io][GitHub]] (though I am
 
 @@html:<hr/>@@
 
-Below are some math notes and the like that might be of interest:
-- My Ph.D. [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/nilay_kumar_thesis.pdf][thesis]], written under the guidance of Ezra Getzler, concerns a
-  construction of the Batalin-Vilkovisky (BV) Laplacian using the methods of
-  homological perturbation theory. (August 3, 2021)
+Below are some math notes that might be of interest:
+- My Ph.D. [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/nilay_kumar_thesis.pdf][thesis]] in mathematical physics, written under the guidance of Ezra
+  Getzler, concerns a new construction of the Batalin-Vilkovisky (BV) Laplacian
+  using the methods of homological perturbation theory. (August 3, 2021)
 - Rough notes on [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/sms.pdf][lectures]] given by various speakers on derived geometry at the Fields
   Institute. (Summer 2018)
 - Rough notes on Mihnea Popa's [[file:~/Documents/projects/nilaykumar.github.io/static/pdf/complex_geometry.pdf][course]] on complex geometry. (Winter/Spring 2018)

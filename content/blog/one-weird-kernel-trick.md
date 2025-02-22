@@ -2,7 +2,9 @@
 title = "one weird kernel trick"
 author = ["Nilay Kumar"]
 date = 2022-02-03T00:00:00-05:00
+lastmod = 2025-02-21T23:05:24-05:00
 draft = false
+mathjax = true
 +++
 
 I recently stumbled upon a programming interview question and the first solution
@@ -540,7 +542,8 @@ array([[-1, -1,  0,  0,  0],
 
 That's exactly the matrix that we had constructed earlier. You might notice that
 I've called the function (by force of habit) `differential`. That's just a
-synonym for 'boundary' in the context of homology theories.[^fn:4]
+synonym for 'boundary' in the context of "homology theories", which we'll
+touch on briefly below.[^fn:4]
 
 All that's left now is to compute its nullity. That's easy enough with `scipy`.
 

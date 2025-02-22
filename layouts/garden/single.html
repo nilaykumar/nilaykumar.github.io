@@ -5,11 +5,11 @@
   <div id="content" class="garden">
     <h1>{{ .Title }}</h1> {{ partial "page_tags" . }}
     <div class="date">
+      {{ partial "progress" . }} ({{ .Param "progress" }})
+      /
       tended {{ .Lastmod.Format "January 02 2006" }}
       /
       planted {{ .Date.Format "January 02 2006" }}
-      /
-      {{ partial "progress" . }} ({{ .Param "progress" }})
     </div>
     {{ .Content }}
     {{ partial "backlinks" . }}

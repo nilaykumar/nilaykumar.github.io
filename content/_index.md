@@ -10,7 +10,7 @@ inconvenience.</span></noscript>
 
 {{< figure src="/images/nkpic_small.jpg" alt="a picture of Nilay, the author of this website" class="pic" >}}
 
-Hi! I'm Nilay.
+Hey, I'm Nilay.
 
 I'm a data scientist and former mathematician with pretty broad interests. I
 like learning about and creating new things. Sometimes I even write things down.
@@ -24,11 +24,11 @@ site [GitHub](https://github.com/nilaykumar/nilaykumar.github.io) (though I am l
 
 <hr/>
 
-Below are some math notes and the like that might be of interest:
+Below are some math notes that might be of interest:
 
--   My Ph.D. [thesis](/pdf/nilay_kumar_thesis.pdf), written under the guidance of Ezra Getzler, concerns a
-    construction of the Batalin-Vilkovisky (BV) Laplacian using the methods of
-    homological perturbation theory. (August 3, 2021)
+-   My Ph.D. [thesis](/pdf/nilay_kumar_thesis.pdf) in mathematical physics, written under the guidance of Ezra
+    Getzler, concerns a new construction of the Batalin-Vilkovisky (BV) Laplacian
+    using the methods of homological perturbation theory. (August 3, 2021)
 -   Rough notes on [lectures](/pdf/sms.pdf) given by various speakers on derived geometry at the Fields
     Institute. (Summer 2018)
 -   Rough notes on Mihnea Popa's [course](/pdf/complex_geometry.pdf) on complex geometry. (Winter/Spring 2018)

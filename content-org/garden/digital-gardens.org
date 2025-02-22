@@ -110,6 +110,13 @@ Palestine. Garden towards a better future: another world is possible.
 
 High level overview: org-mode + ox-hugo + hugo.
 
+** colors
+At the moment I'm just using bits and pieces of the [[https://www.gnu.org/software/emacs/manual/html_mono/modus-themes.html][modus-vivendi]] palette -- a
+dark theme with high legibility -- with minor modifications. I'm still learning
+about accessibility, so I thought it'd be best to just start with a set of
+colors that work well together and are high-contrast.
+The same goes for the code [[https://gohugo.io/content-management/syntax-highlighting/][syntax highlighting]].
+
 ** marking external links with css
 I've marked external links with a slightly subtle dotted underline, with
 internal links kept solid. I find this a little less visually distracting that
@@ -133,8 +140,7 @@ div#content.garden a[href]:not(:where(
   text-decoration: underline dotted;
 }
 #+end_src
-Note the exclusion of =localhost= so it works when testing locally via =hugo
-server=.
+Note the exclusion of =localhost= so it works when testing locally via =hugo server=.
 
 ** marking internal links that don't exist
 Here's a broken internal [[file:dne.org][link]]. In my =hugo.toml= I've set broken relative links
@@ -151,4 +157,6 @@ div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }
 
 ** backlinks
 Here is the [[https://seds.nl/notes/export_org_roam_backlinks_with_gohugo/][resource]] I'm following for generating (using hugo) to generate
-backlinks.
+backlinks. One important thing to note is that the backlink detection is a
+simple search for the page filestem. So a =test.org= will have backlinks to
+every page in which the word =test= appears.

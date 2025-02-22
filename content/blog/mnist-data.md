@@ -2,7 +2,9 @@
 title = "mnist and the idx file format"
 author = ["Nilay Kumar"]
 date = 2022-03-05T00:00:00-05:00
+lastmod = 2025-02-21T23:04:57-05:00
 draft = false
+mathjax = true
 +++
 
 Boser, Guyon, and Vapnik (BGV) introduce support vector machines (SVMs) in

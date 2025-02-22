@@ -28,7 +28,8 @@ refLinksNotFoundURL = '/404.html'
     lineNumbersInTable = false
     noClasses = true
     noHl = false
-    style = 'modus-operandi'
+    style = 'modus-vivendi'
+    #style = 'catppuccin-frappe'
     # tabWidth = 4
 
 [taxonomies]

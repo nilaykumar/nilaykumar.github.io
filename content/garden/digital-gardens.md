@@ -2,7 +2,7 @@
 title = "digital gardens"
 author = ["Nilay Kumar"]
 date = 2025-02-17T00:00:00-05:00
-lastmod = 2025-02-19T01:24:20-05:00
+lastmod = 2025-02-22T00:45:19-05:00
 tags = ["meta", "web"]
 draft = false
 progress = "in-progress"
@@ -133,6 +133,15 @@ Palestine. Garden towards a better future: another world is possible.
 High level overview: org-mode + ox-hugo + hugo.
 
 
+### colors {#colors}
+
+At the moment I'm just using bits and pieces of the [modus-vivendi](https://www.gnu.org/software/emacs/manual/html_mono/modus-themes.html) palette -- a
+dark theme with high legibility -- with minor modifications. I'm still learning
+about accessibility, so I thought it'd be best to just start with a set of
+colors that work well together and are high-contrast.
+The same goes for the code [syntax highlighting](https://gohugo.io/content-management/syntax-highlighting/).
+
+
 ### marking external links with css {#marking-external-links-with-css}
 
 I've marked external links with a slightly subtle dotted underline, with
@@ -159,8 +168,7 @@ div#content.garden a[href]:not(:where(
 }
 ```
 
-Note the exclusion of `localhost` so it works when testing locally via `hugo
-server`.
+Note the exclusion of `localhost` so it works when testing locally via `hugo server`.
 
 
 ### marking internal links that don't exist {#marking-internal-links-that-don-t-exist}
@@ -184,4 +192,6 @@ div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }
 ### backlinks {#backlinks}
 
 Here is the [resource](https://seds.nl/notes/export_org_roam_backlinks_with_gohugo/) I'm following for generating (using hugo) to generate
-backlinks.
+backlinks. One important thing to note is that the backlink detection is a
+simple search for the page filestem. So a `test.org` will have backlinks to
+every page in which the word `test` appears.

@@ -5,10 +5,10 @@
   <div id="content" class="blog">
     <h1>{{ .Title }}</h1>
     <div class="date">
-      ({{ .Date.Format "January 02 2006" }}
+      {{ .Date.Format "January 02 2006" }}
       {{- if not (eq .PublishDate .Date) -}}
       &nbsp;&rarr;&nbsp; {{ .PublishDate.Format "January 02 2006" }}
-      {{- end -}})
+      {{- end -}}
     </div>
     {{ .Content }}
   </div>

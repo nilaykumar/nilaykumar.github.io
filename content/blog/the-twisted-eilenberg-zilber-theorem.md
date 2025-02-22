@@ -2,7 +2,10 @@
 title = "the twisted eilenberg zilber theorem"
 author = ["Nilay Kumar"]
 date = 2021-08-13T00:00:00-04:00
+lastmod = 2025-02-21T22:57:36-05:00
 draft = false
+mathjax = true
+xypic = true
 +++
 
 Recently I was curious about the origins and initial applications of the

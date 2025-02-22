@@ -3,7 +3,9 @@ title = "tracking damage in Gaza using open-access SAR data"
 author = ["Nilay Kumar"]
 date = 2024-04-11T00:00:00-04:00
 publishDate = 2025-02-10T00:00:00-05:00
+lastmod = 2025-02-21T23:07:07-05:00
 draft = false
+mathjax = true
 +++
 
 > At the threshold of detectability, both the surface of the negative and that of
@@ -518,7 +520,7 @@ difficult to conceptualize the technical as liberatory.
 
 For those of us scientists or technical workers in the imperial core, we must
 devote ourselves to understanding the technologies that [our](https://scienceforthepeople.org/2024/03/27/science-magazines-editorial-bias-against-palestinians/) [fields](https://archive.scienceforthepeople.org/vol-2/v2n4/history-aaas/) use to
-sustain and exacerbate modern conditions of oppression, wherever possible,
+sustain and exacerbate modern conditions of oppression, and wherever possible,
 co-opt the master's tools.
 
 If you found this note interesting or learned something useful, please consider
