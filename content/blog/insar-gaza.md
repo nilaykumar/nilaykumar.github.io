@@ -3,7 +3,7 @@ title = "tracking damage in Gaza using open-access SAR data"
 author = ["Nilay Kumar"]
 date = 2024-04-11T00:00:00-04:00
 publishDate = 2025-02-10T00:00:00-05:00
-lastmod = 2025-02-22T19:18:29-05:00
+lastmod = 2025-02-22T19:51:42-05:00
 draft = false
 mathjax = true
 +++
