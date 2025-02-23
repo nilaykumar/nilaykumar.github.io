@@ -3,7 +3,7 @@ title = "tracking damage in Gaza using open-access SAR data"
 author = ["Nilay Kumar"]
 date = 2024-04-11T00:00:00-04:00
 publishDate = 2025-02-10T00:00:00-05:00
-lastmod = 2025-02-21T23:07:07-05:00
+lastmod = 2025-02-22T19:18:29-05:00
 draft = false
 mathjax = true
 +++
@@ -45,7 +45,7 @@ destruction of Palestine is the destruction of the Earth [<a href="#citeproc_bib
 InSAR, when combined with building footprint data, can be used to create damage
 proxy maps like this one by [Van Den Hoek and Scher](https://www.conflict-damage.org/):
 
-{{< figure src="/ox-hugo/building_ftprint_damage_3Jul2024.png" alt="a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024" caption="<span class=\"figure-number\">Figure 1: </span>This damage map was constructed by the [Decentralized Damage Mapping Group](https://www.conflict-damage.org/) using Sentinel-1 radar imagery, together with various sources of building footprint data." >}}
+{{< figure src="/ox-hugo/building_ftprint_damage.jpg" alt="a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024" caption="<span class=\"figure-number\">Figure 1: </span>This damage map was constructed by the [Decentralized Damage Mapping Group](https://www.conflict-damage.org/) using Sentinel-1 radar imagery, together with various sources of building footprint data." width="40%" >}}
 
 The methodology behind these maps is described, for
 example, in the paper [<a href="#citeproc_bib_item_5">5</a>]. Maps constructed using InSAR are used in the
@@ -129,7 +129,7 @@ idiosyncracies. Similar to how we lose some depth perception when taking a photo
 from directly from above, side-looking can introduce its own geometric
 distortions:
 
-{{< figure src="/ox-hugo/sar-distortion.png" alt="Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow" caption="<span class=\"figure-number\">Figure 6: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
+{{< figure src="/ox-hugo/sar-distortion-small.png" alt="Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow" caption="<span class=\"figure-number\">Figure 6: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
 
 The first two distortions depicted above are typically corrected for (sometimes
 multiple vantage points of the same can help determine the necessary

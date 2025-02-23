@@ -129,6 +129,7 @@ figure.pic>img {
 img {
   width: 90%;
   border: 1px solid var(--link-color-alt);
+  background-color: var(--text-color);
 }
 
 

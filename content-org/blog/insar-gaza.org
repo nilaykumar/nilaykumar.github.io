@@ -49,8 +49,9 @@ destruction of Palestine is the destruction of the Earth [[cite:&malm]].
 InSAR, when combined with building footprint data, can be used to create damage
 proxy maps like this one by [[https://www.conflict-damage.org/][Van Den Hoek and Scher]]:
 #+ATTR_HTML: :alt a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024
+#+ATTR_HTML: :width 40%
 #+caption: This damage map was constructed by the [[https://www.conflict-damage.org/][Decentralized Damage Mapping Group]] using Sentinel-1 radar imagery, together with various sources of building footprint data.
-[[file:insar-gaza/building_ftprint_damage_3Jul2024.png]]
+[[file:insar-gaza/building_ftprint_damage.jpg]]
 
 The methodology behind these maps is described, for
 example, in the paper [[cite:&asi]]. Maps constructed using InSAR are used in the
@@ -138,7 +139,7 @@ from directly from above, side-looking can introduce its own geometric
 distortions:
 #+attr_html: :alt Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow
 #+caption: Taken from Chapter 2 of the [[https://ntrs.nasa.gov/citations/20190002563][SAR handbook]].
-[[file:insar-gaza/sar-distortion.png]]
+[[file:insar-gaza/sar-distortion-small.png]]
 
 The first two distortions depicted above are typically corrected for (sometimes
 multiple vantage points of the same can help determine the necessary

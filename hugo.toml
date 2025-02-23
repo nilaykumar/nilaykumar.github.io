@@ -9,7 +9,8 @@ refLinksNotFoundURL = '/404.html'
 
 [params]
   custom_css = ["css/stylesheet.css"]
-  math_js = ["js/tex-chtml-full.js", "js/xyjax/xypic.js"]
+  math_js = ["js/tex-chtml-full.js"]
+  xy_js = ["js/xyjax/xypic.js"]
   xypic_path = 'js/xyjax'
 
 [markup.goldmark.renderer]

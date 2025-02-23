@@ -19,3 +19,8 @@
     <script type="text/javascript" src="{{ . | absURL }}"></script>
   {{- end }}
 {{- end }}
+{{ if .Page.Params.xypic -}}
+  {{ range .Site.Params.xy_js -}}
+    <script type="text/javascript" src="{{ . | absURL }}"></script>
+  {{- end }}
+{{- end }}
