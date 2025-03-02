@@ -154,6 +154,22 @@ and then styled links to the 404 page with a wavy underline:
 #+begin_src css
 div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }
 #+end_src
+The wavy underline doesn't seem to work on my phone, so it makes sense to give
+it a distinct color as well.
+
+** keeping image sizes low
+I'm trying to get better with keeping my file sizes low. This makes page loads
+faster and keeps the size of the git repo down. I can never remember how to use
+=find=, so here's what I ran to find my big images:
+#+begin_src sh
+fd --regex ".*\.(jpeg|jpg|png|svg)" content-org -x du -h | sort -r
+#+end_src
+When necessary, I use =imagemagick= to convert to jpeg and decrease the quality
+to taste.
+
+Actually, the way I currently store images is not ideal because the git
+repository ends up containing two copies of each image. Currently working on
+straightening this out.
 
 ** backlinks
 Here is the [[https://seds.nl/notes/export_org_roam_backlinks_with_gohugo/][resource]] I'm following for generating (using hugo) to generate

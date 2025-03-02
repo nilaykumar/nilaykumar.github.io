@@ -9,41 +9,47 @@ Currently it can be found [[https://nilaykumar.github.io/][here]].
 The website's content is written in org-mode, and exported to markdown via
 =ox-hugo= and then generated as a static site using =hugo=.
 
-- [X] fix styling
-- [X] add bibliography using org-ref
-- [X] fix latex macros (write partial)
-- [X] add date
-- [X] update link to source repo
-- [ ] work on making website responsive
-  - [ ] fix garden list page styling to work on mobile
-- [ ] update images in insar-gaza to match with the new styling
+- [ ] figure out how to cleanly deal with image duplication: store images only
+  in the static directory, and reference there from org?
 - [ ] come up with a real website name
-- [X] why is test showing backlinks?
 - [ ] change blog post property commands to property drawers at the top
-- [ ] tag links showing as external on garden singles
-- [X] render links to non-existent garden pages (wavy styling?) see the bottom
   of this page: https://gohugo.io/content-management/cross-references/
 - [ ] side-note table of contents (see the ox-hugo website for css, etc.)
-- [X] add progress/status to garden notes
 - [ ] fix h4 and beyond (i don't really like the bold)
 - [ ] note summaries?
-- [X] get rid of custom fonts, stick with defaults
-- [X] change page titles
 - [ ] link to raw org mode file
-- [X] add updated date or something
 - [ ] formulate a standard for images, keeping them as small as possible
 - [ ] learn the basics of accessibility
-- [X] add tags
 - [ ] fix weird bibliography spacing on mnist post
 - [ ] section anchors (c.f. https://scripter.co/sidenotes-using-ox-hugo/#code-snippet--sidenote-shortcode)
 - [ ] write up explanation of how things work (for myself, mostly)
 - [ ] learn an epsilon of how licensing works
 - [ ] set up an RSS feed (only for the blog)
-- [ ] restrict math loading only to those pages that need it
 - [ ] look into adding back a pdfs page (links to various notes, etc. that
-  people found useful)
+  people found useful). it's a bit out of place on the landing page
 - [ ] export on save? automate deployment? c.f. https://ianhocking.com/prog/posts/githooks/
-- [X] align the code-lang::before a bit higher (removed entirely)
 - [ ] detect dead links -- replace them automatically/manually with links to the
   internet archive (is there a tool to do this regularly and notify me?)
 - [ ] move index pic into org dir and let ox-hugo move it
+- [ ] remove unused/unnecessary css
+
+** done
+
+- [X] add progress/status to garden notes
+- [X] tag links showing as external on garden singles
+- [X] render links to non-existent garden pages (wavy styling?) see the bottom
+- [X] get rid of custom fonts, stick with defaults
+- [X] change page titles
+- [X] add updated date or something
+- [X] add tags
+- [X] why is test showing backlinks?
+- [X] restrict math loading only to those pages that need it
+- [X] align the code-lang::before a bit higher (removed entirely)
+- [X] fix styling
+- [X] add bibliography using org-ref
+- [X] fix latex macros (write partial)
+- [X] add date
+- [X] update link to source repo
+- [X] work on making website responsive
+  - [X] fix garden list page styling to work on mobile
+- [X] update images in insar-gaza to match with the new styling

@@ -2,7 +2,7 @@
 title = "digital gardens"
 author = ["Nilay Kumar"]
 date = 2025-02-17T00:00:00-05:00
-lastmod = 2025-02-22T00:45:19-05:00
+lastmod = 2025-02-25T00:49:03-05:00
 tags = ["meta", "web"]
 draft = false
 progress = "in-progress"
@@ -187,6 +187,27 @@ and then styled links to the 404 page with a wavy underline:
 ```css
 div#content.garden a[href^="/404.html"] { text-decoration: underline wavy; }
 ```
+
+The wavy underline doesn't seem to work on my phone, so it makes sense to give
+it a distinct color as well.
+
+
+### keeping image sizes low {#keeping-image-sizes-low}
+
+I'm trying to get better with keeping my file sizes low. This makes page loads
+faster and keeps the size of the git repo down. I can never remember how to use
+`find`, so here's what I ran to find my big images:
+
+```sh
+fd --regex ".*\.(jpeg|jpg|png|svg)" content-org -x du -h | sort -r
+```
+
+When necessary, I use `imagemagick` to convert to jpeg and decrease the quality
+to taste.
+
+Actually, the way I currently store images is not ideal because the git
+repository ends up containing two copies of each image. Currently working on
+straightening this out.
 
 
 ### backlinks {#backlinks}

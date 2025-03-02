@@ -3,7 +3,7 @@ title = "tracking damage in Gaza using open-access SAR data"
 author = ["Nilay Kumar"]
 date = 2024-04-11T00:00:00-04:00
 publishDate = 2025-02-10T00:00:00-05:00
-lastmod = 2025-02-22T19:51:42-05:00
+lastmod = 2025-03-01T19:33:34-05:00
 draft = false
 mathjax = true
 +++
@@ -45,7 +45,7 @@ destruction of Palestine is the destruction of the Earth [<a href="#citeproc_bib
 InSAR, when combined with building footprint data, can be used to create damage
 proxy maps like this one by [Van Den Hoek and Scher](https://www.conflict-damage.org/):
 
-{{< figure src="/ox-hugo/building_ftprint_damage.jpg" alt="a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024" caption="<span class=\"figure-number\">Figure 1: </span>This damage map was constructed by the [Decentralized Damage Mapping Group](https://www.conflict-damage.org/) using Sentinel-1 radar imagery, together with various sources of building footprint data." width="40%" >}}
+{{< figure src="/images/insar-gaza/building_ftprint_damage.jpg" alt="a schematic map of the Gaza strip showing that 59% of buildings in the Gaza strip were likely damaged or destroyed by July 3, 2024" caption="<span class=\"figure-number\">Figure 1: </span>This damage map was constructed by the [Decentralized Damage Mapping Group](https://www.conflict-damage.org/) using Sentinel-1 radar imagery, together with various sources of building footprint data." width="40%" >}}
 
 The methodology behind these maps is described, for
 example, in the paper [<a href="#citeproc_bib_item_5">5</a>]. Maps constructed using InSAR are used in the
@@ -79,7 +79,7 @@ radiation (radar) focused by an antenna into a beam. The beam hits the surface
 of the earth and reflects off, _backscatters_, in various ways, as the image below
 shows.
 
-{{< figure src="/ox-hugo/scattering_types.png" alt="Diagram depicting how radar scatters off rough surfaces incoherently, while backscatter from building tends to return more backscatter back towards the antenna" caption="<span class=\"figure-number\">Figure 2: </span>Radar backscatter is sensitively dependent on a number of different variables, but for urban landscapes, these patterns are good to keep in mind." >}}
+{{< figure src="/images/insar-gaza/scattering_types.png" alt="Diagram depicting how radar scatters off rough surfaces incoherently, while backscatter from building tends to return more backscatter back towards the antenna" caption="<span class=\"figure-number\">Figure 2: </span>Radar backscatter is sensitively dependent on a number of different variables, but for urban landscapes, these patterns are good to keep in mind." >}}
 
 The precise way in which the radar scatters is
 highly dependent on a large number of variables: the incidence angle of the
@@ -92,7 +92,7 @@ satellite. An area with smooth surfaces perpendicular to the smooth ground (e.g.
 buildings in an urban environment) on the other hand are often very bright due
 to the phenomenon of "double bounce" pictured above.
 
-{{< figure src="/ox-hugo/nyc_sar.jpg" alt="A true color satellite image of New York City, juxtaposed against a SAR image of the exact same region" caption="<span class=\"figure-number\">Figure 3: </span>Even though the SAR image is not capturing visible light, the result is still recognizable due to the consistent backscatter patterns." >}}
+{{< figure src="/images/insar-gaza/nyc_sar.jpg" alt="A true color satellite image of New York City, juxtaposed against a SAR image of the exact same region" caption="<span class=\"figure-number\">Figure 3: </span>Even though the SAR image is not capturing visible light, the result is still recognizable due to the consistent backscatter patterns." >}}
 
 Clearly, then, SAR imaging produces results quite different than usual
 photography and requires some expertise to interpret. Radar does have its
@@ -107,7 +107,7 @@ So much for the R in SAR, but what does the descriptor "synthetic aperture"
 mean? Actually, before we tackle this question, let's take a look at the
 geometry of SAR imaging:
 
-{{< figure src="/ox-hugo/sar_geometry.jpg" alt="A diagram of a plane flying over a flat surface, with the geometric angles and lengths relevant for radar image processing labeled" caption="<span class=\"figure-number\">Figure 4: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
+{{< figure src="/images/insar-gaza/sar_geometry.jpg" alt="A diagram of a plane flying over a flat surface, with the geometric angles and lengths relevant for radar image processing labeled" caption="<span class=\"figure-number\">Figure 4: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
 
 There's a lot going
 on here, but I just want to focus on a few points. The first is the acronym
@@ -118,7 +118,7 @@ direction_). Side-looking is necessary for imaging because radar measures
 distance to a target based on the time of arrival.
 As the image below demonstrates,
 
-{{< figure src="/ox-hugo/down-side-looking.png" alt="Diagram demonstrating that a plane equipped with a radar cannot distinguish backscatter from objects to its left from backscatter from objects equidistant on the right. The plane only looking to its right, however, does not suffer this problem." caption="<span class=\"figure-number\">Figure 5: </span>From a NASA ARSET [training](https://www.youtube.com/watch?v=Xemo2ZpduHA)" >}}
+{{< figure src="/images/insar-gaza/down-side-looking.png" alt="Diagram demonstrating that a plane equipped with a radar cannot distinguish backscatter from objects to its left from backscatter from objects equidistant on the right. The plane only looking to its right, however, does not suffer this problem." caption="<span class=\"figure-number\">Figure 5: </span>From a NASA ARSET [training](https://www.youtube.com/watch?v=Xemo2ZpduHA)" >}}
 
 down-looking radar would
 not be able to distinguish between the equidistant points _a_ and _b_ because the
@@ -129,7 +129,7 @@ idiosyncracies. Similar to how we lose some depth perception when taking a photo
 from directly from above, side-looking can introduce its own geometric
 distortions:
 
-{{< figure src="/ox-hugo/sar-distortion-small.png" alt="Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow" caption="<span class=\"figure-number\">Figure 6: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
+{{< figure src="/images/insar-gaza/sar-distortion-small.png" alt="Diagram demonstrating three types of distortion common to SAR imaging: foreshortening, layover, and shadow" caption="<span class=\"figure-number\">Figure 6: </span>Taken from Chapter 2 of the [SAR handbook](https://ntrs.nasa.gov/citations/20190002563)." >}}
 
 The first two distortions depicted above are typically corrected for (sometimes
 multiple vantage points of the same can help determine the necessary
@@ -214,7 +214,7 @@ Gaza, so it's worth understanding the basic underlying ideas.
 Consider a sinusoid (in 1-dimension for simplicity) together with its shift by
 \\(\theta\\):
 
-{{< figure src="/ox-hugo/phase-shift.svg" alt="Diagram depicting two sinusoids, one a phase shift of the other" caption="<span class=\"figure-number\">Figure 7: </span>From [Wikipedia](https://commons.wikimedia.org/w/index.php?curid=6007495)" >}}
+{{< figure src="/images/insar-gaza/phase-shift.svg" alt="Diagram depicting two sinusoids, one a phase shift of the other" caption="<span class=\"figure-number\">Figure 7: </span>From [Wikipedia](https://commons.wikimedia.org/w/index.php?curid=6007495)" >}}
 
 This offset between the waves is known as
 a phase shift. We can imagine the red wave as outbound from the satellite, with
@@ -238,7 +238,7 @@ guidelines:
 To understand the role of the phase difference more concretely, consider the
 following example, from the Sentinel-1 InSAR product guide
 
-{{< figure src="/ox-hugo/phase_diff.png" alt="Diagram demonstrating how the distance (and thus radar phase) between the satellite and ground target (here, a house) changes as the ground under the house subsides" caption="<span class=\"figure-number\">Figure 8: </span>From the [InSAR product guide](https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar)" >}}
+{{< figure src="/images/insar-gaza/phase_diff.png" alt="Diagram demonstrating how the distance (and thus radar phase) between the satellite and ground target (here, a house) changes as the ground under the house subsides" caption="<span class=\"figure-number\">Figure 8: </span>From the [InSAR product guide](https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar)" >}}
 
 Here, on the satellite's second pass, the scatterer under study has subsided
 into the ground (due to an earthquake, say) and the distance the radar waves
@@ -346,7 +346,7 @@ images as points on a scatterplot. This plot is showing us that these images
 were taken not only at a different time than our baseline image, but also at a
 different position ("perpendicular baseline").
 
-{{< figure src="/ox-hugo/baseline_asf.png" alt="Diagram demonstrating how a slightly different satellite position can lead to different distances and thus phases in the resulting SAR images" caption="<span class=\"figure-number\">Figure 9: </span>From the [InSAR product guide](https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar)" >}}
+{{< figure src="/images/insar-gaza/baseline_asf.png" alt="Diagram demonstrating how a slightly different satellite position can lead to different distances and thus phases in the resulting SAR images" caption="<span class=\"figure-number\">Figure 9: </span>From the [InSAR product guide](https://hyp3-docs.asf.alaska.edu/guides/insar_product_guide/#brief-overview-of-insar)" >}}
 
 Ideally the images would be taken at a
 perpendicular baseline of 0, but we can see `...62AB` (September 11, 2023) and
@@ -450,10 +450,10 @@ for i in range(2):
 plt.suptitle("Coherence: Gaza strip")
 im.colorbar.set_label("Coherence")
 plt.tight_layout()
-plt.savefig("insar-gaza/coherence-gaza.png", dpi=300)
+plt.savefig("../../static/images/insar-gaza/coherence-gaza.png", dpi=300)
 ```
 
-{{< figure src="/ox-hugo/coherence-gaza.png" >}}
+{{< figure src="/images/insar-gaza/coherence-gaza.png" >}}
 
 With these numbers in mind, we expect any analysis done with the first image
 will effectively be assuming a smaller built environment than an analysis using
@@ -486,10 +486,10 @@ ax.get_yaxis().set_visible(False)
 ax.set_title("Change in coherence: Gaza strip\nOctober 17, 2023")
 im.colorbar.set_label("Coherence change (%)")
 plt.tight_layout()
-plt.savefig("insar-gaza/gaza-coherence-change.png", dpi=300)
+plt.savefig("../../static/images/insar-gaza/gaza-coherence-change.png", dpi=300)
 ```
 
-{{< figure src="/ox-hugo/gaza-coherence-change.png" >}}
+{{< figure src="/images/insar-gaza/gaza-coherence-change.png" >}}
 
 The darker areas here correspond to high-coherence areas that, between October
 5th and October 17th experienced a significant decrease in coherence. That is,
@@ -592,10 +592,10 @@ for i in range(2):
 plt.suptitle("Coherence: Jenin, West Bank")
 im.colorbar.set_label("Coherence")
 plt.tight_layout()
-plt.savefig("insar-gaza/coherence-jenin.png", dpi=300)
+plt.savefig("../../static/images/insar-gaza/coherence-jenin.png", dpi=300)
 ```
 
-{{< figure src="/ox-hugo/coherence-jenin.png" >}}
+{{< figure src="/images/insar-gaza/coherence-jenin.png" >}}
 
 As before, we consider the percentage change in coherence of the image on the
 right specifically in the regions of high coherence on the left.
@@ -613,10 +613,10 @@ ax.get_yaxis().set_visible(False)
 ax.set_title("Change in coherence: Jenin, West Bank\n February 3, 2025")
 im.colorbar.set_label("Coherence change (%)")
 plt.tight_layout()
-plt.savefig("insar-gaza/jenin-coherence-change.png", dpi=300)
+plt.savefig("../../static/images/insar-gaza/jenin-coherence-change.png", dpi=300)
 ```
 
-{{< figure src="/ox-hugo/jenin-coherence-change.png" >}}
+{{< figure src="/images/insar-gaza/jenin-coherence-change.png" >}}
 
 This image suggests significant and widespread damage across Jenin, which is
 consistent with reporting coming out of the area. At the time of writing,
