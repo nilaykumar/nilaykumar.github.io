@@ -4,7 +4,7 @@
 This repository contains the code for my personal website.
 Currently it can be found [[https://nilaykumar.github.io/][here]].
 
-* todo
+* website todo
 
 The website's content is written in org-mode, and exported to markdown via
 =ox-hugo= and then generated as a static site using =hugo=.

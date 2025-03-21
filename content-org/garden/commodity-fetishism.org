@@ -7,7 +7,10 @@
 
 * marx's definition
 
-Marx introduces the notion of commodity fetishism quite early in [[https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S4][Capital]].
+Marx introduces the notion of commodity fetishism quite early in [[https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm#S4][Capital]]. Recall
+first that the term "fetish" here refers generally to "the attribution of
+inherent non-material value, or powers, to an object" ([[https://en.wikipedia.org/wiki/Fetishism][Wikipedia]]). This is a
+broad definition, but let's take a look at chapter 1, section 4 of /Capital/:
 
 * technology
 
