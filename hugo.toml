@@ -35,3 +35,7 @@ refLinksNotFoundURL = '/404.html'
 
 [taxonomies]
   tag = 'tags'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
