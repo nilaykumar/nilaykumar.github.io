@@ -417,6 +417,15 @@ div#alltags {
 
 div#tags a, div#alltags a, div#taglist a { text-decoration: none; }
 
+div#content.garden .ox-hugo-toc .heading {
+    display: none;
+}
+
+div#content.garden .ox-hugo-toc ul {
+    padding: 0;
+    list-style: none;
+}
+
 div#content.garden a[href]:not(:where(
   /* exclude hash only links */
   [href^="#"],
