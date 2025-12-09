@@ -4,6 +4,13 @@
 This repository contains the code for my personal website.
 Currently it can be found [[https://nilaykumar.github.io/][here]].
 
+* building
+
+1. =C-c C-e H h= in the org file generates the markdown files
+2. (optional) =hugo server= launches the static site generation as well as a server to
+   preview the results
+3. make sure to commit the markdown files!
+
 * website todo
 
 The website's content is written in org-mode, and exported to markdown via

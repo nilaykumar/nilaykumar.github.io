@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-08T21:55:16-05:00
+lastmod = 2025-12-08T22:51:20-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -57,6 +57,20 @@ do, maybe I'll show it here. In the interest of keeping page size/load times
 down (inspired, as usual, by [low-tech design](https://solar.lowtechmagazine.com/about/the-solar-website/)), it might make sense to default
 images to low-detail thumbnails (dithered?), with the full image available via
 on hyperlink.
+
+Edit, added later: here's a smallified version of the image I edited.
+
+{{< figure src="/ox-hugo/japan-2025-self-portrait-dithered.jpg" alt="a mirror self-portrait taken by handheld camera in a hotel room" >}}
+
+This was produced with
+
+```sh
+magick in.jpg -dither FloydSteinberg -colors 16 -resize 15% out.jpg
+```
+
+The original file was 6280x4160, at around 2.6mb, but I haven't bothered
+checking into the repository. The image above has been scaled down
+significantly, and with 16 colors comes in at around 82kb.
 
 
 ## december 5 {#december-5}
@@ -199,7 +213,7 @@ Jitindex Japanese-to-English dictionary).
 >
 > Seal engraving, previously brought to Japan by Zen priests, had spread among
 > writers and artists and thus seal script was a familiar sight to the general
-> population, but kakuji would likely have stood out with it purely straight
+> population, but kakuji would likely have stood out with its purely straight
 > lines.
 >
 > この直線による筆画の処理は, おそらく中国の九畳篆あたりにヒントを得たのではないか
@@ -232,8 +246,8 @@ have found:
 -   some helpful [notes](https://digitalorientalist.com/2025/02/25/digital-resources-for-reading-japanese-seals/) on resources for reading Japanese seals
 -   slightly off-topic, but [square Kufic script](https://en.wikipedia.org/wiki/Kufic#Square_Kufic) is an Arabic doppelganger!
 
-I'm sure there's a lot more resources in Chinese, but unfortunately my Mandarin
-is still super basic.
+I'm sure there are a lot more resources in Chinese, but unfortunately my
+Mandarin is still super basic.
 
 I was hoping to start looking at some of the available kakuji, breaking down
 radical shapes, and writing some code, but I got a little too interested in seal
