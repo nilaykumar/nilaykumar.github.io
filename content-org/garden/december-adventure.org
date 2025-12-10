@@ -296,3 +296,6 @@ working on code.
   directly inside my posts, losing control over the final export is annoying.
   maybe I could just post-process the generated html? or rather, use tools that
   hugo exposes to do so?
+- take a look at [[https://github.com/timothyfraser/nyc_congestion_rep][recent work]] on the impact of ny congestion pricing on air
+  quality. /inspired by:/ the air leaking through my windows freezing my toes
+  feeling less pm2.5y than usual
