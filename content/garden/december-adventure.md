@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-08T22:51:20-05:00
+lastmod = 2025-12-09T21:11:58-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -15,20 +15,17 @@ project or a few, work on them, and log your progress.
 
 I've taken the liberty of retroactively logging the days I missed.
 
-<div class="ox-hugo-toc toc">
+<div class="ox-hugo-table calendar-table">
 
-<div class="heading">Table of Contents</div>
-
-- [december 1](#december-1)
-- [december 2 - 3](#december-2-3)
-- [december 4](#december-4)
-- [december 5](#december-5)
-- [december 6](#december-6)
-- [december 7](#december-7)
-- [december 8](#december-8)
+| 日                | 月                | 火                  | 水                  | 木                | 金                | 土                |
+|------------------|------------------|--------------------|--------------------|------------------|------------------|------------------|
+|                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4) | [05](#december-5) | [06](#december-6) |
+| [07](#december-7) | [08](#december-8) | [09](#december-9)   | 10                  | 11                | 12                | 13                |
+| 14                | 15                | 16                  | 17                  | 18                | 19                | 20                |
+| 21                | 22                | 23                  | 24                  | 25                | 26                | 27                |
+| 28                | 29                | 30                  | 31                  |                   |                   |                   |
 
 </div>
-<!--endtoc-->
 
 
 ## december 1 {#december-1}
@@ -60,7 +57,7 @@ on hyperlink.
 
 Edit, added later: here's a smallified version of the image I edited.
 
-{{< figure src="/ox-hugo/japan-2025-self-portrait-dithered.jpg" alt="a mirror self-portrait taken by handheld camera in a hotel room" >}}
+{{< figure src="images/december-adventure-2025/japan-2025-self-portrait-dithered.jpg" alt="a mirror self-portrait taken by handheld camera in a hotel room" >}}
 
 This was produced with
 
@@ -69,8 +66,15 @@ magick in.jpg -dither FloydSteinberg -colors 16 -resize 15% out.jpg
 ```
 
 The original file was 6280x4160, at around 2.6mb, but I haven't bothered
-checking into the repository. The image above has been scaled down
+checking it into the repository. The image above has been scaled down
 significantly, and with 16 colors comes in at around 82kb.
+
+The tricky thing with `ox-hugo` (I write my website in org-mode in emacs) is that
+I sometimes produce images in the org-file directory instead of the hugo assets
+directory (say when writing python code to generate images). These generated
+images need to be copied over to the hugo directory. In cases like static
+pre-selected images, though, I can just throw them into the hugo directory to
+begin with.
 
 
 ## december 5 {#december-5}
@@ -134,6 +138,10 @@ about their extreme space-filling blockiness when compared to the gentle
 hieroglyphic curves of seal script or the varied visual rhythm of contemporary
 regular script.
 
+See, for example, this image I found on [Robundo Publishing's blog](https://robundo.com/robundo/column/archives/268):
+
+{{< figure src="/images/december-adventure-2025/robundo_kakuji_22_d.jpg" alt="a manual showing correspondences between kakuji and other scripts" >}}
+
 It seems that there aren't too many examples of kakuji readily available on the
 web. In particular, there's no complete font (say, for the jōyō kanji) that I
 know of. There are about 200 or so examples that I've found images of. I'm
@@ -168,9 +176,6 @@ On radical-based decomposition of Chinese characters:
 
 
 ## december 8 {#december-8}
-
-
-### more on kakuji and seal scripts {#more-on-kakuji-and-seal-scripts}
 
 Continuing the thread from yesterday, I thought it might be a good exercise to
 start by translating the book's description of kakuji. It's definitely above my
@@ -241,8 +246,8 @@ suggests looking also at the nine-fold seal script. Here are some resources I
 have found:
 
 -   a collection of [images](https://commons.wikimedia.org/wiki/Category:Calligraphy_manuals_including_nine-fold_seal_script) of calligraphy manuals including nine-fold seal script
--   a [site](https://babelstone.co.uk/Blog/2012/10/khitan-seals.html) with some images of the Khitan seals and a table of potential correspondences with
-    standard character forms
+-   a [site](https://babelstone.co.uk/Blog/2012/10/khitan-seals.html) with some images of the Khitan seals and a table of potential
+    correspondences with standard character forms
 -   some helpful [notes](https://digitalorientalist.com/2025/02/25/digital-resources-for-reading-japanese-seals/) on resources for reading Japanese seals
 -   slightly off-topic, but [square Kufic script](https://en.wikipedia.org/wiki/Kufic#Square_Kufic) is an Arabic doppelganger!
 
@@ -252,3 +257,69 @@ Mandarin is still super basic.
 I was hoping to start looking at some of the available kakuji, breaking down
 radical shapes, and writing some code, but I got a little too interested in seal
 scripts and the translation was tough, so I'll leave that for tomorrow.
+
+
+## december 9 {#december-9}
+
+Before I fell asleep last night I was doodling kanji, trying to get a concrete
+sense of how kakuji are designed. As the passage above points out, kakuji are
+designed after seal script, so building an intuition of how the contemporary
+glyphs correspond to seal script glyphs is probably a good place to start. As
+I do that, though, I think it'd be fun to draw out some kakuji as well!
+
+So... let's make a kakuji editor! Doodling is all well and good, but it'd be
+nice to have a little purpose-built glyph editor. I've recently been trying to
+learn a bit of C using `raylib`, and this is as good of a learning project as any.
+
+The basic idea is a simple grid-based editor where you can paint in valid
+kakuji. I haven't yet worked out exactly what I mean by valid (we'll narrow the
+definition down as we go), but for now notice that kakuji must be space-filling
+and be composed entirely of vertical and horizontal strokes.
+
+![an example of kakuji using diagonal lines](/images/december-adventure-2025/black-silk-4625.jpg)
+By space-filling, I
+mean that every grid element must have at least some ink in it. The second rule
+is actually my own -- there are examples on Black Silk's crest list that have
+diagonal strokes (see the image to the left). I'm happy to ignore such cases for
+now. This particular example, incidentally, is no longer used: 總 is listed as
+the pre-simplified form of 総 in Wikipedia's [list of jōyō kanji](https://en.wikipedia.org/wiki/List_of_j%C5%8Dy%C5%8D_kanji), and means whole
+or total.
+
+After tinkering for a bit, I got some of the `raylib` boilerplate out of the way
+and ended up with a very preliminary little clickable grid-based editor:
+
+{{< figure src="/images/december-adventure-2025/raylib_grid_r.jpg" alt="a dinky editor for filling in black squares in a grid with red ink" >}}
+
+To get a bit of a drawing feel, it'd obviously be nice to click and drag,
+brush-like, to draw contiguous blocks of ink. Frustratingly, I seem to be
+running into an issue with how `raylib` interprets my mouse's position when I
+drag. Maybe it's due to my tiling window manager, or maybe it's due to some kind
+of X/Wayland incompatibility, but as soon as I drag my mouse, `raylib` reports
+that my mouse is a solid 50 pixels above where it actually is, until I release
+the left button and move my mouse a bit. It doesn't seem to be an error in my
+code -- I was able to reproduce this in the little program I was writing a month
+ago to learn the basics of `raylib`.
+
+Alas, I've already wasted most of my night trying to debug this, so I'll leave
+it here for now. I suppose I can return to this and swap to keyboard controls,
+though it definitely won't feel as smooth. Then finally onto the interesting
+part: understanding the patterns behind the gaps in ink and the radical shapes!
+
+
+## future adventures? {#future-adventures}
+
+Thought I'd collect the little project ideas that tend to pop into my head when
+working on code.
+
+-   write up some notes on the basics of how C programs are compiled and linked,
+    as well as the platform-dependent aspects. _inspired by:_ me realizing I have no
+    idea what I'm doing when I'm putting together a Makefile or working on a
+    C project on my mac when traveling
+-   learn and write a toy program in assembly! and/or forth! and/or uxntal! if I
+    can get the kakuji editor working, it might be a good second program to port
+    over. _inspired by:_ [100r](https://100r.co), learning more about how memory and caches works
+-   exploring moving away from org/ox-hugo for static site generation. _inspired
+    by:_ as much as I love being able to use org-babel to write and run code from
+    directly inside my posts, losing control over the final export is annoying.
+    maybe I could just post-process the generated html? or rather, use tools that
+    hugo exposes to do so?

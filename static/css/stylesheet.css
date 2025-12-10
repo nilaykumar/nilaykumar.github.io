@@ -127,11 +127,15 @@ figure.pic>img {
 }
 
 img {
-  width: 90%;
+  /* width: 90%; */
   border: 1px solid var(--link-color-alt);
   background-color: var(--text-color);
 }
 
+p > img {
+  float: left;
+  margin: 5px 10px;
+}
 
 a, a:visited, a:hover { color: var(--link-color-alt); }
 
@@ -417,13 +421,8 @@ div#alltags {
 
 div#tags a, div#alltags a, div#taglist a { text-decoration: none; }
 
-div#content.garden .ox-hugo-toc .heading {
-    display: none;
-}
-
-div#content.garden .ox-hugo-toc ul {
-    padding: 0;
-    list-style: none;
+div#content.garden div.calendar-table td {
+    padding: 1em;
 }
 
 div#content.garden a[href]:not(:where(
