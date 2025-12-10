@@ -288,6 +288,9 @@ working on code.
 - learn and write a toy program in assembly! and/or forth! and/or uxntal! if I
   can get the kakuji editor working, it might be a good second program to port
   over. /inspired by:/ [[https://100r.co][100r]], learning more about how memory and caches works
+- speaking of uxn... the =screen.tal= example that ships with =uxn= generates
+  patterns that remind me of the keffiyeh. time for a little spritework?
+  /inspired by:/ https://www.youtube.com/watch?v=jLRE_TSpnYc
 - exploring moving away from org/ox-hugo for static site generation. /inspired
   by:/ as much as I love being able to use org-babel to write and run code from
   directly inside my posts, losing control over the final export is annoying.
