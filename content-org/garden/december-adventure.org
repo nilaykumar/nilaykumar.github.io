@@ -294,12 +294,14 @@ quite control the final HTML markup that's generated. Sure -- maybe there's a
 way of fixing the little issues that bug me, but I'm easily intimidated by =ox-hugo=
 and =hugo=. It'd also be nice to remove =emacs= in the toolchain -- I sometimes have
 trouble getting the publishing to work on my laptop (and, indeed, I couldn't get
-it to work -- I'll have to finish this update up on my desktop).
+it to work -- I had to finish this update up on my desktop).
 
 I think, generally speaking, I'm coming around to some sort of desire for
-human-scale computing in my personal life. It's some kind of diy
-right-to-and-have-time-to-repair attitude whose emergence in my mind has only
-been hastened by the current state of big tech and ai slop.
+human-scale computing in my personal life. It's some kind of diy right-to- but
+also have-time-to-repair attitude whose emergence in my mind has only been
+hastened by the current state of big tech and ai slop. It feels much more
+pleasing to use a small tool for a small job, especially with the fulfillment
+that comes from having made the neat little tool yourself.
 
 All that being said but what am I looking to get out of a new ssg and therefore
 a new site design? And what should my small-tech toolchain be and do? Trying to
@@ -310,57 +312,67 @@ Nelson's [[https://dl.acm.org/doi/pdf/10.1145/800197.806036][paper]] that coined
 [[https://geminiprotocol.net/][Gemini]] protocols, and then finally learning about various human-scale technology
 movements like [[https://smolweb.org/][smolweb]].
 
-I haven't yet distilled those ideas into any sort of design outline yet, though
-I am inspired by a few concrete examples such as [[https://xxiivv.com/][xxiivv]] and [[https://pluralistic.net/][pluralistic.net]]. One
-thing I will note, though, is that I've always been interested in experimenting
-with annotation on the web (I have occasionally used [[https://web.hypothes.is/][a browser extension]], but
-not with any serious philosophical thought), though this may be in opposition
-with that word /static/ in ssg... I was reminded of this interest when I read
-Nelson's definition of /hypertext/:
+I haven't yet distilled those ideas into any sort of design outline, though I am
+inspired by a few concrete examples such as [[https://xxiivv.com/][xxiivv]] (the generator in this case
+being [[https://github.com/XXIIVV/Oscean][oscean]]), [[https://solar.lowtechmagazine.com/][low-tech magazine]], and [[https://pluralistic.net/][pluralistic.net]]. One thing I will note:
+I've always been interested in experimenting with private annotation on the web
+(I have occasionally used [[https://web.hypothes.is/][a browser extension]], but not with any serious
+philosophical thought), though annotations are not very compatible with the
+"static" in ssg... I was reminded of this interest when I read Nelson's
+definition of /hypertext/:
 #+begin_quote
-Let me introduce the word "hypertext"^a to mean a body of written or pictorial
+Let me introduce the word "hypertext"^{a} to mean a body of written or pictorial
 material interconnected in such a complex way that it could not conveniently be
 presented or represented on paper. It may contain summaries, or maps of its
 contents and their interrelations; it may contain annotations, additions and
 footnotes from scholars who have examined it.
 
-a. The sense of "hyper-" used here connotes extension and generality; cf.
+/a./ The sense of "hyper-" used here connotes extension and generality; cf.
    "hyperspace." The criterion for this prefix is the inability of these objects
    to be comprised sensibly into linear media, like the text string, or even
    media of somewhat higher complexity...
+   
 #+ATTR_HTML: :class attribution
-T. H. Nelson, A File Structure for The Complex, The Changing and the
-   Indeterminate, p.96 (1965)
+T H Nelson, /A File Structure for The Complex, The Changing and the
+   Indeterminate/, p.96 (1965)
 #+end_quote
 In any case, I'll see if I can't put something down in writing tomorrow.
 
 Slightly unrelated... but I also ended up reading Grothendieck's [[https://www.ccnr.org/grothendieck.pdf][The
 Responsibility of the Scientist Today]] (a self-defense mechanism triggered by
-reading Vannevar Bush?) and skimming a paper showing that nyc's PM2.5
-concentrations may have fallen by 22% after the implementation of congestion
-pricing. It looks like they analyzed a combination of epa and city sensors. I'd
-like to get around to understanding this more carefully, though, so maybe I'll
-leave this for another day (it seems the code is on [[https://github.com/timothyfraser/nyc_congestion_rep][GitHub]]).
+reading Vannevar Bush?) and skimming a paper showing that nyc's pm2.5
+concentrations may have fallen by as much as 22% after the implementation of
+congestion pricing. It looks like they analyzed a combination of epa and city
+sensors. I'd like to get around to understanding this more carefully, so
+maybe I'll leave this for another day (it seems the code is on [[https://github.com/timothyfraser/nyc_congestion_rep][GitHub]]).
 
-* future adventures?
+-----
 
-Thought I'd collect the little project ideas that tend to pop into my head when
-working on code.
+Down here I'm collecting the little project ideas that tend to pop into
+my head:
 - write up some notes on the basics of how C programs are compiled and linked,
-  as well as the platform-dependent aspects. /inspired by:/ me realizing I have no
+  as well as the platform-dependent aspects.
+  
+  /inspired by:/ me realizing I have no
   idea what I'm doing when I'm putting together a Makefile or working on a
   C project on my mac when traveling
 - learn and write a toy program in assembly! and/or forth! and/or uxntal! if I
   can get the kakuji editor working, it might be a good second program to port
-  over. /inspired by:/ [[https://100r.co][100r]], learning more about how memory and caches works
+  over.
+
+  /inspired by:/ [[https://100r.co][100r]], learning more about how memory and caches works
 - speaking of uxn... the =screen.tal= example that ships with =uxn= generates
   patterns that remind me of the keffiyeh. time for a little spritework?
+
   /inspired by:/ https://www.youtube.com/watch?v=jLRE_TSpnYc
-- exploring moving away from org/ox-hugo for static site generation. /inspired
-  by:/ as much as I love being able to use org-babel to write and run code from
+- exploring moving away from org/ox-hugo for static site generation.
+
+  /inspired by:/ as much as I love being able to use org-babel to write and run code from
   directly inside my posts, losing control over the final export is annoying.
   maybe I could just post-process the generated html? or rather, use tools that
   hugo exposes to do so?
 - take a look at [[https://github.com/timothyfraser/nyc_congestion_rep][recent work]] on the impact of ny congestion pricing on air
-  quality. /inspired by:/ the air leaking through my windows freezing my toes
+  quality.
+
+  /inspired by:/ the air leaking through my windows freezing my toes
   feeling less pm2.5y than usual

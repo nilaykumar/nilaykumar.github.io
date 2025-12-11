@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-09T21:11:58-05:00
+lastmod = 2025-12-11T02:08:12-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -20,7 +20,7 @@ I've taken the liberty of retroactively logging the days I missed.
 | 日                | 月                | 火                  | 水                  | 木                | 金                | 土                |
 |------------------|------------------|--------------------|--------------------|------------------|------------------|------------------|
 |                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4) | [05](#december-5) | [06](#december-6) |
-| [07](#december-7) | [08](#december-8) | [09](#december-9)   | 10                  | 11                | 12                | 13                |
+| [07](#december-7) | [08](#december-8) | [09](#december-9)   | [10](#december-10)  | 11                | 12                | 13                |
 | 14                | 15                | 16                  | 17                  | 18                | 19                | 20                |
 | 21                | 22                | 23                  | 24                  | 25                | 26                | 27                |
 | 28                | 29                | 30                  | 31                  |                   |                   |                   |
@@ -306,20 +306,107 @@ though it definitely won't feel as smooth. Then finally onto the interesting
 part: understanding the patterns behind the gaps in ink and the radical shapes!
 
 
-## future adventures? {#future-adventures}
+## december 10 {#december-10}
 
-Thought I'd collect the little project ideas that tend to pop into my head when
-working on code.
+Today I let the intrusive thoughts win and started seriously considering writing
+my own static site generator. It feels like the illogical next step to starting
+a digital garden. I don't know if I have the technical chops for it, but I'd
+like to try writing it in C, potentially avoiding writing any parsing-related
+aspects for now, just to keep things near my pay grade.
+
+One motivator for me is to stop publishing my site using `org-mode` and `hugo` (via
+`ox-hugo`). I definitely have mixed feelings here. As much as I enjoy using and
+learning `emacs` and `org-mode` (and to be clear, I don't have any plans to stop
+using `emacs`), I've always felt hopelessly out of my depth, and I never end up
+setting aside the time to get comfortable enough with site generation toolchain
+that I use. This leads to frustration with little things like not being able to
+quite control the final HTML markup that's generated. Sure -- maybe there's a
+way of fixing the little issues that bug me, but I'm easily intimidated by `ox-hugo`
+and `hugo`. It'd also be nice to remove `emacs` in the toolchain -- I sometimes have
+trouble getting the publishing to work on my laptop (and, indeed, I couldn't get
+it to work -- I had to finish this update up on my desktop).
+
+I think, generally speaking, I'm coming around to some sort of desire for
+human-scale computing in my personal life. It's some kind of diy right-to- but
+also have-time-to-repair attitude whose emergence in my mind has only been
+hastened by the current state of big tech and ai slop. It feels much more
+pleasing to use a small tool for a small job, especially with the fulfillment
+that comes from having made the neat little tool yourself.
+
+All that being said but what am I looking to get out of a new ssg and therefore
+a new site design? And what should my small-tech toolchain be and do? Trying to
+answer this question led me through an associative trail of hypertext
+digressions, first with reading Vannevar Bush's essay [As We May Think](https://cdn.theatlantic.com/media/archives/1945/07/176-1/132407932.pdf) on his
+speculative concept of the [memex](https://en.wikipedia.org/wiki/Memex) (memory-extension), and then reading Ted
+Nelson's [paper](https://dl.acm.org/doi/pdf/10.1145/800197.806036) that coined the term _hypertext_, to learning about the [Gopher](https://en.wikipedia.org/wiki/Gopher_(protocol)) and
+[Gemini](https://geminiprotocol.net/) protocols, and then finally learning about various human-scale technology
+movements like [smolweb](https://smolweb.org/).
+
+I haven't yet distilled those ideas into any sort of design outline, though I am
+inspired by a few concrete examples such as [xxiivv](https://xxiivv.com/) (the generator in this case
+being [oscean](https://github.com/XXIIVV/Oscean)), [low-tech magazine](https://solar.lowtechmagazine.com/), and [pluralistic.net](https://pluralistic.net/). One thing I will note:
+I've always been interested in experimenting with private annotation on the web
+(I have occasionally used [a browser extension](https://web.hypothes.is/), but not with any serious
+philosophical thought), though annotations are not very compatible with the
+"static" in ssg... I was reminded of this interest when I read Nelson's
+definition of _hypertext_:
+
+> Let me introduce the word "hypertext"<sup>a</sup> to mean a body of written or pictorial
+> material interconnected in such a complex way that it could not conveniently be
+> presented or represented on paper. It may contain summaries, or maps of its
+> contents and their interrelations; it may contain annotations, additions and
+> footnotes from scholars who have examined it.
+>
+> _a._ The sense of "hyper-" used here connotes extension and generality; cf.
+>    "hyperspace." The criterion for this prefix is the inability of these objects
+>    to be comprised sensibly into linear media, like the text string, or even
+>    media of somewhat higher complexity...
+>
+> <div class="attribution">
+>
+> T H Nelson, _A File Structure for The Complex, The Changing and the
+>    Indeterminate_, p.96 (1965)
+>
+> </div>
+
+In any case, I'll see if I can't put something down in writing tomorrow.
+
+Slightly unrelated... but I also ended up reading Grothendieck's [The
+Responsibility of the Scientist Today](https://www.ccnr.org/grothendieck.pdf) (a self-defense mechanism triggered by
+reading Vannevar Bush?) and skimming a paper showing that nyc's pm2.5
+concentrations may have fallen by as much as 22% after the implementation of
+congestion pricing. It looks like they analyzed a combination of epa and city
+sensors. I'd like to get around to understanding this more carefully, so
+maybe I'll leave this for another day (it seems the code is on [GitHub](https://github.com/timothyfraser/nyc_congestion_rep)).
+
+---
+
+Down here I'm collecting the little project ideas that tend to pop into
+my head:
 
 -   write up some notes on the basics of how C programs are compiled and linked,
-    as well as the platform-dependent aspects. _inspired by:_ me realizing I have no
+    as well as the platform-dependent aspects.
+
+    _inspired by:_ me realizing I have no
     idea what I'm doing when I'm putting together a Makefile or working on a
     C project on my mac when traveling
 -   learn and write a toy program in assembly! and/or forth! and/or uxntal! if I
     can get the kakuji editor working, it might be a good second program to port
-    over. _inspired by:_ [100r](https://100r.co), learning more about how memory and caches works
--   exploring moving away from org/ox-hugo for static site generation. _inspired
-    by:_ as much as I love being able to use org-babel to write and run code from
+    over.
+
+    _inspired by:_ [100r](https://100r.co), learning more about how memory and caches works
+-   speaking of uxn... the `screen.tal` example that ships with `uxn` generates
+    patterns that remind me of the keffiyeh. time for a little spritework?
+
+    _inspired by:_ <https://www.youtube.com/watch?v=jLRE_TSpnYc>
+-   exploring moving away from org/ox-hugo for static site generation.
+
+    _inspired by:_ as much as I love being able to use org-babel to write and run code from
     directly inside my posts, losing control over the final export is annoying.
     maybe I could just post-process the generated html? or rather, use tools that
     hugo exposes to do so?
+-   take a look at [recent work](https://github.com/timothyfraser/nyc_congestion_rep) on the impact of ny congestion pricing on air
+    quality.
+
+    _inspired by:_ the air leaking through my windows freezing my toes
+    feeling less pm2.5y than usual
