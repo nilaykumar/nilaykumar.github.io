@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-11T02:08:12-05:00
+lastmod = 2025-12-12T16:14:55-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -17,13 +17,13 @@ I've taken the liberty of retroactively logging the days I missed.
 
 <div class="ox-hugo-table calendar-table">
 
-| 日                | 月                | 火                  | 水                  | 木                | 金                | 土                |
-|------------------|------------------|--------------------|--------------------|------------------|------------------|------------------|
-|                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4) | [05](#december-5) | [06](#december-6) |
-| [07](#december-7) | [08](#december-8) | [09](#december-9)   | [10](#december-10)  | 11                | 12                | 13                |
-| 14                | 15                | 16                  | 17                  | 18                | 19                | 20                |
-| 21                | 22                | 23                  | 24                  | 25                | 26                | 27                |
-| 28                | 29                | 30                  | 31                  |                   |                   |                   |
+| 日                | 月                | 火                  | 水                  | 木                 | 金                | 土                |
+|------------------|------------------|--------------------|--------------------|-------------------|------------------|------------------|
+|                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4)  | [05](#december-5) | [06](#december-6) |
+| [07](#december-7) | [08](#december-8) | [09](#december-9)   | [10](#december-10)  | [11](#december-11) | 12                | 13                |
+| 14                | 15                | 16                  | 17                  | 18                 | 19                | 20                |
+| 21                | 22                | 23                  | 24                  | 25                 | 26                | 27                |
+| 28                | 29                | 30                  | 31                  |                    |                   |                   |
 
 </div>
 
@@ -378,6 +378,40 @@ concentrations may have fallen by as much as 22% after the implementation of
 congestion pricing. It looks like they analyzed a combination of epa and city
 sensors. I'd like to get around to understanding this more carefully, so
 maybe I'll leave this for another day (it seems the code is on [GitHub](https://github.com/timothyfraser/nyc_congestion_rep)).
+
+
+## December 11 {#december-11}
+
+Working late today, but while I'm taking a bit of a break, here's some thoughts
+on basic functionality of a static site generator/site design that I'd like:
+
+-   **input:** I like the idea of writing in markdown, because I think you can throw
+    in html when you need to. important to have utf8 support, which I tend to use
+    for cjk characters. I do also hope to getting back to writing about math at
+    some point -- unfortunately I remember mathjax being pretty big and slow. it'd
+    be nice to avoid javascript entirely and see if there are any backend
+    solutions. there's always the more human route, which is to handwrite via
+    tablet, but that is not very accessibility friendly
+-   **target low page size:** aim for fast load times, maybe automatically replace
+    images with low-res variants that can be clicked on to redirect to the full
+    one (I suppose there's a word for this: thumbnails), stick with default fonts
+    and simple design that can look good on most devices
+-   **basic metadata:** creation and modification dates, tags. not sure if
+    index pages are really needed
+-   **backlinks:** so fun
+-   **unhierarchical:** I'm interested in trying out a mostly flat wiki/memex style
+    approach, letting tags do the organization.
+
+Then there's some more fun things after the basic functionality is done:
+
+-   **output:** supporting multiple outputs, say gophermap for gopher or gemtext for
+    gemini
+-   **fun little modules:** a little program that detects and reports linkrot, or a
+    little date-to-co2ppm transformer, or whatever other silly thing I think up of
+
+Before bed I got `gforth` and `uxn` installed, and was playing around learning the
+basics of forth-style programming. It's not as scary as it looked, and I hope to
+get some time to play with them tomorrow.
 
 ---
 
