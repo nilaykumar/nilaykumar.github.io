@@ -395,8 +395,8 @@ up the code and put it up here.
 Watered the plants (always takes longer than I expect) and leisurely did some
 laundry.
 
-#+ATTR_HTML: :alt picture of succulents, aloe, coleus, etc.
-[[file:images/december-adventure-2025/uxn-keffiyeh-d.jpg]]
+#+ATTR_HTML: :alt picture of succulents, aloe, and a coleus in the corner of an apartment 
+[[file:images/december-adventure-2025/greenery-d.jpg]]
 
 (I think I took this photo in June, everything's way bigger now, but the
 camera's in the other room and I can't be bothered)
