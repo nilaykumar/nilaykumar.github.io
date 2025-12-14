@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-12T16:14:55-05:00
+lastmod = 2025-12-14T02:07:32-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -17,13 +17,13 @@ I've taken the liberty of retroactively logging the days I missed.
 
 <div class="ox-hugo-table calendar-table">
 
-| 日                | 月                | 火                  | 水                  | 木                 | 金                | 土                |
-|------------------|------------------|--------------------|--------------------|-------------------|------------------|------------------|
-|                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4)  | [05](#december-5) | [06](#december-6) |
-| [07](#december-7) | [08](#december-8) | [09](#december-9)   | [10](#december-10)  | [11](#december-11) | 12                | 13                |
-| 14                | 15                | 16                  | 17                  | 18                 | 19                | 20                |
-| 21                | 22                | 23                  | 24                  | 25                 | 26                | 27                |
-| 28                | 29                | 30                  | 31                  |                    |                   |                   |
+| 日                | 月                | 火                  | 水                  | 木                 | 金                 | 土                 |
+|------------------|------------------|--------------------|--------------------|-------------------|-------------------|-------------------|
+|                   | [01](#december-1) | [02](#december-2-3) | [03](#december-2-3) | [04](#december-4)  | [05](#december-5)  | [06](#december-6)  |
+| [07](#december-7) | [08](#december-8) | [09](#december-9)   | [10](#december-10)  | [11](#december-11) | [12](#december-12) | [13](#december-13) |
+| 14                | 15                | 16                  | 17                  | 18                 | 19                 | 20                 |
+| 21                | 22                | 23                  | 24                  | 25                 | 26                 | 27                 |
+| 28                | 29                | 30                  | 31                  |                    |                    |                    |
 
 </div>
 
@@ -320,7 +320,7 @@ learning `emacs` and `org-mode` (and to be clear, I don't have any plans to stop
 using `emacs`), I've always felt hopelessly out of my depth, and I never end up
 setting aside the time to get comfortable enough with site generation toolchain
 that I use. This leads to frustration with little things like not being able to
-quite control the final HTML markup that's generated. Sure -- maybe there's a
+quite control the final html markup that's generated. Sure -- maybe there's a
 way of fixing the little issues that bug me, but I'm easily intimidated by `ox-hugo`
 and `hugo`. It'd also be nice to remove `emacs` in the toolchain -- I sometimes have
 trouble getting the publishing to work on my laptop (and, indeed, I couldn't get
@@ -380,7 +380,7 @@ sensors. I'd like to get around to understanding this more carefully, so
 maybe I'll leave this for another day (it seems the code is on [GitHub](https://github.com/timothyfraser/nyc_congestion_rep)).
 
 
-## December 11 {#december-11}
+## december 11 {#december-11}
 
 Working late today, but while I'm taking a bit of a break, here's some thoughts
 on basic functionality of a static site generator/site design that I'd like:
@@ -406,12 +406,157 @@ Then there's some more fun things after the basic functionality is done:
 
 -   **output:** supporting multiple outputs, say gophermap for gopher or gemtext for
     gemini
--   **fun little modules:** a little program that detects and reports linkrot, or a
-    little date-to-co2ppm transformer, or whatever other silly thing I think up of
+-   **fun little modules:** syntax highlighting, a little program that detects and
+    reports linkrot, or a little date-to-co2ppm transformer, or whatever other
+    silly thing I think up of
 
 Before bed I got `gforth` and `uxn` installed, and was playing around learning the
 basics of forth-style programming. It's not as scary as it looked, and I hope to
 get some time to play with them tomorrow.
+
+
+## december 12 {#december-12}
+
+I wrote my first `uxntal` program today! I was following compudanza's wonderful
+[book/online tutorial](https://compudanzas.net/introduction_to_uxn_programming_book.html) of which I worked through "day 1" and "day 2". So far it's
+been the basics of stack-based computation and drawing pixels and sprites to the
+screen. I love that drawing to the screen is presented immediately after the
+basics -- how fun!
+
+{{< figure src="/images/december-adventure-2025/uxn-keffiyeh-d.jpg" alt="a red keffiyeh pattern of pixel drawn on a white window" >}}
+
+I wrote some code to draw the patterns on the keffiyeh I tend to have draped
+around my chair. I don't know how to write loops yet, so the code's a bit silly,
+but it was fun regardless! Once I learn how to loop and set variables I'll clean
+up the code and put it up here.
+
+
+## december 13 {#december-13}
+
+Watered the plants (always takes longer than I expect) and leisurely did some
+laundry.
+
+{{< figure src="/images/december-adventure-2025/greenery-d.jpg" alt="picture of succulents, aloe, orchid, coleus, etc. in the corner of an apartment" >}}
+
+(I think I took this photo in June, everything's way bigger now, but the
+camera's in the other room and I can't be bothered)
+
+
+### static site generation {#static-site-generation}
+
+Anyway, I got some time to start thinking about my static site generator more
+concretely. Working name (because I needed a directory name in my projects
+folder) is _kishin_ (記伸), coming from "memory" (記憶) and "extend" (伸びる),
+inspired by the word memex.
+
+Earlier I was considering writing my input files in Markdown, but more and more
+I'm starting to think that it's not much more work to just write plain html (my
+current emacs setup seems to have a good amount of snippets already set up in
+`html-mode`). The job of the static site generator will be to:
+
+-   do basic templating (separating out the header, footer, etc. from content)
+-   handle media (organization of images, automatically generating thumbnails,
+    etc.)
+-   handle timestamps, tags, backlinks, or more generally metadata linking and
+    display
+-   run any processing modules that I end up writing (math rendering, syntax
+    highlighting, gemtext generation)
+
+In terms of parsing html, I'm not sure how much heavy lifting I'll actually have
+to do. For now I'm thinking I'll try out the tree-sitter html parser. I'd love
+to be dependency-free and write a bespoke parser, but I should probably ease
+myself into the intricacies of string parsing and data structures in `c`. In any
+case, I've wanted to play with tree-sitter ever since I watched Max Brunsfeld's
+[strange loop](https://www.youtube.com/watch?v=Jes3bD6P0To) talk on it.
+
+Actually, now that I think about it for a moment, tree-sitter might be the way
+to go if I want to do any syntax highlighting for my code blocks...
+
+
+### tree-sitter {#tree-sitter}
+
+As a complete newbie to the `c` programming world, I couldn't make heads or tails
+of the [getting started](https://tree-sitter.github.io/tree-sitter/using-parsers/1-getting-started.html) page in the tree-sitter documentation. After being
+confused for a solid half-hour, here's what I ended up doing, which worked:
+
+1.  cloned both the [tree-sitter](https://github.com/tree-sitter/tree-sitter) and [tree-sitter-html](https://github.com/tree-sitter/tree-sitter-html) sources, built them with
+    `make`, and copied the resulting `libtree-sitter.a` and `libtree-sitter-html.a`
+    files into my `lib/` folder.
+2.  copied tree-sitter's `tree-sitter/lib/src/*` as well as
+    `tree-sitter/lib/include/tree_sitter/api.h` into my `include/tree-sitter/`
+3.  made sure my `Makefile` knew about these static libraries and the inner include
+    path
+
+I don't know if this is what I was supposed to do, but I'm able to use
+tree-sitter from my `main.c`, so it'll do for now. I copied the example code from
+the tree-sitter documentation and started playing around with traversing the
+tree with `TSTreeCursor`.
+
+```c
+#include <string.h>
+#include <stdio.h>
+
+#include "tree-sitter/api.h"
+
+const TSLanguage *tree_sitter_html(void);
+
+int main() {
+  // Create a parser.
+  TSParser *parser = ts_parser_new();
+
+  // Set the parser's language (HTML in this case).
+  ts_parser_set_language(parser, tree_sitter_html());
+
+  // Build a syntax tree based on source code stored in a string.
+  const char *source_code = "Hi你好!<p>para</p>";
+  TSTree *tree = ts_parser_parse_string(
+    parser,
+    NULL,
+    source_code,
+    strlen(source_code)
+  );
+
+  // Get the root node of the syntax tree.
+  TSNode root_node = ts_tree_root_node(tree);
+  // Print the syntax tree as an S-expression.
+  char *string = ts_node_string(root_node);
+  // For the example above, "Hi你好!<p>para</p>", it looks like:
+  // > (document (text) (element (start_tag (tag_name)) (text) (end_tag (tag_name))))
+  printf("Syntax tree: %s\n", string);
+
+  // Start traversing the tree with a cursor
+  TSTreeCursor cursor = ts_tree_cursor_new(root_node);
+  bool result = ts_tree_cursor_goto_first_child(&cursor);
+  // If no child was found, abort
+  if(!result)
+      return 1;
+
+  // Print out the node type, and start and end bytes
+  TSNode nextNode = ts_tree_cursor_current_node(&cursor);
+  // For the example above, it looks like:
+  // > text
+  // > 0
+  // > 9
+  // You can check that the Chinese characters here are 3 bytes each
+  // in utf-8 (I suppose somewhere along the lines tree-sitter is figuring
+  // out that we're using utf-8) and so, adding the 3 extra bytes from "Hi!",
+  // we do indeed expect 9 bytes
+  printf("%s\n", ts_node_type(nextNode));
+  printf("%d\n", ts_node_start_byte(nextNode));
+  printf("%d\n", ts_node_end_byte(nextNode));
+
+  // Free all of the heap-allocated memory.
+  free(string);
+  ts_tree_cursor_delete(&cursor);
+  ts_tree_delete(tree);
+  ts_parser_delete(parser);
+  return 0;
+}
+```
+
+In additional to traversal there's a query API, but I'll scope that out later.
+I'll leave this here for now. Tomorrow I'll see if I have the time to put
+together an example static site and get started on the actual site generation.
 
 ---
 
@@ -419,28 +564,22 @@ Down here I'm collecting the little project ideas that tend to pop into
 my head:
 
 -   write up some notes on the basics of how C programs are compiled and linked,
-    as well as the platform-dependent aspects.
+    what static/dynamic objects and linking are, command line tools to investigate
+    symbols, platform-dependent aspects, etc.
 
-    _inspired by:_ me realizing I have no
-    idea what I'm doing when I'm putting together a Makefile or working on a
-    C project on my mac when traveling
--   learn and write a toy program in assembly! and/or forth! and/or uxntal! if I
-    can get the kakuji editor working, it might be a good second program to port
-    over.
-
-    _inspired by:_ [100r](https://100r.co), learning more about how memory and caches works
+    _inspired by:_ me realizing I have no idea what I'm doing when I'm putting
+    together a Makefile or working on a C project on my mac when traveling
 -   speaking of uxn... the `screen.tal` example that ships with `uxn` generates
     patterns that remind me of the keffiyeh. time for a little spritework?
 
     _inspired by:_ <https://www.youtube.com/watch?v=jLRE_TSpnYc>
--   exploring moving away from org/ox-hugo for static site generation.
-
-    _inspired by:_ as much as I love being able to use org-babel to write and run code from
-    directly inside my posts, losing control over the final export is annoying.
-    maybe I could just post-process the generated html? or rather, use tools that
-    hugo exposes to do so?
 -   take a look at [recent work](https://github.com/timothyfraser/nyc_congestion_rep) on the impact of ny congestion pricing on air
     quality.
 
     _inspired by:_ the air leaking through my windows freezing my toes
     feeling less pm2.5y than usual
+-   learn a little bit of lean and formalize something fun! Or at least write a
+    new math blog post
+
+    _inspired by:_ me remembering (idk why) Kuo-Tsai Chen's work on integrated
+    integrals, and the connections to Hochschild homology.
