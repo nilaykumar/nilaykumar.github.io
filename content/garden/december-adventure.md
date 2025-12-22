@@ -2,7 +2,7 @@
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
 date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-21T17:46:28-05:00
+lastmod = 2025-12-21T21:44:29-05:00
 tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
 draft = false
 progress = "in-progress"
@@ -832,6 +832,9 @@ come back to this soon.
 
 ## december 21 {#december-21}
 
+
+### sublabels and the return stack {#sublabels-and-the-return-stack}
+
 Let's return to the `uxntal` code snippet for printing hex that we were looking at
 on day 19:
 
@@ -863,9 +866,29 @@ Very very clever: thanks to `d_m` on `irc` for helping me understand some of thi
 was confused at first because I couldn't see how the print (`#18 DEO`) was getting
 called 4 times, which would be necessary for printing the nibbles of a short.
 What I hadn't understood is that the jumps to the sublabels here do more than
-just move the program counter -- they also modify the working stack. In other
+just move the program counter -- they also modify the return stack. In other
 words, `JMP2r` is not a simple `return`-from-`@subroutine`, the way I had been
 conceptualizing it.
+
+
+### tree-sitter grammar for uxntal {#tree-sitter-grammar-for-uxntal}
+
+Small note here for myself: the tree-sitter grammar that I've been using (found
+[here](https://github.com/tree-sitter-grammars/tree-sitter-uxntal)) seems to be unfamiliar with the syntax of the anonymous label `?{ }`. The
+syntax tree for `?{ !print-hex-digit }`, for example, yields:
+
+```nil
+(rune
+   rune_start: (rune_char immediate: ?)
+   (ERROR {)
+   (rune_char immediate: !)
+   (identifier))
+  (ERROR })
+```
+
+Things are getting busy as the end of December approaches, so I don't know if
+I'll be able to get to it... but it would be great to learn enough about
+tree-sitter grammars to submit a patch.
 
 ---
 
