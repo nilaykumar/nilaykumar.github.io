@@ -1,0 +1,14 @@
+#+title: emacs
+#+date: <2025-12-31 Wed>
+#+hugo_base_dir: ../..
+#+hugo_section: garden
+#+hugo_tags: code
+#+hugo_custom_front_matter: :progress in-progress
+
+* installation
+
+** macos (apple silicon)
+I've recently been having trouble with [[https://github.com/railwaycat/homebrew-emacsmacport][emacs-mac]], so I've switched over to
+jimeh's [[https://github.com/jimeh/emacs-builds][emacs-builds]], which seems to be working alright. As an added bonus, I'm
+now on emacs 30, and my site seems to generate via =ox-hugo= without errors (in
+the past I could only get it to work on my linux desktop).

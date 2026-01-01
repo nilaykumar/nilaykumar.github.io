@@ -1,11 +1,11 @@
 +++
 title = "december adventure 2025"
 author = ["Nilay Kumar"]
-date = 2025-12-08T00:00:00-05:00
-lastmod = 2025-12-21T21:44:29-05:00
-tags = ["december-adventure", "code", "japanese", "chinese", "calligraphy", "photography"]
+date = 2025-12-08T00:00:00-08:00
+lastmod = 2025-12-31T22:55:37-08:00
+tags = ["december-adventure"]
 draft = false
-progress = "in-progress"
+progress = "finished"
 +++
 
 Found out about the December adventure on Mastodon (likely from folks over at
@@ -13,17 +13,18 @@ Found out about the December adventure on Mastodon (likely from folks over at
 better late than never. Here's a bit [about it](https://eli.li/december-adventure), but the idea is just to pick a
 project or a few, work on them, and log your progress.
 
-I've taken the liberty of retroactively logging the days I missed.
+Now that December's over, I've written a short [retrospective](#retrospective) at the bottom of
+the page.
 
 <div class="ox-hugo-table calendar-table">
 
-| 日                    | 月                    | 火                    | 水                    | 木                    | 金                 | 土                 |
-|----------------------|----------------------|----------------------|----------------------|----------------------|-------------------|-------------------|
-|                       | [01](#december-1)     | [02](#december-2-3)   | [03](#december-2-3)   | [04](#december-4)     | [05](#december-5)  | [06](#december-6)  |
-| [07](#december-7)     | [08](#december-8)     | [09](#december-9)     | [10](#december-10)    | [11](#december-11)    | [12](#december-12) | [13](#december-13) |
-| [14](#december-14-18) | [15](#december-14-18) | [16](#december-14-18) | [17](#december-14-18) | [18](#december-14-18) | [19](#december-19) | [20](#december-20) |
-| [21](#december-21)    | 22                    | 23                    | 24                    | 25                    | 26                 | 27                 |
-| 28                    | 29                    | 30                    | 31                    |                       |                    |                    |
+| 日                 | 月                | 火                 | 水                 | 木                 | 金                 | 土                 |
+|-------------------|------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
+|                    | 01                | 02                 | 03                 | [04](#december-4)  | [05](#december-5)  | [06](#december-6)  |
+| [07](#december-7)  | [08](#december-8) | [09](#december-9)  | [10](#december-10) | [11](#december-11) | [12](#december-12) | [13](#december-13) |
+| 14                 | 15                | 16                 | 17                 | 18                 | [19](#december-19) | [20](#december-20) |
+| [21](#december-21) | 22                | 23                 | 24                 | 25                 | 26                 | 27                 |
+| 28                 | 29                | [30](#december-30) | [31](#december-31) |                    |                    |                    |
 
 </div>
 
@@ -889,6 +890,185 @@ syntax tree for `?{ !print-hex-digit }`, for example, yields:
 Things are getting busy as the end of December approaches, so I don't know if
 I'll be able to get to it... but it would be great to learn enough about
 tree-sitter grammars to submit a patch.
+
+
+## december 22-29 {#december-22-29}
+
+Busy playing mahjong (both riichi and filipino) with family, no adventuring.
+
+
+## december 30 {#december-30}
+
+Obtained a hand-me-down 35mm film camera! It's a 1969 Nikon F (apparently a
+legendary SLR) with a 55mm f/1.2 lens. Here's a picture of it, taken with my
+Fujifilm X-S10 (it's so much less prettier after reducing the file size, alas):
+
+{{< figure src="images/december-adventure-2025/nikon-f.jpg" alt="a vintage film camera sits among scattered mahjong tiles" >}}
+
+I'm still very new to photography, so using a fully manual camera with no
+feedback until the films are developed is probably not a great idea. On the
+other hand, sometimes being thrown into the deep end can be a good way to learn
+a new hobby quickly. I picked up 2 rolls of Fujifilm 200 and I've been taking a
+few photos -- probably horribly underexposed. The viewfinder on the camera had a
+mercury-battery powered light meter but the batteries are of course long dead
+(I've read that these light meters tend to become inaccurate after so many
+years anyway), so I'm currently using a light meter app on my phone to estimate
+what my shutter speeds should be.
+
+I hope the pictures I've been taking actually come out okay. The worst would be
+to for the film to be completely blank or something when I get it developed. I
+am fairly confident that the camera's functioning fine, though. The Nikon F is
+incredibly robust (full metal construction) to the point that there are stories
+of it deflecting bullets in war zones. Having grown up with digital cameras and
+rechargeable batteries, it's amazing that a bit of chemically treated paper
+together with a purely mechanical contraption of metal and mirrors can take such
+incredible photos.
+
+If the first roll comes out alright, I'm hoping to use the Nikon F to learn the
+basics of film photography over the next few months. It's quite heavy
+(especially when you're used to a modern mirrorless with a small prime lens), so
+I probably won't be travelling with it. Instead, I might try to just document
+everyday life. Given how many photos I take while traveling, it's probably for
+the better anyway -- film is an expensive hobby...
+
+To keep track of my photography learnings (be it digital or film), I've started
+a [Pixelfed account](https://pixelfed.social/knees). It's currently a bit bare, but I'll start working through my
+old RAWs and posting the ones I'm proud of.
+
+
+## december 31 {#december-31}
+
+Let's take a look at the tree-sitter `grammar.js` for `uxntal`, which can be found at
+the top-level of the repository [here](https://github.com/tree-sitter-grammars/tree-sitter-uxntal). The structure is fairly straightforward
+(see also the [documentation](https://tree-sitter.github.io/tree-sitter/creating-parsers/2-the-grammar-dsl.html)). The snippet
+
+```js
+rules: {
+  program: $ => repeat(
+    choice(
+      $.macro,
+      $.include,
+      $.memory_execution,
+      $.subroutine,
+    ),
+  ),
+```
+
+specifies (using `repeat` and `choice`) that a program consists of
+arbitrary sequences of the four specified nodes. These nodes must in turn be
+defined. The memory execution node, for example, consists of an absolute pad
+operation followed by an arbitrary sequence of non-toplevel-statements (which
+must be defined as well):
+
+```js
+memory_execution: $ => seq(
+  $.absolute_pad_operation,
+  repeat($._non_toplevel_statement),
+),
+```
+
+The absolute pad operation, in turn, is just the symbol "|" followed by a
+number (which is described by regex as a 1- to 4-digit hexadecimal):
+
+```js
+absolute_pad_operation: $ => seq('|', $.number),
+number: _ => /[\da-f]{1,4}\s/,
+```
+
+In order to test out changes to the grammar we need to ensure that the tree-sitter
+command-line interface is installed. Then, in the project directory, we can run
+
+```sh
+tree-sitter generate
+```
+
+to generate the parser from the modified `grammar.js`, and
+
+```sh
+tree-sitter parse source.tal
+```
+
+to display the syntax tree for a file `source.tal`.
+
+The `tree-sitter-uxntal` repository comes with a folder of `uxntal` code examples,
+but I think they're a bit old. I put together my own folder of examples
+consisting of the `projects/examples` from the `uxn` repository, together with the
+examples shown (via wasm?) on the `uxntal` [homepage](https://wiki.xxiivv.com/site/uxntal.html). These programs should be safe
+to assume as "valid" (I understand that there's no such thing as an invalid
+`uxntal` program, but there seems to be a fairly conventional coding style that
+`tree-sitter` should be able to understand). I then ran
+
+```sh
+tree-sitter parse examples/**/*.tal
+```
+
+to parse all the source files I'd collected. You can also add the `-q` flag if
+you're only interested in parse errors.
+
+I got a whole bunch of errors, mostly to do with the usage of angle brackets in
+label names, but also the syntax of anonymous labels `{  }`. If we take a look at
+the definition of `label` in our grammar, we'll see that it refers to `identifier`,
+which is in turn defined by
+
+```js
+identifier: _ => token(prec(-1, /[0-9]?[a-zA-Z_:*/][/]*[a-zA-Z0-9_:#*\-]*/)),
+```
+
+which you'll notice does not permit angle brackets. I'm no regex expert but I
+think we can fix this by throwing in `<>` both before and after a sublabel `/` as
+
+```js
+identifier: _ => token(prec(-1, /[0-9]?[a-zA-Z_:<>*/][/]*[a-zA-Z0-9_:#<>*\-]*/)),
+```
+
+For the anonymous labels we can introduce some new syntax
+
+```js
+anonymous_label: $ => seq(
+  '{',
+  repeat($._non_toplevel_statement),
+  '}',
+),
+```
+
+and then add in the anonymous label into the list of non-toplevel-statements.
+
+These two are not the only errors (and my solutions are probably not even 100%
+correct), but this is roughly how I'm approaching modifying the grammar. I've
+been playing with this in between end-of-year holiday busyness, so I hope
+to get some time soon to sit down and attack this more seriously.
+
+
+## retrospective {#retrospective}
+
+I'm really glad I did the december adventure this year. It gave me a healthy bit
+of motivation to work on or learn about things that I'm interested in but often
+don't have the energy to get around to. One of the big takeaways is that I'm
+easily nerd-sniped by all sorts of different cool things, which leads me to
+starting a lot of projects. Here's a list of things I got interested enough in
+to start (or at least write about) this month:
+
+-   photography and editing photos
+-   the kakuji script from the japanese edo period
+-   basic graphics programming with raylib in c
+-   writing my own static site generator to move away from the complexity of
+    hugo and org-mode
+-   learning the very basics of my first assembly/stack language uxntal
+-   learning about the tree-sitter parser generator library and its grammars
+-   an emacs tree-sitter major mode for uxntal
+
+It's tough to focus on a single idea and actually complete a project with a
+work-fried brain split among chores and errands.
+
+With these observations in mind... in 2026 I'd like to:
+
+-   continue adding to this digital garden/memex. It's a bit of a different format
+    from the december adventure, but I'd like to continue recording small bits of
+    things I find interesting, daily if possible
+-   start more creative projects! Do more photography, learn the basics of
+    sketching/drawing, write a tiny game, ...
+-   try to focus on finishing projects. Not necessarily right away (breaks are
+    good), but eventually. Even if the project scopes are tiny!
 
 ---
 

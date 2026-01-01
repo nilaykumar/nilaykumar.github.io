@@ -2,8 +2,8 @@
 #+date: <2025-12-08 Mon>
 #+hugo_base_dir: ../..
 #+hugo_section: garden
-#+hugo_tags: december-adventure code japanese chinese calligraphy photography
-#+hugo_custom_front_matter: :progress in-progress
+#+hugo_tags: december-adventure
+#+hugo_custom_front_matter: :progress finished
 
 Found out about the December adventure on Mastodon (likely from folks over at
 [[https://merveilles.town/][merveilles.town]]). It's already almost a good third of the way into December, but
@@ -814,7 +814,7 @@ Busy playing mahjong (both riichi and filipino) with family, no adventuring.
 * december 30
 Obtained a hand-me-down 35mm film camera! It's a 1969 Nikon F (apparently a
 legendary SLR) with a 55mm f/1.2 lens. Here's a picture of it, taken with my
-Fujifilm X-S10:
+Fujifilm X-S10 (it's so much less prettier after reducing the file size, alas):
 
 #+ATTR_HTML: :alt a vintage film camera sits among scattered mahjong tiles
 [[file:images/december-adventure-2025/nikon-f.jpg]]
